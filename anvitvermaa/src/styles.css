@@ -1,0 +1,23 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+}
