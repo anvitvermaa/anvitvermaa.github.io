@@ -9,78 +9,158 @@ export function Sketch() {
   useEffect(() => {
     const sketch = (p) => {
       let particles = [];
-      let noiseFactor = 2;
-      let mouseX = -1000,
-        mouseY = -1000;
+      let connections = [];
+      const numParticles = 150; // Reduced for performance, adjust as needed
+      const connectionDistance = 50;
+      const repulsionRadius = p.windowWidth / 4; // Matches your original range
+      const repulsionStrength = 0.007; // Matches your original strength
+      const springConstant = 0.01;
+      const damping = 0.9;
+      const stationaryThreshold = 3000; // 3 seconds
+      let stationaryTimer = 0;
+      let prevMouseX = -1000;
+      let prevMouseY = -1000;
+      let mouseSpeed = 0;
+      let lineAlpha = 255;
 
       p.setup = () => {
         let width = p.windowWidth - p.cmToPixels(2.7);
         let height = p.windowHeight - p.cmToPixels(2.7);
-
         p.createCanvas(width, height).parent(sketchRef.current);
         p.noStroke();
 
-        for (let i = 0; i < 2500; i++) {
+        // Initialize particles with random positions
+        for (let i = 0; i < numParticles; i++) {
           particles.push({
-            x: p.random(p.width),
-            y: p.random(p.height),
-            size: p.random(1, 10),
-            noiseX: p.random(10000),
-            noiseY: p.random(10000),
-            color: isDark ? "silver" : "#333",
+            pos: p.createVector(p.random(p.width), p.random(p.height)),
+            vel: p.createVector(0, 0),
+            acc: p.createVector(0, 0),
+            phase: p.random(p.TWO_PI), // For sparkling effect
           });
+        }
+
+        // Establish connections based on proximity
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            let d = p.dist(particles[i].pos.x, particles[i].pos.y, particles[j].pos.x, particles[j].pos.y);
+            if (d < connectionDistance) {
+              connections.push([i, j, d]); // Store indices and rest length
+            }
+          }
         }
       };
 
       p.draw = () => {
         p.background(isDark ? 0 : 255);
-        for (let i = 0; i < p.width * p.height * 0.01; i++) {
-          const shade = isDark ? p.random(20, 60) : p.random(200, 240);
-          p.fill(shade, shade, shade, p.random(100, 150));
-          p.rect(p.random(p.width), p.random(p.height), 1, 1);
+
+        // Calculate mouse speed for glowing
+        let dx = p.mouseX - prevMouseX;
+        let dy = p.mouseY - prevMouseY;
+        mouseSpeed = p.sqrt(dx * dx + dy * dy);
+        prevMouseX = p.mouseX;
+        prevMouseY = p.mouseY;
+
+        // Update stationary timer
+        if (mouseSpeed < 1) {
+          stationaryTimer += p.deltaTime;
+        } else {
+          stationaryTimer = 0;
+        }
+        let meshBroken = stationaryTimer > stationaryThreshold;
+
+        // Adjust line visibility
+        if (meshBroken) {
+          lineAlpha -= 5;
+          if (lineAlpha < 0) lineAlpha = 0;
+        } else {
+          lineAlpha += 5;
+          if (lineAlpha > 255) lineAlpha = 255;
         }
 
+        // Apply forces to particles
         for (let particle of particles) {
-          let noiseValX = p.noise(particle.noiseX) * 2 - 0.5;
-          let noiseValY = p.noise(particle.noiseY) * 2 - 0.5;
+          // Repulsion from cursor (similar to your original logic)
+          let distToCursor = p.dist(particle.pos.x, particle.pos.y, p.mouseX, p.mouseY);
+          let repulsion = p.map(distToCursor, 0, p.width / 4, -4, 0, true);
+          if (distToCursor < repulsionRadius) {
+            let forceMagnitude = repulsion * repulsionStrength;
+            if (meshBroken) forceMagnitude *= 2; // Stronger repulsion when lines break
+            let force = p.createVector(p.mouseX, p.mouseY).sub(particle.pos).normalize().mult(forceMagnitude);
+            particle.acc.add(force);
+          }
 
-          let distToCursor = p.dist(particle.x, particle.y, mouseX, mouseY);
-          let repulsion = p.map(
-            distToCursor,
-            0,
-            p.width / 4,
-            -4,
-            0,
-            true
-          );
+          // Apply spring forces if mesh is not broken
+          if (!meshBroken) {
+            for (let conn of connections) {
+              let p1 = particles[conn[0]];
+              let p2 = particles[conn[1]];
+              if (p1 === particle || p2 === particle) {
+                let other = p1 === particle ? p2 : p1;
+                let distVec = p.createVector(other.pos.x, other.pos.y).sub(particle.pos);
+                let currentDist = distVec.mag();
+                if (currentDist > 0) {
+                  let forceMagnitude = springConstant * (currentDist - conn[2]);
+                  let force = distVec.copy().normalize().mult(forceMagnitude);
+                  if (p1 === particle) {
+                    particle.acc.add(force);
+                  } else {
+                    particle.acc.sub(force);
+                  }
+                }
+              }
+            }
+          }
+        }
 
-          particle.x +=
-            noiseValX * 0.2 + repulsion * (mouseX - particle.x) * 0.007;
-          particle.y +=
-            noiseValY * 0.2 + repulsion * (mouseY - particle.y) * 0.007;
+        // Update particle positions
+        for (let particle of particles) {
+          particle.vel.add(particle.acc);
+          particle.vel.mult(damping);
+          particle.pos.add(particle.vel);
+          particle.acc.mult(0);
 
-          if (particle.x > p.width) particle.x = 0;
-          if (particle.x < 0) particle.x = p.width;
-          if (particle.y > p.height) particle.y = 0;
-          if (particle.y < 0) particle.y = p.height;
+          // Wrap particles around canvas edges (like your original code)
+          if (particle.pos.x > p.width) particle.pos.x = 0;
+          if (particle.pos.x < 0) particle.pos.x = p.width;
+          if (particle.pos.y > p.height) particle.pos.y = 0;
+          if (particle.pos.y < 0) particle.pos.y = p.height;
+        }
 
-          const shade = isDark ? p.random(200, 255) : p.random(20, 80);
-          p.fill(shade, shade, shade, p.random(100, 255));
-          p.ellipse(
-            particle.x,
-            particle.y,
-            p.random(0.5, 2),
-            p.random(0.5, 2)
-          );
+        // Draw connections with glowing effect when mouse moves
+        if (lineAlpha > 0) {
+          let glow = p.map(mouseSpeed, 0, 10, 0, 100); // Glow based on mouse speed
+          p.stroke(isDark ? 255 : 50, p.constrain(lineAlpha + glow, 0, 255));
+          p.strokeWeight(0.2); // Very thin lines (thinner than dots)
+          for (let conn of connections) {
+            let p1 = particles[conn[0]];
+            let p2 = particles[conn[1]];
+            let currentDist = p.dist(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
+            if (currentDist < connectionDistance * 1.5) { // Break if stretched too far
+              p.line(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
+            }
+          }
+        }
 
-          particle.noiseX += noiseFactor;
-          particle.noiseY += noiseFactor;
+        // Draw sparkling dots
+        p.noStroke();
+        for (let particle of particles) {
+          let sparkle = p.sin(p.frameCount * 0.1 + particle.phase) * 0.5 + 0.5;
+          let size = 1 + sparkle * 1; // Small dots (1-2 pixels)
+          p.fill(isDark ? 255 : 50, 200 + sparkle * 55); // Sparkle effect
+          p.ellipse(particle.pos.x, particle.pos.y, size, size);
         }
       };
 
       p.mouseMoved = () => {
-        mouseX = p.mouseX;
-        mouseY = p.mouseY;
+        // Update mouse position (consistent with your original code)
+        prevMouseX = p.mouseX;
+        prevMouseY = p.mouseY;
+      };
+
+      p.windowResized = () => {
+        let width = p.windowWidth - p.cmToPixels(2.7);
+        let height = p.windowHeight - p.cmToPixels(2.7);
+        p.resizeCanvas(width, height);
       };
 
       p.cmToPixels = (cm) => cm * 37.8;
@@ -90,6 +170,7 @@ export function Sketch() {
     return () => myP5.remove();
   }, [isDark]);
 
+  // Portfolio UI (unchanged from your original code)
   return (
     <>
       <div
@@ -100,9 +181,7 @@ export function Sketch() {
           left: "50%",
           transform: "translate(-50%, -50%)",
           border: `1px solid ${isDark ? "silver" : "#333"}`,
-          boxShadow: `0px 0px 5px ${
-            isDark ? "rgba(192,192,192,0.8)" : "rgba(51,51,51,0.8)"
-          }`,
+          boxShadow: `0px 0px 5px ${isDark ? "rgba(192,192,192,0.8)" : "rgba(51,51,51,0.8)"}`,
         }}
       >
         {/* Name and Bio */}
@@ -145,7 +224,7 @@ export function Sketch() {
             bottom: "1rem",
             right: "1rem",
             color: isDark ? "silver" : "#333",
-            fontFamily: "Montserrat,serif",
+            fontFamily: "Montserrat, serif",
             fontSize: "1rem",
             textAlign: "left",
           }}
