@@ -1,0 +1,5 @@
+<!-- src/assets/AnvitLogo.svg -->
+<svg width="340" height="110" viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="50%" y="65%" text-anchor="middle" font-size="48" font-family="Arial, Helvetica, sans-serif" fill="black">Anvit Verma</text>
+</svg>
