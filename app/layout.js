@@ -1,21 +1,31 @@
 import "./globals.css";
-import SocialLeft from "../components/SocialLeft";
-import SocialRight from "../components/SocialRight";
-import Navbar from "../components/Navbar";
+// UPDATED PATHS: Now pointing to src/components
+import Navbar from "../src/components/Navbar";
+import SocialLeft from "../src/components/SocialLeft";
+import SocialRight from "../src/components/SocialRight";
 
 export const metadata = {
-  title: "Anvit Verma | Portfolio",
-  description: "Anvit Verma is a software engineer specializing in building exceptional digital experiences.",
+  title: "Portfolio",
+  description: "Built with Next.js",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-navy text-slate">
+      <body className="bg-[#0a192f] text-[#8892b0] overflow-x-hidden relative">
+        {/* Navbar fixed at the top */}
         <Navbar />
-        <SocialLeft />
-        <SocialRight />
-        {children}
+        
+        {/* Sidebars fixed to the viewport - visible on md screens and up */}
+        <div className="hidden md:block">
+            <SocialLeft />
+            <SocialRight />
+        </div>
+
+        {/* Main Content Wrapper */}
+        <div className="flex flex-col min-h-screen">
+            {children}
+        </div>
       </body>
     </html>
   );
