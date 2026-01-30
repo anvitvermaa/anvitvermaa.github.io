@@ -1,7 +1,7 @@
 import "./globals.css";
-// UPDATED PATHS: Now pointing to src/components
 import Navbar from "../src/components/Navbar";
-import SocialLeft from "../src/components/SocialLeft";
+// Replaced SocialLeft with the SocialSidebar we created
+import SocialSidebar from "../src/components/SocialSidebar"; 
 import SocialRight from "../src/components/SocialRight";
 
 export const metadata = {
@@ -17,8 +17,9 @@ export default function RootLayout({ children }) {
         <Navbar />
         
         {/* Sidebars fixed to the viewport - visible on md screens and up */}
+        {/* This wrapper handles the 'hidden' logic, so SocialSidebar works perfectly here */}
         <div className="hidden md:block">
-            <SocialLeft />
+            <SocialSidebar />
             <SocialRight />
         </div>
 

@@ -1,82 +1,72 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Matches the 'navDelay' logic (waiting a bit before showing)
+    // Trigger the animation after a short delay
     const timeout = setTimeout(() => setIsMounted(true), 100);
     return () => clearTimeout(timeout);
   }, []);
 
   const one = (
-    // Gatsby: margin: 0 0 30px 4px; -> Tailwind: mb-[30px] ml-[4px]
-    // I reduced mb-[30px] to mb-[20px] slightly to help with the gap you dislike.
-    <h1 className="text-[#64ffda] font-mono font-normal mb-[20px] ml-[4px] text-[clamp(14px,5vw,16px)]">
+    <h1 className="text-[#64ffda] font-mono text-sm md:text-base mb-5 ml-1">
       Hi, my name is
     </h1>
   );
-
+  
   const two = (
-    // Gatsby: .big-heading
-    <h2 className="text-[#ccd6f6] font-bold m-0 p-0 leading-[0.9]" 
-        style={{ fontSize: 'clamp(40px, 8vw, 80px)' }}>
+    <h2 className="text-[#ccd6f6] text-4xl md:text-7xl font-bold leading-tight">
       Anvit Verma.
     </h2>
   );
-
+  
   const three = (
-    // Gatsby: margin-top: 5px; line-height: 0.9;
-    <h3 className="text-[#8892b0] font-bold m-0 p-0 mt-[5px] leading-[0.9]" 
-        style={{ fontSize: 'clamp(40px, 8vw, 80px)' }}>
+    <h3 className="text-[#8892b0] text-4xl md:text-7xl font-bold leading-tight mt-2">
       I build things for the web.
     </h3>
   );
-
+  
   const four = (
-    // Gatsby: margin: 20px 0 0;
-    <p className="text-[#8892b0] mt-[20px] max-w-[540px] text-[18px] md:text-[20px] leading-relaxed">
-      I am a software engineer specializing in building (and occasionally designing) exceptional
-      digital experiences. Currently, I’m focused on building accessible, human-centered products
-      at{' '}
-      <a href="https://upstatement.com/" target="_blank" rel="noreferrer" className="text-[#64ffda] hover:underline">
-        Upstatement
-      </a>
-      .
+    <p className="text-[#8892b0] mt-5 max-w-[540px] text-lg leading-relaxed">
+      I’m a 3rd-year Computer Science student specializing in AI and software development. 
+      Currently, I’m focused on building accessible, human-centered products and researching model poisoning.
     </p>
   );
-
+  
   const five = (
-    // Gatsby: .email-link { margin-top: 50px; }
     <a
-      href="https://github.com/anvitvermaa" // Changed to your link
+      href="https://github.com/anvitvermaa"
       target="_blank"
       rel="noreferrer"
-      className="inline-block text-[#64ffda] border border-[#64ffda] rounded-[4px] py-[18px] px-[28px] mt-[50px] font-mono text-[14px] hover:bg-[#64ffda]/10 transition-colors duration-300 leading-none"
+      className="inline-block mt-12 border border-[#64ffda] text-[#64ffda] py-4 px-7 rounded text-sm font-mono hover:bg-[rgba(100,255,218,0.1)] transition-colors duration-300"
     >
-      Check out my code!
+      Check out my GitHub!
     </a>
   );
 
   const items = [one, two, three, four, five];
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-start p-0 max-w-[1000px] mx-auto">
-      {isMounted && (
-        <>
-          {items.map((item, i) => (
-            // Replaces CSSTransition with our Tailwind animate-fadeup class
-            <div 
-              key={i} 
-              className="animate-fadeup" 
-              style={{ animationDelay: `${(i + 1) * 100}ms` }}
-            >
-              {item}
-            </div>
-          ))}
-        </>
-      )}
+    <section className="min-h-screen flex flex-col justify-center items-start px-0 mx-auto max-w-[1000px]">
+      {items.map((item, i) => (
+        <div
+          key={i}
+          // ANIMATION LOGIC:
+          // 1. opacity-0 translate-y-5 -> Hidden state
+          // 2. opacity-100 translate-y-0 -> Visible state (triggered by isMounted)
+          className={`transition-all duration-500 ease-in-out transform ${
+            isMounted
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-5"
+          }`}
+          // STAGGER DELAY: Each item waits 100ms longer than the previous one
+          style={{ transitionDelay: `${i * 100}ms` }}
+        >
+          {item}
+        </div>
+      ))}
     </section>
   );
 };

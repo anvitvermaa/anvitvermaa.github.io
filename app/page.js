@@ -5,10 +5,15 @@ import SelectedWorks from "../src/components/sections/SelectedWorks";
 import Education from "../src/components/sections/Education"; 
 import Skills from "../src/components/sections/Skills";
 import MorphingFooter from "../src/components/sections/MorphingFooter"; 
+import SocialSidebar from "../src/components/SocialSidebar"; // <--- ONLY Added This
 
 export default function Home() {
   return (
-    <main className="px-6 md:px-24 lg:px-36 min-h-screen w-full overflow-x-hidden">
+    <main className="px-6 md:px-24 lg:px-36 min-h-screen w-full overflow-x-hidden bg-[#0a192f] text-[#8892b0]">
+      
+      {/* 1. Added Social Sidebar Here */}
+      <SocialSidebar />
+
       <div className="max-w-[1000px] mx-auto w-full">
         
         {/* Main Sections */}
@@ -18,13 +23,8 @@ export default function Home() {
         <SelectedWorks />
         <Education />
         <Skills />
-        
-
-        
-        {/* 3. Morphing Footer at the very bottom */}
         <MorphingFooter />
         
-        {/* 4. Removed the "Built & Designed by" section completely */}
       </div>
     </main>
   );
