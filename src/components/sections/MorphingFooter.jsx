@@ -156,7 +156,8 @@ const MorphingFooter = () => {
   ];
 
   return (
-    <section className="max-w-[1000px] mx-auto py-[150px] flex flex-col items-center justify-center relative z-10">
+    // Added id="contact" here so the Navbar link works
+    <section id="contact" className="max-w-[1000px] mx-auto py-[150px] flex flex-col items-center justify-center relative z-10">
       
       <div className="w-full h-[150px] md:h-[200px]">
         <MorphingText 
@@ -166,7 +167,8 @@ const MorphingFooter = () => {
       </div>
 
       <div className="mt-8 text-center">
-        <p className="text-[#8892b0] max-w-[500px] mx-auto mb-10 text-[18px]">
+        {/* CHANGED: Increased mb-10 to mb-20 for more space */}
+        <p className="text-[#8892b0] max-w-[500px] mx-auto mb-20 text-[18px]">
           I’m currently looking for new opportunities, my inbox is always open. 
           Whether you have a question or just want to say hi, I’ll try my best to get back to you!
         </p>

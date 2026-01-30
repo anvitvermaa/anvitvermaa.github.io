@@ -1,29 +1,29 @@
+// app/layout.js
 import "./globals.css";
-import Navbar from "../src/components/Navbar";
-// Replaced SocialLeft with the SocialSidebar we created
 import SocialSidebar from "../src/components/SocialSidebar"; 
 import SocialRight from "../src/components/SocialRight";
+import Navbar from "../src/components/Navbar"; // IMPORT IS HERE
 
 export const metadata = {
-  title: "Portfolio",
-  description: "Built with Next.js",
+  title: "Anvit Verma",
+  description: "Portfolio",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-[#0a192f] text-[#8892b0] overflow-x-hidden relative">
-        {/* Navbar fixed at the top */}
-        <Navbar />
+      <body className="bg-[#0a192f] text-[#8892b0]">
         
-        {/* Sidebars fixed to the viewport - visible on md screens and up */}
-        {/* This wrapper handles the 'hidden' logic, so SocialSidebar works perfectly here */}
+        {/* 1. NAVBAR MUST BE HERE (Directly inside Body) */}
+        <Navbar />
+
+        {/* 2. Sidebars (Hidden on mobile, visible on desktop) */}
         <div className="hidden md:block">
             <SocialSidebar />
             <SocialRight />
         </div>
 
-        {/* Main Content Wrapper */}
+        {/* 3. Main Content */}
         <div className="flex flex-col min-h-screen">
             {children}
         </div>

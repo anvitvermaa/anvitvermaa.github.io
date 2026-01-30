@@ -1,4 +1,5 @@
 import Hero from "../src/components/sections/Hero";
+
 import About from "../src/components/sections/About";
 import Jobs from "../src/components/sections/Jobs";
 import SelectedWorks from "../src/components/sections/SelectedWorks";
@@ -14,10 +15,10 @@ export default function Home() {
       {/* 1. Added Social Sidebar Here */}
       <SocialSidebar />
 
-      <div className="max-w-[1000px] mx-auto w-full">
+      <div className="max-w-[1100px] mx-auto w-full">
         
         {/* Main Sections */}
-        <Hero />
+        <Hero/>
         <About />
         <Jobs />
         <SelectedWorks />

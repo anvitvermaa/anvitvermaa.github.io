@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link"; 
+import Link from "next/link";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -13,79 +13,77 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Mappings:
+  // About -> #about
+  // Experience -> #jobs
+  // Work -> #projects
+  // Contact -> #contact (Ensure your MorphingFooter.jsx has id="contact")
   const navLinks = [
-    { name: "About", url: "/#about" },
-    { name: "Experience", url: "/#jobs" },
-    { name: "Work", url: "/#projects" },
-    { name: "Contact", url: "/#contact" },
+    { name: "About", url: "/#about", number: "01." },
+    { name: "Experience", url: "/#jobs", number: "02." },
+    { name: "Work", url: "/#projects", number: "03." },
+    { name: "Contact", url: "/#contact", number: "04." },
   ];
 
   return (
-    <header
-      className={`fixed top-0 w-full z-50 flex items-center justify-between px-6 md:px-12 transition-all duration-300 ${
-        scrolled
-          ? "h-[70px] bg-[rgba(10,25,47,0.85)] backdrop-blur-md shadow-lg"
-          : "h-[100px] bg-transparent"
-      }`}
+    <nav
+      style={{
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100%",
+        height: scrolled ? "70px" : "100px",
+        backgroundColor: "rgba(10, 25, 47, 0.85)", // Dark Navy
+        backdropFilter: "blur(10px)",
+        zIndex: "1000",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "0 50px",
+        boxSizing: "border-box",
+        transition: "height 0.3s ease, background-color 0.3s ease",
+        boxShadow: scrolled ? "0 10px 30px -10px rgba(2,12,27,0.7)" : "none",
+      }}
     >
       
-      {/* 1. LOGO SECTION (Hexagon + Letter 'A') */}
-      <div className="flex items-center justify-center">
-        <Link href="/" aria-label="home" className="group relative">
-          {/* Hexagon SVG */}
-          <svg 
-            className="w-12 h-12 text-[#64ffda] transition-transform duration-300 group-hover:-translate-y-1" 
-            viewBox="0 0 100 100" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="5"
-          >
-            <polygon points="50 5, 95 27.5, 95 72.5, 50 95, 5 72.5, 5 27.5" />
-            {/* Letter 'A' inside */}
-            <text x="50" y="65" fontSize="45" fill="#64ffda" textAnchor="middle" className="font-sans font-bold stroke-0">A</text>
-          </svg>
+      {/* 1. LOGO (Left Side) */}
+      <div style={{ color: "#64ffda" }}>
+        <Link href="/" style={{ textDecoration: 'none' }}>
+           <svg width="42" height="42" viewBox="0 0 100 100" fill="none" stroke="#64ffda" strokeWidth="5">
+             <polygon points="50 5, 95 27.5, 95 72.5, 50 95, 5 72.5, 5 27.5" />
+             <text x="50" y="65" fontSize="45" fill="#64ffda" textAnchor="middle" style={{fontFamily: 'sans-serif', fontWeight: 'bold', stroke: 'none'}}>A</text>
+           </svg>
         </Link>
       </div>
 
-      {/* 2. DESKTOP MENU (Links) */}
-      {/* hidden md:flex -> Hides on mobile, shows on Desktop */}
-      <div className="hidden md:flex items-center gap-8">
-        <ol className="flex gap-8 list-none m-0 p-0">
+      {/* 2. LINKS (Right Side) */}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        
+        {/* GAP FIX: 30px gap between items */}
+        <ol style={{ display: "flex", gap: "30px", listStyle: "none", margin: "0", padding: "0" }}>
           {navLinks.map((item, i) => (
-            <li key={i} className="font-mono text-[13px]">
+            <li key={i}>
               <Link 
                 href={item.url} 
-                className="!text-[#ccd6f6] hover:!text-[#64ffda] transition-colors duration-300 flex items-center gap-1"
+                style={{
+                  textDecoration: "none",
+                  color: "#ccd6f6", // Light Slate
+                  fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace",
+                  fontSize: "13px",
+                  fontWeight: "500",
+                  display: "flex",
+                  alignItems: "center",
+                }}
               >
-                <span className="!text-[#64ffda]">0{i + 1}.</span>
-                <span>{item.name}</span>
+                <span style={{ color: "#64ffda", marginRight: "5px" }}>{item.number}</span>
+                {item.name}
               </Link>
             </li>
           ))}
         </ol>
 
-        {/* RESUME BUTTON */}
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-4 border border-[#64ffda] !text-[#64ffda] px-4 py-2 rounded text-[13px] font-mono hover:bg-[rgba(100,255,218,0.1)] transition-colors duration-300"
-        >
-          Resume
-        </a>
       </div>
-
-      {/* 3. MOBILE MENU TOGGLE (Placeholder) */}
-      {/* This only shows if screen is small (md:hidden) */}
-      <div className="md:hidden">
-        <button className="text-[#64ffda] focus:outline-none">
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-
-    </header>
+    </nav>
   );
 };
 

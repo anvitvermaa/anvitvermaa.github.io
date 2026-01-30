@@ -1,72 +1,42 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from 'react';
 
 const Hero = () => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    // Trigger the animation after a short delay
-    const timeout = setTimeout(() => setIsMounted(true), 100);
-    return () => clearTimeout(timeout);
-  }, []);
-
-  const one = (
-    <h1 className="text-[#64ffda] font-mono text-sm md:text-base mb-5 ml-1">
-      Hi, my name is
-    </h1>
-  );
-  
-  const two = (
-    <h2 className="text-[#ccd6f6] text-4xl md:text-7xl font-bold leading-tight">
-      Anvit Verma.
-    </h2>
-  );
-  
-  const three = (
-    <h3 className="text-[#8892b0] text-4xl md:text-7xl font-bold leading-tight mt-2">
-      I build things for the web.
-    </h3>
-  );
-  
-  const four = (
-    <p className="text-[#8892b0] mt-5 max-w-[540px] text-lg leading-relaxed">
-      I’m a 3rd-year Computer Science student specializing in AI and software development. 
-      Currently, I’m focused on building accessible, human-centered products and researching model poisoning.
-    </p>
-  );
-  
-  const five = (
-    <a
-      href="https://github.com/anvitvermaa"
-      target="_blank"
-      rel="noreferrer"
-      className="inline-block mt-12 border border-[#64ffda] text-[#64ffda] py-4 px-7 rounded text-sm font-mono hover:bg-[rgba(100,255,218,0.1)] transition-colors duration-300"
-    >
-      Check out my GitHub!
-    </a>
-  );
-
-  const items = [one, two, three, four, five];
-
   return (
-    <section className="min-h-screen flex flex-col justify-center items-start px-0 mx-auto max-w-[1000px]">
-      {items.map((item, i) => (
-        <div
-          key={i}
-          // ANIMATION LOGIC:
-          // 1. opacity-0 translate-y-5 -> Hidden state
-          // 2. opacity-100 translate-y-0 -> Visible state (triggered by isMounted)
-          className={`transition-all duration-500 ease-in-out transform ${
-            isMounted
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-5"
-          }`}
-          // STAGGER DELAY: Each item waits 100ms longer than the previous one
-          style={{ transitionDelay: `${i * 100}ms` }}
+    <section className="flex flex-col justify-center min-h-screen max-w-[1000px] mx-auto -mt-[80px]">
+      
+      {/* Intro - Reduced gap significantly (mb-[12px]) */}
+      <h1 className="text-[#64ffda] font-mono text-[16px] mb-[12px] ml-[2px]">
+        Hi, my name is
+      </h1>
+
+      {/* Name - Kept margin small */}
+      <h2 className="text-[#ccd6f6] font-bold text-[clamp(40px,8vw,80px)] leading-[1.1] mb-[5px]">
+        Anvit Verma.
+      </h2>
+
+      {/* Tagline - Reduced gap to pull description closer (mb-[15px]) */}
+      <h3 className="text-[#8892b0] font-bold text-[clamp(40px,8vw,80px)] leading-[1.1] mb-[15px]">
+        I build things for the web.
+      </h3>
+
+      {/* Short Bio */}
+      <p className="text-[#8892b0] text-[18px] max-w-[540px] leading-relaxed mb-[50px]">
+        I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products at <span className="text-[#64ffda]">Vellore Institute of Technology</span>.
+      </p>
+
+      {/* CTA Button */}
+      <div>
+        <a 
+          href="/resume.pdf"
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="border border-[#64ffda] text-[#64ffda] bg-transparent rounded-[4px] px-[50px] py-[20px] font-mono text-[14px] hover:bg-[#64ffda]/10 transition-colors inline-block"
         >
-          {item}
-        </div>
-      ))}
+          Resume
+        </a>
+      </div>
+
     </section>
   );
 };
