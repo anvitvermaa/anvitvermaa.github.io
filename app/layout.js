@@ -1,8 +1,6 @@
-// app/layout.js
 import "./globals.css";
 import SocialSidebar from "../src/components/SocialSidebar"; 
-import SocialRight from "../src/components/SocialRight";
-import Navbar from "../src/components/Navbar"; // IMPORT IS HERE
+import Navbar from "../src/components/Navbar"; 
 
 export const metadata = {
   title: "Anvit Verma",
@@ -12,15 +10,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      {/* Reverted body to simple classes; font is handled in globals.css */}
       <body className="bg-[#0a192f] text-[#8892b0]">
         
-        {/* 1. NAVBAR MUST BE HERE (Directly inside Body) */}
+        {/* 1. NAVBAR */}
         <Navbar />
 
-        {/* 2. Sidebars (Hidden on mobile, visible on desktop) */}
+        {/* 2. Sidebars (Hidden on mobile) */}
         <div className="hidden md:block">
             <SocialSidebar />
-            <SocialRight />
         </div>
 
         {/* 3. Main Content */}

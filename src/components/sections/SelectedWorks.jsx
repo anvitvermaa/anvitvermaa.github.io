@@ -10,7 +10,7 @@ const SelectedWorks = () => {
       external: 'https://anvitvermaa.github.io/Repo_Analyst_AI/',
       github: 'https://github.com/anvitvermaa/Repo_Analyst_AI',
       tech: ['LangGraph', 'LLaMA-3', 'RAG', 'React', 'Python'],
-      html: 'Multi-agent system for automated repository intelligence. LangGraph-orchestrated LLaMA-3 agents perform semantic code search, RAG-based analysis, auto-README generation, and multi-stage security auditing within an interactive desktop-style UI.',
+      html: 'Designed a LangGraph-based orchestration layer coordinating specialized LLaMA 3 agents for repository navigation and documentation generation. Integrated a three-stage security auditing pipeline combining SAST, dependency analysis, and RAG-based code inspection using ChromaDB. Customized an interactive Windows XP-inspired desktop interface in React including a custom window manager and deterministic simulation engine.',
       cover: '/repo-analyst.png',
     },
     {
@@ -18,24 +18,35 @@ const SelectedWorks = () => {
       external: 'https://anvitvermaa.github.io/rondonia-fishbone-harmonizer/',
       github: 'https://github.com/anvitvermaa/rondonia-fishbone-harmonizer',
       tech: ['Python', 'PyTorch (SR-GAN)', 'ETL Pipeline', 'Satellite Imagery'],
-      html: 'World’s first 30-year, 10m-resolution ARD dataset for the Rondônia deforestation corridor. Built using a large-scale satellite ETL pipeline and a custom SR-GAN to restore historical imagery for long-term environmental monitoring.',
-      cover: '/rondonia.png',
+      html: 'Engineered an ETL pipeline to ingest and process <strong>5.5 TB</strong> of multi-temporal satellite imagery, normalizing cross-sensor inconsistencies. Compiled a unified dataset of 1,336 aligned image pairs enabling consistent long-term analysis of deforestation trends in the Amazon. Optimized legacy 30m-resolution maps into sharp 10m imagery using a custom SR-GAN, achieving a 0.54 SSIM score.',
+      cover: '/fishbone.png',
     },
     {
       title: 'Multi-Agent Telecom Optimizer',
-      external: 'https://github.com/anvitvermaa/Multi-Agent-Telecom-Optimizer',
+      external: null, 
       github: 'https://github.com/anvitvermaa/Multi-Agent-Telecom-Optimizer',
-      tech: ['LLMs', 'RAG', 'MLflow', 'Web Retrieval', 'Python'],
-      html: 'Stateful multi-agent orchestration for marketing intelligence and support workflows. Combines creative and supervisor LLMs, web retrieval, RAG grounding, and MLflow-based evaluation to generate and refine telecom messaging using customer data.',
-      cover: '/telecom.png',
+      tech: ['LangGraph', 'LLaMA 3', 'MLflow', 'Databricks', 'ChromaDB'],
+      html: `
+        <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 10px;"><strong>Stateful Orchestration:</strong> Orchestrated complex marketing workflows using LangGraph with dynamic branching, reflection, and supervisor-review loops for auto-regeneration based on quality thresholds.</li>
+          <li style="margin-bottom: 10px;"><strong>Creative & Supervisor LLMs:</strong> Deployed LLaMA 3 for generating marketing messages and reviewing tone/clarity, utilizing scoring systems to drive iterative content refinement.</li>
+          <li style="margin-bottom: 10px;"><strong>Observability & Data:</strong> Integrated MLflow for autologging prompts and retrieval metrics, while tying MySQL customer features (churn risk, usage) to high-quality content generation.</li>
+        </ul>
+      `,
+      cover: null, 
     },
     {
       title: 'Tastelytics',
-      external: '#',
-      github: '#',
-      tech: ['AWS Lambda', 'DynamoDB', 'API Gateway', 'Serverless'],
-      html: 'Serverless music review platform — Goodreads / Letterboxd for music. Built on AWS using API Gateway, Lambda, DynamoDB with GSIs, and IAM-secured endpoints for scalable, auditable review management.',
-      cover: '/tastelytics.png',
+      external: null, 
+      github: null,
+      tech: ['AWS Lambda', 'DynamoDB', 'Cognito', 'CodePipeline'],
+      html: `
+        <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 10px;">Architected a scalable serverless API on AWS with 10+ endpoints, achieving <strong>less than 300ms</strong> response times by leveraging DynamoDB Global Secondary Indexes (GSI).</li>
+          <li style="margin-bottom: 0px;">Established a fully automated CI/CD pipeline via AWS CodePipeline and secured the system with Amazon Cognito, ensuring zero-downtime deployments and role-based access control.</li>
+        </ul>
+      `,
+      cover: null, 
     },
   ];
 
@@ -44,7 +55,13 @@ const SelectedWorks = () => {
       
       {/* HEADER */}
       <div className="flex items-center gap-[10px] mb-[40px] w-full whitespace-nowrap">
-        <span className="font-mono text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]">03.</span>
+        <span 
+          className="text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
+          // Forced Font Match with Navbar
+          style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
+        >
+          04.
+        </span>
         <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#ccd6f6] m-0">Selected Works</h2>
         <div className="w-full max-w-[300px] h-[1px] bg-[#233554] ml-[20px]"></div>
       </div>
@@ -53,85 +70,100 @@ const SelectedWorks = () => {
       <ul className="list-none p-0 m-0">
         {featuredProjects.map((project, i) => {
           const isOdd = i % 2 !== 0; 
+          const isSquare = i >= 2;
 
           return (
-            <li key={i} className="relative grid grid-cols-12 items-center gap-[10px] mb-[100px] last:mb-0">
+            <li key={i} className="relative grid grid-cols-12 items-center gap-[20px] mb-[100px] last:mb-0">
               
-              {/* --- CONTENT SECTION --- */}
+              {/* CONTENT */}
               <div className={`
                 project-content
-                relative z-20 col-span-12 md:col-span-7 row-start-1
+                relative z-20 col-span-12 md:col-span-8 row-start-1
                 flex flex-col justify-center h-full
-                p-[25px] sm:p-[40px] md:p-0
-                ${isOdd ? 'md:col-start-7 md:text-right' : 'md:col-start-1 md:text-left'}
+                p-[25px] sm:p-[0px] md:p-0
+                ${isOdd ? 'md:col-start-5 md:text-right items-end' : 'md:col-start-1 md:text-left items-start'}
               `}>
                 
-                {/* REMOVED 'Featured Project' Label from here */}
-                
                 <h3 className="font-bold text-[clamp(24px,5vw,28px)] mb-[20px]">
-                  {/* FIX: Added text-[#ccd6f6] to force light color on the title */}
-                  <a href={project.external} className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors">
+                  <a href={project.external || project.github} className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
                     {project.title}
                   </a>
                 </h3>
 
                 {/* DESCRIPTION BOX */}
                 <div 
-                  className="bg-[#112240] text-[#a8b2d1] text-[16px] leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20"
+                  className={`
+                    bg-[#112240] text-[#a8b2d1] 
+                    text-[17px] 
+                    leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20
+                    ${isSquare 
+                        ? 'md:w-[450px] md:h-[450px] overflow-y-auto' 
+                        : 'md:max-w-[85%]'
+                    }
+                  `}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
 
                 {/* TECH STACK */}
                 <ul className={`
-                  flex flex-wrap gap-x-[20px] gap-y-[5px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
-                  ${isOdd ? 'justify-start md:justify-end' : 'justify-start'}
+                  flex flex-wrap gap-x-[20px] gap-y-[5px] mt-[20px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
+                  ${isOdd ? 'justify-end' : 'justify-start'}
                 `}>
                   {project.tech.map((t, idx) => (
                     <li key={idx}>{t}</li>
                   ))}
                 </ul>
 
-                {/* LINKS (ICONS) */}
+                {/* LINKS */}
                 <div className={`
                   flex items-center gap-[20px] mt-[10px]
-                  ${isOdd ? 'justify-start md:justify-end' : 'justify-start'}
+                  ${isOdd ? 'justify-end' : 'justify-start'}
                 `}>
                   {project.cta && (
-                    <a href={project.cta} className="border border-[#64ffda] text-[#64ffda] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#64ffda]/10 transition-colors">
+                    <a href={project.cta} className="border border-[#64ffda] text-[#64ffda] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#64ffda]/10 transition-colors no-underline">
                       Learn More
                     </a>
                   )}
                   {project.github && (
-                    /* FIX: Added text-[#ccd6f6] directly to the icon link */
-                    <a href={project.github} aria-label="GitHub Link" target="_blank" rel="noreferrer" className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors">
+                    <a href={project.github} aria-label="GitHub Link" target="_blank" rel="noreferrer" className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
                       <GitHub width={20} height={20} />
                     </a>
                   )}
                   {project.external && !project.cta && (
-                    /* FIX: Added text-[#ccd6f6] directly to the icon link */
-                    <a href={project.external} aria-label="External Link" target="_blank" rel="noreferrer" className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors">
+                    <a href={project.external} aria-label="External Link" target="_blank" rel="noreferrer" className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
                       <ExternalLink width={22} height={22} />
                     </a>
                   )}
                 </div>
+
               </div>
 
-              {/* --- IMAGE SECTION --- */}
-              <div className={`
-                project-image
-                col-span-12 md:col-span-7 relative h-full z-10 row-start-1
-                opacity-25 md:opacity-100
-                ${isOdd ? 'md:col-start-1' : 'md:col-start-6'}
-              `}>
-                 <a href={project.external || project.github} target="_blank" rel="noreferrer" className="block w-full h-full relative rounded bg-[#64ffda] transition-all duration-300 hover:bg-transparent group before:absolute before:inset-0 before:bg-[#0a192f] before:mix-blend-screen before:transition-all before:duration-300 group-hover:before:bg-transparent">
-                    <div className="relative w-full h-auto mix-blend-multiply filter grayscale contrast-100 transition-all duration-300 group-hover:mix-blend-normal group-hover:filter-none">
-                       {/* IMAGE PLACEHOLDER */}
-                       <div className="w-full aspect-video bg-slate-300 rounded flex items-center justify-center font-mono font-bold text-navy text-xl">
-                          [{project.title}]
-                       </div>
-                    </div>
-                 </a>
-              </div>
+              {/* IMAGE */}
+              {project.cover && (
+                <div className={`
+                  project-image
+                  col-span-12 md:col-span-4 relative z-10 row-start-1
+                  self-center
+                  ${isOdd ? 'md:col-start-1' : 'md:col-start-9'}
+                `}>
+                   <a 
+                      href={project.external || project.github} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="block w-full h-auto relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                   >
+                      <div className="relative w-full h-auto">
+                         <Image 
+                           src={project.cover} 
+                           alt={project.title}
+                           width={500} 
+                           height={300} 
+                           className="w-full h-auto object-cover rounded hover:scale-105 transition-transform duration-300"
+                         />
+                      </div>
+                   </a>
+                </div>
+              )}
 
             </li>
           );

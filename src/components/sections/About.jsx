@@ -10,13 +10,19 @@ const About = () => {
       
       {/* 1. HEADER */}
       <div className="flex items-center gap-[10px] mb-[40px] w-full whitespace-nowrap">
-        <span className="font-mono text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]">01.</span>
+        <span 
+          className="text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
+          // Forced Font Match
+          style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
+        >
+          01.
+        </span>
         <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#ccd6f6] m-0">About Me</h2>
         <div className="w-full max-w-[300px] h-[1px] bg-[#233554] ml-[20px]"></div>
       </div>
 
-      {/* 2. INNER GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-[50px] items-start">
+      {/* 2. INNER CONTENT (Text Only) */}
+      <div className="w-full">
         
         {/* TEXT COLUMN */}
         <div className="text-[#8892b0] font-sans text-[20px] leading-[1.3]">
@@ -46,30 +52,6 @@ const About = () => {
             ))}
           </ul>
         </div>
-
-        {/* IMAGE COLUMN */}
-        <div className="relative max-w-[300px] w-[70%] md:w-full mt-[50px] md:mt-0 mx-auto md:mr-0 group">
-          
-          {/* Wrapper */}
-          <div className="relative w-full rounded bg-[#64ffda] shadow-xl transition-all duration-250 ease-in-out group-hover:-translate-x-[4px] group-hover:-translate-y-[4px] cursor-pointer z-10">
-             
-             {/* Image & Blend Mode */}
-             <div className="relative w-full aspect-square rounded overflow-hidden mix-blend-multiply filter grayscale contrast-100 transition-all duration-250 ease-in-out group-hover:mix-blend-normal group-hover:filter-none">
-                <div className="w-full h-full bg-slate-300 flex items-center justify-center text-navy font-bold font-mono">
-                  {/* Replace this div with <img src="/your-image.jpg" ... /> */}
-                  [Your Photo]
-                </div>
-             </div>
-
-             {/* Overlay */}
-             <div className="absolute inset-0 bg-[#0a192f] mix-blend-screen rounded transition-all duration-250 ease-in-out group-hover:bg-transparent"></div>
-          </div>
-          
-          {/* Border */}
-          <div className="absolute top-[14px] left-[14px] w-full h-full border-2 border-[#64ffda] rounded -z-10 transition-all duration-250 ease-in-out group-hover:translate-x-[4px] group-hover:translate-y-[4px]"></div>
-
-        </div>
-
       </div>
     </section>
   );

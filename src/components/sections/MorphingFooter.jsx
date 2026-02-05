@@ -156,29 +156,16 @@ const MorphingFooter = () => {
   ];
 
   return (
-    // Added id="contact" here so the Navbar link works
-    <section id="contact" className="max-w-[1000px] mx-auto py-[150px] flex flex-col items-center justify-center relative z-10">
+    // Changed py-[200px] to pt-[200px] pb-[50px]
+    // This keeps the top spacing large to push it down, but reduces the bottom spacing significantly.
+    <section id="contact" className="max-w-[1000px] mx-auto pt-[200px] pb-[50px] flex flex-col items-center justify-center relative z-10">
       
-      <div className="w-full h-[150px] md:h-[200px]">
+      <div className="w-full h-[50px] md:h-[300px]">
         <MorphingText 
           texts={footerTexts} 
-          className="text-[80px] md:text-[120px] text-[#ccd6f6]" 
+          // INCREASED SIZE BY 20%: 80px -> 96px, 120px -> 144px
+          className="text-[96px] md:text-[144px] text-[#ccd6f6]" 
         />
-      </div>
-
-      <div className="mt-8 text-center">
-        {/* CHANGED: Increased mb-10 to mb-20 for more space */}
-        <p className="text-[#8892b0] max-w-[500px] mx-auto mb-20 text-[18px]">
-          I’m currently looking for new opportunities, my inbox is always open. 
-          Whether you have a question or just want to say hi, I’ll try my best to get back to you!
-        </p>
-        
-        <a 
-          href="mailto:anvitvermaa@gmail.com" 
-          className="border border-[#64ffda] text-[#64ffda] px-[30px] py-[18px] rounded-[4px] font-mono text-[14px] hover:bg-[#64ffda]/10 transition-colors"
-        >
-          Say Hello
-        </a>
       </div>
 
     </section>

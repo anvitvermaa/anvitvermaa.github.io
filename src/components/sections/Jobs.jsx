@@ -46,7 +46,13 @@ const Jobs = () => {
       
       {/* SECTION HEADER */}
       <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
-        <span className="font-mono text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]">02.</span>
+        <span 
+          className="text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
+          // Forced Font Match with Navbar
+          style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
+        >
+          02.
+        </span>
         <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#ccd6f6] m-0">Experience</h2>
         <div className="w-full max-w-[300px] h-[1px] bg-[#233554] ml-[20px]"></div>
       </div>
@@ -60,13 +66,13 @@ const Jobs = () => {
             className="relative pl-[40px] mb-[60px] last:mb-0 group"
           >
             
-            {/* THE DOT (Timeline Marker) */}
+            {/* THE DOT */}
             <div className="absolute left-[-9px] top-0 w-[16px] h-[16px] rounded-full bg-[#0a192f] border-2 border-[#64ffda] group-hover:bg-[#64ffda] transition-colors duration-300"></div>
 
             {/* THE CARD */}
             <div className="flex flex-row items-stretch bg-[#112240] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
               
-              {/* LEFT COLUMN: Dates & Company (Blue Box) */}
+              {/* LEFT COLUMN */}
               <div className="w-[280px] shrink-0 bg-[#172a45] p-[25px] flex flex-col justify-between border-r border-[#233554]">
                 <div>
                   <div className="font-mono text-[#64ffda] text-xs mb-1 tracking-wider uppercase">From</div>
@@ -82,7 +88,7 @@ const Jobs = () => {
                 </div>
               </div>
 
-              {/* RIGHT COLUMN: Description (Dark Box) */}
+              {/* RIGHT COLUMN */}
               <div className="flex-1 p-[25px] min-w-0">
                 <h3 className="text-[22px] font-bold text-[#ccd6f6] mb-[20px] group-hover:text-[#64ffda] transition-colors duration-300">
                   {job.title}

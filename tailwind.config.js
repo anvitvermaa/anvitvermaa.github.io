@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    "./src/**/*.{js,ts,jsx,tsx,mdx}", 
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,6 +19,7 @@ module.exports = {
         green: "#64ffda",
       },
       fontFamily: {
+        // RESTORED ORIGINAL FONTS
         mono: ['"SF Mono"', '"Fira Code"', '"Fira Mono"', '"Roboto Mono"', 'monospace'],
         sans: ['"Calibre"', '"Inter"', '"San Francisco"', '"SF Pro Text"', '-apple-system', 'system-ui', 'sans-serif'],
       },

@@ -12,11 +12,12 @@
 body {
   background-color: var(--navy);
   color: var(--slate);
+  /* RESTORED ORIGINAL FONT STACK */
   font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
   line-height: 1.3;
 }
 
-/* --- THE MISSING ANIMATION --- */
+/* --- ANIMATIONS --- */
 @keyframes fadeup {
   from {
     opacity: 0;
@@ -29,6 +30,6 @@ body {
 }
 
 .animate-fadeup {
-  opacity: 0; /* Start invisible */
+  opacity: 0; 
   animation: fadeup 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
 }

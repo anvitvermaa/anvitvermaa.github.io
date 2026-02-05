@@ -13,16 +13,22 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Mappings:
-  // About -> #about
-  // Experience -> #jobs
-  // Work -> #projects
-  // Contact -> #contact (Ensure your MorphingFooter.jsx has id="contact")
+  // UPDATED MAPPINGS:
+  // 1. About          -> #about
+  // 2. Experience     -> #jobs
+  // 3. Publications   -> #publications (NEW)
+  // 4. Work           -> #selected-works
+  // 5. Education      -> #education
+  // 6. Skills         -> #skills
+  // 7. Contact        -> #contact
   const navLinks = [
     { name: "About", url: "/#about", number: "01." },
     { name: "Experience", url: "/#jobs", number: "02." },
-    { name: "Work", url: "/#projects", number: "03." },
-    { name: "Contact", url: "/#contact", number: "04." },
+    { name: "Publications", url: "/#publications", number: "03." }, // <--- Added
+    { name: "Work", url: "/#selected-works", number: "04." },
+    { name: "Education", url: "/#education", number: "05." },
+    { name: "Skills", url: "/#skills", number: "06." },
+    { name: "Contact", url: "/#contact", number: "07." },
   ];
 
   return (
@@ -33,11 +39,11 @@ const Navbar = () => {
         left: "0",
         width: "100%",
         height: scrolled ? "70px" : "100px",
-        backgroundColor: "rgba(10, 25, 47, 0.85)", // Dark Navy
+        backgroundColor: "rgba(10, 25, 47, 0.30)", 
         backdropFilter: "blur(10px)",
         zIndex: "1000",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "flex-end", 
         alignItems: "center",
         padding: "0 50px",
         boxSizing: "border-box",
@@ -46,20 +52,9 @@ const Navbar = () => {
       }}
     >
       
-      {/* 1. LOGO (Left Side) */}
-      <div style={{ color: "#64ffda" }}>
-        <Link href="/" style={{ textDecoration: 'none' }}>
-           <svg width="42" height="42" viewBox="0 0 100 100" fill="none" stroke="#64ffda" strokeWidth="5">
-             <polygon points="50 5, 95 27.5, 95 72.5, 50 95, 5 72.5, 5 27.5" />
-             <text x="50" y="65" fontSize="45" fill="#64ffda" textAnchor="middle" style={{fontFamily: 'sans-serif', fontWeight: 'bold', stroke: 'none'}}>A</text>
-           </svg>
-        </Link>
-      </div>
-
-      {/* 2. LINKS (Right Side) */}
+      {/* LINKS (Right Side) */}
       <div style={{ display: "flex", alignItems: "center" }}>
         
-        {/* GAP FIX: 30px gap between items */}
         <ol style={{ display: "flex", gap: "30px", listStyle: "none", margin: "0", padding: "0" }}>
           {navLinks.map((item, i) => (
             <li key={i}>
@@ -73,6 +68,7 @@ const Navbar = () => {
                   fontWeight: "500",
                   display: "flex",
                   alignItems: "center",
+                  transition: "color 0.3s ease",
                 }}
               >
                 <span style={{ color: "#64ffda", marginRight: "5px" }}>{item.number}</span>
