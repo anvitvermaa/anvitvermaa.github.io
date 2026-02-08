@@ -4,27 +4,25 @@ import Navbar from "../src/components/Navbar";
 
 export const metadata = {
   title: "Anvit Verma",
-  description: "Portfolio",
+  description: "AI Engineer & Researcher",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* Reverted body to simple classes; font is handled in globals.css */}
-      <body className="bg-[#0a192f] text-[#8892b0]">
+      <body className="bg-[#0a192f] text-[#8892b0] relative selection:bg-[#64ffda] selection:text-[#0a192f]">
         
-        {/* 1. NAVBAR */}
+        {/* Navbar */}
         <Navbar />
 
-        {/* 2. Sidebars (Hidden on mobile) */}
-        <div className="hidden md:block">
-            <SocialSidebar />
-        </div>
+        {/* Sidebar - Always Rendered */}
+        <SocialSidebar />
 
-        {/* 3. Main Content */}
+        {/* Page Content */}
         <div className="flex flex-col min-h-screen">
             {children}
         </div>
+        
       </body>
     </html>
   );

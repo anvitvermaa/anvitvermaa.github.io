@@ -1,7 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useRef } from "react";
 
-// Helper for class names (replaces the 'cn' import to ensure no errors)
+// Helper for class names
 function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -156,16 +156,30 @@ const MorphingFooter = () => {
   ];
 
   return (
-    // Changed py-[200px] to pt-[200px] pb-[50px]
-    // This keeps the top spacing large to push it down, but reduces the bottom spacing significantly.
-    <section id="contact" className="max-w-[1000px] mx-auto pt-[200px] pb-[50px] flex flex-col items-center justify-center relative z-10">
+    <section id="contact" className="max-w-[1000px] mx-auto pt-[200px] pb-[40px] flex flex-col items-center justify-center relative z-10">
       
-      <div className="w-full h-[50px] md:h-[300px]">
+      {/* 1. MORPHING TEXT ANIMATION */}
+      <div className="w-full h-[50px] md:h-[300px] mb-[20px]">
         <MorphingText 
           texts={footerTexts} 
-          // INCREASED SIZE BY 20%: 80px -> 96px, 120px -> 144px
           className="text-[96px] md:text-[144px] text-[#ccd6f6]" 
         />
+      </div>
+
+      {/* 2. CONTACT ME TEXT */}
+      {/* ADJUSTED GAP: mt-[100px] (Balanced) */}
+      <div className="mt-[100px] text-center">
+        <a 
+            href="mailto:anvitvermaa@gmail.com" 
+            className="no-underline group"
+        >
+            <h2 
+                className="text-[30px] md:text-[40px] font-bold text-[#ccd6f6] group-hover:text-[#64ffda] transition-colors"
+                style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
+            >
+                CONTACT ME !
+            </h2>
+        </a>
       </div>
 
     </section>

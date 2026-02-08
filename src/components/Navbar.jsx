@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+// Removed Next/Link to fix the hash scroll issue
+// import Link from "next/link"; 
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -13,22 +14,13 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // UPDATED MAPPINGS:
-  // 1. About          -> #about
-  // 2. Experience     -> #jobs
-  // 3. Publications   -> #publications (NEW)
-  // 4. Work           -> #selected-works
-  // 5. Education      -> #education
-  // 6. Skills         -> #skills
-  // 7. Contact        -> #contact
   const navLinks = [
     { name: "About", url: "/#about", number: "01." },
     { name: "Experience", url: "/#jobs", number: "02." },
-    { name: "Publications", url: "/#publications", number: "03." }, // <--- Added
+    { name: "Publications", url: "/#publications", number: "03." },
     { name: "Work", url: "/#selected-works", number: "04." },
     { name: "Education", url: "/#education", number: "05." },
     { name: "Skills", url: "/#skills", number: "06." },
-    { name: "Contact", url: "/#contact", number: "07." },
   ];
 
   return (
@@ -41,7 +33,8 @@ const Navbar = () => {
         height: scrolled ? "70px" : "100px",
         backgroundColor: "rgba(10, 25, 47, 0.30)", 
         backdropFilter: "blur(10px)",
-        zIndex: "1000",
+        // CHANGED: Increased Z-Index significantly to sit above RotatingStar/Modals
+        zIndex: "9999", 
         display: "flex",
         justifyContent: "flex-end", 
         alignItems: "center",
@@ -58,22 +51,27 @@ const Navbar = () => {
         <ol style={{ display: "flex", gap: "30px", listStyle: "none", margin: "0", padding: "0" }}>
           {navLinks.map((item, i) => (
             <li key={i}>
-              <Link 
+              {/* CHANGED: Swapped <Link> for <a> to force browser-native scrolling */}
+              <a 
                 href={item.url} 
                 style={{
                   textDecoration: "none",
-                  color: "#ccd6f6", // Light Slate
+                  color: "#ccd6f6", 
                   fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace",
                   fontSize: "13px",
                   fontWeight: "500",
                   display: "flex",
                   alignItems: "center",
                   transition: "color 0.3s ease",
+                  cursor: "pointer", // Ensure it looks clickable
                 }}
+                // Optional: Add hover effect inline
+                onMouseEnter={(e) => e.currentTarget.style.color = "#64ffda"}
+                onMouseLeave={(e) => e.currentTarget.style.color = "#ccd6f6"}
               >
                 <span style={{ color: "#64ffda", marginRight: "5px" }}>{item.number}</span>
                 {item.name}
-              </Link>
+              </a>
             </li>
           ))}
         </ol>

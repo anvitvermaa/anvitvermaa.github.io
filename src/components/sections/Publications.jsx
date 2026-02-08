@@ -25,7 +25,6 @@ const Publications = () => {
       <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
         <span 
           className="text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
-          // Forced Font Match with Navbar
           style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
         >
           03.
@@ -64,9 +63,12 @@ const Publications = () => {
                   href={pub.url} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-block group-hover:text-[#64ffda] transition-colors duration-300"
+                  // FIX 1: Moved color classes here (text-[#ccd6f6] hover:text-[#64ffda])
+                  // FIX 2: Added 'block' to ensure it captures the hover correctly
+                  className="block no-underline text-[#ccd6f6] hover:text-[#64ffda] transition-colors duration-300"
                 >
-                  <h3 className="text-[22px] font-bold text-[#ccd6f6] mb-[20px]">
+                  {/* FIX 3: Removed text color from h3 so it inherits from parent <a> */}
+                  <h3 className="text-[22px] font-bold mb-[20px]">
                     {pub.title}
                   </h3>
                 </a>
