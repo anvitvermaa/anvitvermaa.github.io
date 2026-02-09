@@ -69,6 +69,8 @@ const SelectedWorks = () => {
       <ul className="list-none p-0 m-0">
         {featuredProjects.map((project, i) => {
           const isOdd = i % 2 !== 0; 
+          // Applies "Big Box" logic only to the first two projects
+          const isWideProject = i < 2;
 
           return (
             <li key={i} className="relative grid grid-cols-12 items-center gap-[10px] mb-[100px] last:mb-0">
@@ -91,46 +93,47 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* DESCRIPTION BOX - FORCED WIDTH AND SQUARE SHAPE */}
+                {/* DESCRIPTION BOX - FORCED STYLES */}
                 <div 
                   className={`
                     bg-[#112240] text-[#a8b2d1] 
                     text-[16px] md:text-[17px]
                     leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20
-                    ${i < 2 
-                        ? '' // First two (Repo & Fishbone) get custom width below
-                        : 'md:h-[400px] overflow-y-auto w-full' // Last two (Telecom/Taste) stay scrollable
-                    }
+                    ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
                   `}
-                  // FORCE WIDTH AND OVERLAP HERE
-                  style={i < 2 ? {
-                    width: '130%', // Makes it wider than its column (Overlap)
-                    minWidth: '500px', // Forces it to be at least 500px wide (The Rectangle you want)
-                    marginLeft: isOdd ? '-30%' : '0', // Pulls it left if it's on the right
-                    marginRight: isOdd ? '0' : '-30%', // Pulls it right if it's on the left
+                  // This style block forces the width and alignment
+                  style={isWideProject ? {
+                    width: '130%',             // Make it 30% wider than its container
+                    minWidth: '600px',         // Force it to be at least 600px wide (The Rectangle)
+                    marginLeft: isOdd ? '-30%' : '0', // Pull left if on right side
+                    marginRight: isOdd ? '0' : '-30%', // Pull right if on left side
                   } : {}}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
 
-                {/* TECH STACK */}
+                {/* TECH STACK - ALIGNED TO BOX */}
                 <ul className={`
                   flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
                   ${isOdd ? 'justify-end' : 'justify-start'}
                 `}
-                // Force Tech Stack to match the box width roughly
-                style={{ width: i < 2 ? '130%' : '100%' }}
+                // This ensures the tech stack spans the full width of the text box
+                style={{ 
+                  width: isWideProject ? '130%' : '100%',
+                  marginRight: (isOdd && isWideProject) ? '0' : '0',
+                  marginLeft: (!isOdd && isWideProject) ? '0' : '0'
+                }}
                 >
                   {project.tech.map((t, idx) => (
                     <li key={idx}>{t}</li>
                   ))}
                 </ul>
 
-                {/* LINKS */}
+                {/* LINKS - ALIGNED TO BOX */}
                 <div className={`
                   flex items-center gap-[20px] mt-[10px]
                   ${isOdd ? 'justify-end' : 'justify-start'}
                 `}
-                 style={{ width: i < 2 ? '130%' : '100%' }}
+                 style={{ width: isWideProject ? '130%' : '100%' }}
                 >
                   {project.cta && (
                     <a href={project.cta} className="border border-[#64ffda] text-[#64ffda] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#64ffda]/10 transition-colors no-underline">
