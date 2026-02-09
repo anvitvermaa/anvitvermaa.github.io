@@ -69,20 +69,18 @@ const SelectedWorks = () => {
       <ul className="list-none p-0 m-0">
         {featuredProjects.map((project, i) => {
           const isOdd = i % 2 !== 0; 
-          const isSquare = i >= 2;
 
           return (
             <li key={i} className="relative grid grid-cols-12 items-center gap-[10px] mb-[100px] last:mb-0">
               
-              {/* CONTENT (Text Side) - Increased Span to 7 for wider box */}
+              {/* CONTENT (Text Side) */}
               <div className={`
                 project-content
-                relative z-20 col-span-12 md:col-span-7 row-start-1
+                relative z-20 col-span-12 md:col-span-6 row-start-1
                 flex flex-col justify-center h-full
-                p-[20px] sm:p-0
                 ${isOdd 
-                  ? 'md:col-start-6 md:text-right md:items-end' // Odd: Right side
-                  : 'md:col-start-1 md:text-left md:items-start' // Even: Left side
+                  ? 'md:col-start-7 md:text-right md:items-end' // Odd: Text on Right
+                  : 'md:col-start-1 md:text-left md:items-start' // Even: Text on Left
                 }
               `}>
                 
@@ -93,29 +91,35 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* DESCRIPTION BOX - Forced Width and Padding */}
+                {/* DESCRIPTION BOX - FORCED WIDTH AND SQUARE SHAPE */}
                 <div 
                   className={`
                     bg-[#112240] text-[#a8b2d1] 
                     text-[16px] md:text-[17px]
                     leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20
-                    w-full 
                     ${i < 2 
-                        ? 'h-auto' // Normal Height for first two
-                        : 'md:h-[400px] overflow-y-auto' // Scroll for last two (Telecom/Tastelytics)
+                        ? '' // First two (Repo & Fishbone) get custom width below
+                        : 'md:h-[400px] overflow-y-auto w-full' // Last two (Telecom/Taste) stay scrollable
                     }
                   `}
-                  // This forces the box to be on top
-                  style={{ minHeight: '120px' }} 
+                  // FORCE WIDTH AND OVERLAP HERE
+                  style={i < 2 ? {
+                    width: '130%', // Makes it wider than its column (Overlap)
+                    minWidth: '500px', // Forces it to be at least 500px wide (The Rectangle you want)
+                    marginLeft: isOdd ? '-30%' : '0', // Pulls it left if it's on the right
+                    marginRight: isOdd ? '0' : '-30%', // Pulls it right if it's on the left
+                  } : {}}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
 
-                {/* TECH STACK - Aligned with the text */}
+                {/* TECH STACK */}
                 <ul className={`
                   flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
-                  w-full
                   ${isOdd ? 'justify-end' : 'justify-start'}
-                `}>
+                `}
+                // Force Tech Stack to match the box width roughly
+                style={{ width: i < 2 ? '130%' : '100%' }}
+                >
                   {project.tech.map((t, idx) => (
                     <li key={idx}>{t}</li>
                   ))}
@@ -124,9 +128,10 @@ const SelectedWorks = () => {
                 {/* LINKS */}
                 <div className={`
                   flex items-center gap-[20px] mt-[10px]
-                  w-full
                   ${isOdd ? 'justify-end' : 'justify-start'}
-                `}>
+                `}
+                 style={{ width: i < 2 ? '130%' : '100%' }}
+                >
                   {project.cta && (
                     <a href={project.cta} className="border border-[#64ffda] text-[#64ffda] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#64ffda]/10 transition-colors no-underline">
                       Learn More
@@ -146,14 +151,14 @@ const SelectedWorks = () => {
 
               </div>
 
-              {/* IMAGE (Cover Side) - Reduced Span to 6 for overlap */}
+              {/* IMAGE (Cover Side) */}
               {project.cover && (
                 <div className={`
                   project-image
                   col-span-12 md:col-span-7 relative z-10 row-start-1
                   ${isOdd 
                     ? 'md:col-start-1' // Odd: Image on Left
-                    : 'md:col-start-6' // Even: Image on Right (Overlap)
+                    : 'md:col-start-6' // Even: Image on Right
                   }
                 `}>
                    <a 
@@ -161,19 +166,16 @@ const SelectedWorks = () => {
                       target="_blank" 
                       rel="noreferrer" 
                       className="block w-full h-auto relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-                      // Add opacity filter to image until hovered
-                      style={{ filter: 'brightness(0.9)' }}
                    >
                       <div className="relative w-full h-auto">
                          <Image 
                            src={project.cover} 
                            alt={project.title}
-                           width={700} // Increased res
-                           height={450} 
-                           className="w-full h-auto object-cover rounded hover:scale-[1.02] transition-transform duration-300"
+                           width={800} 
+                           height={500} 
+                           className="w-full h-auto object-cover rounded grayscale hover:grayscale-0 transition-all duration-300"
                          />
-                         {/* Colored overlay that vanishes on hover */}
-                         <div className="absolute inset-0 bg-[#0a192f]/30 hover:bg-transparent transition-colors duration-300 rounded"></div>
+                         <div className="absolute inset-0 bg-[#0a192f]/50 hover:bg-transparent transition-colors duration-300"></div>
                       </div>
                    </a>
                 </div>
