@@ -51,10 +51,10 @@ const SelectedWorks = () => {
   ];
 
   return (
-    <section id="selected-works" className="max-w-[1000px] mx-auto py-[100px]">
+    <section id="selected-works" className="max-w-[1200px] mx-auto py-[100px] px-[20px]">
       
       {/* HEADER */}
-      <div className="flex items-center gap-[10px] mb-[40px] w-full whitespace-nowrap">
+      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
         <span 
           className="text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
           style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
@@ -69,47 +69,51 @@ const SelectedWorks = () => {
       <ul className="list-none p-0 m-0">
         {featuredProjects.map((project, i) => {
           const isOdd = i % 2 !== 0; 
-          // Applies special Square styling to LAST TWO projects (original logic), 
-          // BUT we will override logic inside the JSX for the FIRST TWO.
-          const isSquare = i >= 2; 
+          const isSquare = i >= 2;
 
           return (
-            <li key={i} className="relative grid grid-cols-12 items-center gap-[20px] mb-[100px] last:mb-0">
+            <li key={i} className="relative grid grid-cols-12 items-center gap-[10px] mb-[100px] last:mb-0">
               
-              {/* CONTENT */}
+              {/* CONTENT (Text Side) - Increased Span to 7 for wider box */}
               <div className={`
                 project-content
-                relative z-20 col-span-12 md:col-span-8 row-start-1
+                relative z-20 col-span-12 md:col-span-7 row-start-1
                 flex flex-col justify-center h-full
-                p-[25px] sm:p-[0px] md:p-0
-                ${isOdd ? 'md:col-start-5 md:text-right items-end' : 'md:col-start-1 md:text-left items-start'}
+                p-[20px] sm:p-0
+                ${isOdd 
+                  ? 'md:col-start-6 md:text-right md:items-end' // Odd: Right side
+                  : 'md:col-start-1 md:text-left md:items-start' // Even: Left side
+                }
               `}>
                 
+                {/* Project Title */}
                 <h3 className="font-bold text-[clamp(24px,5vw,28px)] mb-[20px]">
                   <a href={project.external || project.github} className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
                     {project.title}
                   </a>
                 </h3>
 
-                {/* DESCRIPTION BOX */}
+                {/* DESCRIPTION BOX - Forced Width and Padding */}
                 <div 
                   className={`
                     bg-[#112240] text-[#a8b2d1] 
-                    text-[17px] 
+                    text-[16px] md:text-[17px]
                     leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20
-                    
-                    /* FIXED LOGIC FOR REPO ANALYST (0) & RONDONIA (1) */
+                    w-full 
                     ${i < 2 
-                        ? 'md:w-[500px] h-auto'  /* Force Wide Box, Auto Height (No Scroll, No Cut) */
-                        : (isSquare ? 'md:w-[450px] md:h-[450px] overflow-y-auto' : 'md:max-w-[85%]') 
+                        ? 'h-auto' // Normal Height for first two
+                        : 'md:h-[400px] overflow-y-auto' // Scroll for last two (Telecom/Tastelytics)
                     }
                   `}
+                  // This forces the box to be on top
+                  style={{ minHeight: '120px' }} 
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
 
-                {/* TECH STACK */}
+                {/* TECH STACK - Aligned with the text */}
                 <ul className={`
-                  flex flex-wrap gap-x-[20px] gap-y-[5px] mt-[20px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
+                  flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
+                  w-full
                   ${isOdd ? 'justify-end' : 'justify-start'}
                 `}>
                   {project.tech.map((t, idx) => (
@@ -120,6 +124,7 @@ const SelectedWorks = () => {
                 {/* LINKS */}
                 <div className={`
                   flex items-center gap-[20px] mt-[10px]
+                  w-full
                   ${isOdd ? 'justify-end' : 'justify-start'}
                 `}>
                   {project.cta && (
@@ -141,28 +146,34 @@ const SelectedWorks = () => {
 
               </div>
 
-              {/* IMAGE */}
+              {/* IMAGE (Cover Side) - Reduced Span to 6 for overlap */}
               {project.cover && (
                 <div className={`
                   project-image
-                  col-span-12 md:col-span-4 relative z-10 row-start-1
-                  self-center
-                  ${isOdd ? 'md:col-start-1' : 'md:col-start-9'}
+                  col-span-12 md:col-span-7 relative z-10 row-start-1
+                  ${isOdd 
+                    ? 'md:col-start-1' // Odd: Image on Left
+                    : 'md:col-start-6' // Even: Image on Right (Overlap)
+                  }
                 `}>
                    <a 
                       href={project.external || project.github} 
                       target="_blank" 
                       rel="noreferrer" 
                       className="block w-full h-auto relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                      // Add opacity filter to image until hovered
+                      style={{ filter: 'brightness(0.9)' }}
                    >
                       <div className="relative w-full h-auto">
                          <Image 
                            src={project.cover} 
                            alt={project.title}
-                           width={500} 
-                           height={300} 
-                           className="w-full h-auto object-cover rounded hover:scale-105 transition-transform duration-300"
+                           width={700} // Increased res
+                           height={450} 
+                           className="w-full h-auto object-cover rounded hover:scale-[1.02] transition-transform duration-300"
                          />
+                         {/* Colored overlay that vanishes on hover */}
+                         <div className="absolute inset-0 bg-[#0a192f]/30 hover:bg-transparent transition-colors duration-300 rounded"></div>
                       </div>
                    </a>
                 </div>
