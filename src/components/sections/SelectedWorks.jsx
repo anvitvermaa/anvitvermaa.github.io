@@ -57,7 +57,6 @@ const SelectedWorks = () => {
       <div className="flex items-center gap-[10px] mb-[40px] w-full whitespace-nowrap">
         <span 
           className="text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
-          // Forced Font Match with Navbar
           style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
         >
           04.
@@ -70,7 +69,9 @@ const SelectedWorks = () => {
       <ul className="list-none p-0 m-0">
         {featuredProjects.map((project, i) => {
           const isOdd = i % 2 !== 0; 
-          const isSquare = i >= 2;
+          // Applies special Square styling to LAST TWO projects (original logic), 
+          // BUT we will override logic inside the JSX for the FIRST TWO.
+          const isSquare = i >= 2; 
 
           return (
             <li key={i} className="relative grid grid-cols-12 items-center gap-[20px] mb-[100px] last:mb-0">
@@ -96,9 +97,11 @@ const SelectedWorks = () => {
                     bg-[#112240] text-[#a8b2d1] 
                     text-[17px] 
                     leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20
-                    ${isSquare 
-                        ? 'md:w-[450px] md:h-[450px] overflow-y-auto' 
-                        : 'md:max-w-[85%]'
+                    
+                    /* FIXED LOGIC FOR REPO ANALYST (0) & RONDONIA (1) */
+                    ${i < 2 
+                        ? 'md:w-[500px] h-auto'  /* Force Wide Box, Auto Height (No Scroll, No Cut) */
+                        : (isSquare ? 'md:w-[450px] md:h-[450px] overflow-y-auto' : 'md:max-w-[85%]') 
                     }
                   `}
                   dangerouslySetInnerHTML={{ __html: project.html }}
