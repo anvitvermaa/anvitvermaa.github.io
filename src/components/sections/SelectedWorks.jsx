@@ -53,7 +53,6 @@ const SelectedWorks = () => {
   return (
     <section id="selected-works" className="max-w-[1200px] mx-auto py-[100px] px-[20px]">
       
-      {/* HEADER */}
       <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
         <span 
           className="text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
@@ -65,7 +64,6 @@ const SelectedWorks = () => {
         <div className="w-full max-w-[300px] h-[1px] bg-[#233554] ml-[20px]"></div>
       </div>
 
-      {/* PROJECTS GRID */}
       <ul className="list-none p-0 m-0">
         {featuredProjects.map((project, i) => {
           const isOdd = i % 2 !== 0; 
@@ -74,7 +72,6 @@ const SelectedWorks = () => {
           return (
             <li key={i} className="relative grid grid-cols-12 items-center gap-[10px] mb-[100px] last:mb-0">
               
-              {/* CONTENT (Text Side) */}
               <div className={`
                 project-content
                 relative z-20 
@@ -86,13 +83,18 @@ const SelectedWorks = () => {
                 }
               `}>
                 
-                <h3 className="font-bold text-[clamp(24px,5vw,28px)] mb-[20px]">
+                <h3 
+                  className="font-bold text-[clamp(24px,5vw,28px)] mb-[20px]"
+                  style={{ 
+                    width: '100%',
+                    transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
+                  }}
+                >
                   <a href={project.external || project.github} className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
                     {project.title}
                   </a>
                 </h3>
 
-                {/* --- BLURRED BOX --- */}
                 <div 
                   className={`
                     bg-[#112240]/90 backdrop-blur-2xl
@@ -110,7 +112,6 @@ const SelectedWorks = () => {
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
 
-                {/* Tech Stack */}
                 <ul className={`
                   flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
                   ${isOdd ? 'justify-end' : 'justify-start'}
@@ -125,7 +126,6 @@ const SelectedWorks = () => {
                   ))}
                 </ul>
 
-                {/* Links */}
                 <div className={`
                   flex items-center gap-[20px] mt-[10px]
                   ${isOdd ? 'justify-end' : 'justify-start'}
@@ -154,7 +154,6 @@ const SelectedWorks = () => {
 
               </div>
 
-              {/* IMAGE (Cover Side) */}
               {project.cover && (
                 <div 
                   className={`
@@ -170,7 +169,6 @@ const SelectedWorks = () => {
                       href={project.external || project.github} 
                       target="_blank" 
                       rel="noreferrer" 
-                      // GROUP CLASS FOR HOVER
                       className="block w-full h-auto relative !rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group"
                    >
                       <div className="relative w-full h-auto">
@@ -179,18 +177,11 @@ const SelectedWorks = () => {
                            alt={project.title}
                            width={800} 
                            height={500} 
-                           // GRAYSCALE UNTIL HOVER
                            className="w-full h-auto object-cover !rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
                          />
                          
-                         {/* TEAL TINT OVERLAY (Fixed)
-                            - z-10: Forces it on top of the image
-                            - mix-blend-multiply: Dyes the image teal
-                            - opacity-50: Shows the tint clearly
-                         */}
                          <div className="absolute inset-0 z-10 bg-[#64ffda] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
                          
-                         {/* EXTRA DARK LAYER (Optional, keeps contrast high) */}
                          <div className="absolute inset-0 bg-[#0a192f]/10 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
                       </div>
                    </a>
@@ -205,4 +196,4 @@ const SelectedWorks = () => {
   );
 };
 
-export default SelectedWorks; 
+export default SelectedWorks;
