@@ -2,7 +2,9 @@
 import React from 'react';
 import Image from 'next/image'; 
 import { GitHub, ExternalLink } from 'react-feather';
-import GlassSurface from '../GlassSurface';
+// Correct import based on your file structure
+import GlassSurface from '../GlassSurface'; 
+
 const SelectedWorks = () => {
   const featuredProjects = [
     {
@@ -92,22 +94,26 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* --- ADVANCED GLASS SURFACE --- */}
+                {/* --- GLASS SURFACE CONFIGURATION --- */}
                 <GlassSurface
-                  // Aesthetic Props (Frutiger Aero / iOS Glass)
-                  opacity={0.6}
-                  blur={15}
-                  brightness={1.2}
-                  borderRadius={20}
-                  borderWidth={0.5}
-                  mixBlendMode="normal" // Ensures text inside isn't blended weirdly
+                  // 1. ELIMINATE THE RAINBOW GLITCH:
+                  distortionScale={0}  // Set to 0 to stop the weird bending
+                  displace={0}         // Set to 0 to stop the waviness
+                  redOffset={0}        // No color splitting
+                  greenOffset={0}
+                  blueOffset={0}
                   
-                  // Layout Props
+                  // 2. CREATE THE "IPHONE GLASS" LOOK:
+                  blur={15}            // High blur for the frosty look
+                  opacity={0.15}       // Low opacity so it's transparent, not white
+                  brightness={100}     // Subtle shine
+                  borderRadius={16}    // Smooth corners
+                  mixBlendMode="normal" // Ensures text inside is readable
+                  
+                  // 3. LAYOUT LOGIC (Do not change):
                   width="100%"
-                  height={!isWideProject ? 400 : "auto"} // Auto height for first two, Fixed 400px for scrollable ones
-                  
+                  height={!isWideProject ? 400 : "auto"}
                   style={{
-                    // SHIFTING LOGIC (Preserved Exactly)
                     transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
                   }}
                 >
@@ -116,10 +122,9 @@ const SelectedWorks = () => {
                     className={`
                       text-[#a8b2d1] 
                       text-[16px] md:text-[17px]
-                      leading-relaxed p-[10px]
+                      leading-relaxed p-[20px]
                       ${!isWideProject && 'h-full overflow-y-auto w-full'} 
                     `}
-                    // We render the HTML here inside the glass
                     dangerouslySetInnerHTML={{ __html: project.html }}
                   />
                 </GlassSurface>
