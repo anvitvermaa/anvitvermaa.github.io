@@ -31,7 +31,7 @@ const getStarData = (points, innerRadius) => {
 export default function RotatingStar() {
   const solidRef = useRef(null);
   const gradientRef = useRef(null);
-  const grainRef = useRef(null); // <--- NEW REF FOR GRAIN
+  const grainRef = useRef(null); 
   const borderRef = useRef(null);
 
   // --- CONFIG ---
@@ -69,9 +69,8 @@ export default function RotatingStar() {
 
   return (
     // CONTAINER:
-    // z-[99999]: Extremely high to strictly overlap Navbar
-    // pointer-events-none: Clicks pass through
-    <div className="fixed -top-[8rem] -left-[8rem] w-[24rem] h-[24rem] z-[99999] pointer-events-none">
+    // Added 'hidden md:block' to hide on mobile and show on desktop
+    <div className="hidden md:block fixed -top-[8rem] -left-[8rem] w-[24rem] h-[24rem] z-[99999] pointer-events-none">
       
       {/* LAYER 1: SOLID TEAL BASE (The Blocker) */}
       <div 

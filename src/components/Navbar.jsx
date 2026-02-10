@@ -1,7 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-// Removed Next/Link to fix the hash scroll issue
-// import Link from "next/link"; 
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -25,6 +23,9 @@ const Navbar = () => {
 
   return (
     <nav
+      // CHANGED: Added Tailwind classes for layout and visibility
+      // 'hidden' hides it on mobile. 'md:flex' shows it on medium screens and up.
+      className="hidden md:flex justify-end items-center"
       style={{
         position: "fixed",
         top: "0",
@@ -33,11 +34,9 @@ const Navbar = () => {
         height: scrolled ? "70px" : "100px",
         backgroundColor: "rgba(10, 25, 47, 0.30)", 
         backdropFilter: "blur(10px)",
-        // CHANGED: Increased Z-Index significantly to sit above RotatingStar/Modals
         zIndex: "9999", 
-        display: "flex",
-        justifyContent: "flex-end", 
-        alignItems: "center",
+        // Note: display, justifyContent, and alignItems were removed from here 
+        // and handled by the className above to support responsive hiding.
         padding: "0 50px",
         boxSizing: "border-box",
         transition: "height 0.3s ease, background-color 0.3s ease",
@@ -51,7 +50,6 @@ const Navbar = () => {
         <ol style={{ display: "flex", gap: "30px", listStyle: "none", margin: "0", padding: "0" }}>
           {navLinks.map((item, i) => (
             <li key={i}>
-              {/* CHANGED: Swapped <Link> for <a> to force browser-native scrolling */}
               <a 
                 href={item.url} 
                 style={{
@@ -63,9 +61,8 @@ const Navbar = () => {
                   display: "flex",
                   alignItems: "center",
                   transition: "color 0.3s ease",
-                  cursor: "pointer", // Ensure it looks clickable
+                  cursor: "pointer",
                 }}
-                // Optional: Add hover effect inline
                 onMouseEnter={(e) => e.currentTarget.style.color = "#64ffda"}
                 onMouseLeave={(e) => e.currentTarget.style.color = "#ccd6f6"}
               >
