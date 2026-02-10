@@ -87,10 +87,8 @@ const SelectedWorks = () => {
                   className="font-bold text-[clamp(24px,5vw,28px)] mb-[20px]"
                   style={{ 
                     width: '100%',
-                    // CHANGED: Removed the transforms so titles sit naturally above their boxes
-                    transform: 'none',
-                    // Added alignment logic to force Title 1 (Repo) Left and Title 2 (Rondonia) Right
-                    textAlign: isOdd ? 'right' : 'left', 
+                    // FIXED: Restored transform so titles move with the box (Left for Repo, Right for Rondonia)
+                    transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
                   }}
                 >
                   <a href={project.external || project.github} className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
