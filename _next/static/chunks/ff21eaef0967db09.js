@@ -50,12 +50,12 @@ Read more: https://nextjs.org/docs/messages/next-image-unconfigured-localpattern
                 row-start-1
                 flex flex-col justify-center h-full
                 ${i?"col-start-6 col-end-13 md:text-right md:items-end":"col-start-1 col-end-8 md:text-left md:items-start"}
-              `,children:[(0,a.jsx)("h3",{className:"font-bold text-[clamp(24px,5vw,28px)] mb-[20px]",children:(0,a.jsx)("a",{href:e.external||e.github,className:"text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline",children:e.title})}),(0,a.jsx)(aa,{opacity:.5,backgroundOpacity:.4,borderWidth:1.5,blur:20,brightness:1.1,borderRadius:16,distortionScale:0,mixBlendMode:"normal",width:"100%",height:n?"auto":400,style:{transform:0===t?"translateX(-20px)":1===t?"translateX(20px)":"none"},children:(0,a.jsx)("div",{className:`
-                      text-[#a8b2d1] 
+              `,children:[(0,a.jsx)("h3",{className:"font-bold text-[clamp(24px,5vw,28px)] mb-[20px]",children:(0,a.jsx)("a",{href:e.external||e.github,className:"text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline",children:e.title})}),(0,a.jsx)(aa,{opacity:.8,backgroundOpacity:.9,borderWidth:2,blur:20,brightness:1.2,borderRadius:16,distortionScale:0,mixBlendMode:"normal",width:"100%",height:n?"auto":400,style:{transform:0===t?"translateX(-20px)":1===t?"translateX(20px)":"none"},children:(0,a.jsx)("div",{className:`
+                      text-[#e6f1ff] 
                       text-[16px] md:text-[17px]
-                      leading-relaxed p-[20px]
+                      leading-relaxed p-[20px] font-medium
                       ${!n&&"h-full overflow-y-auto w-full"} 
-                    `,dangerouslySetInnerHTML:{__html:e.html}})}),(0,a.jsx)("ul",{className:`
+                    `,style:{textShadow:"0 1px 3px rgba(0,0,0,0.8)"},dangerouslySetInnerHTML:{__html:e.html}})}),(0,a.jsx)("ul",{className:`
                   flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
                   ${i?"justify-end":"justify-start"}
                 `,style:{width:"100%",textShadow:"0 1px 2px rgba(0,0,0,0.5)",transform:0===t?"translateX(-20px)":1===t?"translateX(20px)":"none"},children:e.tech.map((e,t)=>(0,a.jsx)("li",{children:e},t))}),(0,a.jsxs)("div",{className:`
