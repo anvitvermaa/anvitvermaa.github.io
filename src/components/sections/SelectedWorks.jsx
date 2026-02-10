@@ -81,8 +81,8 @@ const SelectedWorks = () => {
                 row-start-1
                 flex flex-col justify-center h-full
                 ${isOdd 
-                  ? 'col-start-1 col-end-13 md:col-start-5 md:col-end-12 md:text-right md:items-end' // Rondonia: Moved Left (Cols 5-12)
-                  : 'col-start-1 col-end-13 md:col-start-2 md:col-end-9 md:text-left md:items-start' // Repo: Moved Right (Cols 2-9)
+                  ? 'col-start-6 col-end-13 md:text-right md:items-end' // Rondonia: Text Right (Cols 6-12)
+                  : 'col-start-1 col-end-8 md:text-left md:items-start' // Repo: Text Left (Cols 1-8)
                 }
               `}>
                 
@@ -101,12 +101,18 @@ const SelectedWorks = () => {
                     ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
                   `}
                   style={{
+                    // Logic: If wide project, fit content. Else full width of column.
                     width: '100%', 
-                    background: 'rgba(17, 34, 64, 0.75)', 
+                    background: 'rgba(17, 34, 64, 0.75)', // Slightly darker for readability
                     backdropFilter: 'blur(12px)',         
                     WebkitBackdropFilter: 'blur(12px)',   
                     boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)', 
-                    border: '1px solid rgba(255, 255, 255, 0.1)', 
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    
+                    // SHIFTING LOGIC:
+                    // Repo Analyst (i=0): Shift Left (-20px)
+                    // Rondonia (i=1): Shift Right (20px)
+                    transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
                   }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
@@ -118,7 +124,9 @@ const SelectedWorks = () => {
                 `}
                 style={{ 
                   width: '100%',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.5)'
+                  textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                  // Apply same shift to tech stack to keep alignment
+                  transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
                 }}
                 >
                   {project.tech.map((t, idx) => (
@@ -131,7 +139,11 @@ const SelectedWorks = () => {
                   flex items-center gap-[20px] mt-[10px]
                   ${isOdd ? 'justify-end' : 'justify-start'}
                 `}
-                 style={{ width: '100%' }}
+                 style={{ 
+                   width: '100%',
+                   // Apply same shift to links to keep alignment
+                   transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
+                 }}
                 >
                   {project.cta && (
                     <a href={project.cta} className="border border-[#64ffda] text-[#64ffda] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#64ffda]/10 transition-colors no-underline">
@@ -159,8 +171,8 @@ const SelectedWorks = () => {
                     project-image
                     relative z-10 row-start-1 h-full flex items-center
                     ${isOdd 
-                      ? 'col-start-1 col-end-13 md:col-start-1 md:col-end-9' // Rondonia Image: Increased Size (Cols 1-9)
-                      : 'col-start-1 col-end-13 md:col-start-5 md:col-end-13' // Repo Image: Increased Size (Cols 5-13)
+                      ? 'col-start-1 col-end-8' // Rondonia: Image Left (Cols 1-8) -> Overlap in 6-7-8
+                      : 'col-start-6 col-end-13' // Repo: Image Right (Cols 6-12) -> Overlap in 6-7-8
                     }
                   `}
                 >
@@ -174,8 +186,8 @@ const SelectedWorks = () => {
                          <Image 
                            src={project.cover} 
                            alt={project.title}
-                           width={900} // Increased resolution for larger display
-                           height={550} 
+                           width={800} 
+                           height={500} 
                            className="w-full h-auto object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-300"
                          />
                          <div className="absolute inset-0 bg-[#0a192f]/50 hover:bg-transparent transition-colors duration-300"></div>
