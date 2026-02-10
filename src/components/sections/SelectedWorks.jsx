@@ -51,7 +51,7 @@ const SelectedWorks = () => {
   ];
 
   return (
-    <section id="selected-works" className="max-w-[1200px] mx-auto py-[100px] px-[20px]">
+    <section id="selected-works" className="max-w-[1200px] mx-auto py-[100px] px-[20px] overflow-hidden">
       
       {/* HEADER */}
       <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
@@ -85,14 +85,13 @@ const SelectedWorks = () => {
                 }
               `}>
                 
-                {/* Project Title */}
                 <h3 className="font-bold text-[clamp(24px,5vw,28px)] mb-[20px]">
                   <a href={project.external || project.github} className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
                     {project.title}
                   </a>
                 </h3>
 
-                {/* --- GLASSMORPHISM DESCRIPTION BOX --- */}
+                {/* GLASSMORPHISM BOX */}
                 <div 
                   className={`
                     text-[#a8b2d1] 
@@ -101,23 +100,19 @@ const SelectedWorks = () => {
                     ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
                   `}
                   style={{
-                    // 1. Layout Logic (Wide & Floating)
                     width: isWideProject ? '130%' : '100%',
                     minWidth: isWideProject ? '600px' : 'auto',
                     marginLeft: (isOdd && isWideProject) ? '-30%' : '0',
                     marginRight: (!isOdd && isWideProject) ? '-30%' : '0',
-
-                    // 2. ULTRA-REALISTIC GLASS EFFECT
-                    background: 'rgba(17, 34, 64, 0.6)', // Semi-transparent dark blue
-                    backdropFilter: 'blur(12px)',         // Heavy blur for the glass look
-                    WebkitBackdropFilter: 'blur(12px)',   // Safari support
-                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)', // Deep shadow for depth
-                    border: '1px solid rgba(255, 255, 255, 0.1)', // Subtle white edge highlight
+                    background: 'rgba(17, 34, 64, 0.6)', 
+                    backdropFilter: 'blur(12px)',         
+                    WebkitBackdropFilter: 'blur(12px)',   
+                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)', 
+                    border: '1px solid rgba(255, 255, 255, 0.1)', 
                   }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
 
-                {/* TECH STACK */}
                 <ul className={`
                   flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
                   ${isOdd ? 'justify-end' : 'justify-start'}
@@ -126,7 +121,6 @@ const SelectedWorks = () => {
                   width: isWideProject ? '130%' : '100%',
                   marginRight: (isOdd && isWideProject) ? '0' : '0',
                   marginLeft: (!isOdd && isWideProject) ? '0' : '0',
-                  // Ensure text shadow for readability against glass
                   textShadow: '0 1px 2px rgba(0,0,0,0.5)'
                 }}
                 >
@@ -135,7 +129,6 @@ const SelectedWorks = () => {
                   ))}
                 </ul>
 
-                {/* LINKS */}
                 <div className={`
                   flex items-center gap-[20px] mt-[10px]
                   ${isOdd ? 'justify-end' : 'justify-start'}
@@ -163,14 +156,21 @@ const SelectedWorks = () => {
 
               {/* IMAGE (Cover Side) */}
               {project.cover && (
-                <div className={`
-                  project-image
-                  col-span-12 md:col-span-7 relative z-10 row-start-1
-                  ${isOdd 
-                    ? 'md:col-start-1' 
-                    : 'md:col-start-6'
-                  }
-                `}>
+                <div 
+                  className={`
+                    project-image
+                    col-span-12 md:col-span-7 relative z-10 row-start-1
+                    ${isOdd 
+                      ? 'md:col-start-1' 
+                      : 'md:col-start-6'
+                    }
+                  `}
+                  // SHIFT IMAGES AWAY TO REDUCE OVERLAP
+                  style={{
+                    transform: i === 0 ? 'translateX(20%)' : (i === 1 ? 'translateX(-20%)' : 'none'),
+                    transition: 'transform 0.3s ease-out'
+                  }}
+                >
                    <a 
                       href={project.external || project.github} 
                       target="_blank" 
