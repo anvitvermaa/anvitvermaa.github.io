@@ -2,9 +2,7 @@
 import React from 'react';
 import Image from 'next/image'; 
 import { GitHub, ExternalLink } from 'react-feather';
-// Make sure this path matches where you saved the file!
-import GlassSurface from '../components/GlassSurface'; 
-
+import GlassSurface from '../GlassSurface';
 const SelectedWorks = () => {
   const featuredProjects = [
     {
