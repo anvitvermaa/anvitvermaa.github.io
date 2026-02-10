@@ -31,7 +31,7 @@ const getStarData = (points, innerRadius) => {
 export default function RotatingStar() {
   const solidRef = useRef(null);
   const gradientRef = useRef(null);
-  const grainRef = useRef(null);
+  const grainRef = useRef(null); // <--- NEW REF FOR GRAIN
   const borderRef = useRef(null);
 
   // --- CONFIG ---
@@ -48,9 +48,16 @@ export default function RotatingStar() {
 
       const rotateStyle = `rotate(${angle}deg)`;
 
+      // 1. Rotate Solid Base
       if (solidRef.current) solidRef.current.style.transform = rotateStyle;
+      
+      // 2. Rotate Gradient Mask
       if (gradientRef.current) gradientRef.current.style.transform = rotateStyle;
+
+      // 3. Rotate Grain Layer (Syncs with star)
       if (grainRef.current) grainRef.current.style.transform = rotateStyle;
+      
+      // 4. Rotate Border Outline
       if (borderRef.current) borderRef.current.style.transform = rotateStyle;
 
       animationFrameId = requestAnimationFrame(renderLoop);
@@ -61,23 +68,25 @@ export default function RotatingStar() {
   }, []);
 
   return (
-    // LOGIC: hidden on mobile (< 768px), block on desktop (>= 768px)
-    <div className="hidden md:block fixed -top-[8rem] -left-[8rem] w-[24rem] h-[24rem] z-[99999] pointer-events-none">
+    // CONTAINER:
+    // z-[99999]: Extremely high to strictly overlap Navbar
+    // pointer-events-none: Clicks pass through
+    <div className="fixed -top-[8rem] -left-[8rem] w-[24rem] h-[24rem] z-[99999] pointer-events-none">
       
-      {/* LAYER 1: SOLID TEAL BASE */}
+      {/* LAYER 1: SOLID TEAL BASE (The Blocker) */}
       <div 
         ref={solidRef}
         className="absolute inset-0 w-full h-full"
         style={{
           clipPath: starPath,
           WebkitClipPath: starPath,
-          backgroundColor: '#64ffda', 
-          opacity: 1,
+          backgroundColor: '#64ffda', // Solid Teal
+          opacity: 1,                 // 100% Opaque
           willChange: 'transform',
         }}
       />
 
-      {/* LAYER 2: GRADIENT OVERLAY */}
+      {/* LAYER 2: GRADIENT OVERLAY (The Glow) */}
       <div 
         ref={gradientRef} 
         className="absolute inset-0 w-full h-full"
@@ -89,7 +98,7 @@ export default function RotatingStar() {
         }}
       />
 
-      {/* LAYER 3: GRAIN TEXTURE */}
+      {/* LAYER 3: GRAIN TEXTURE (Retro Polaroid Effect) */}
       <div 
         ref={grainRef}
         className="absolute inset-0 w-full h-full"
@@ -97,14 +106,15 @@ export default function RotatingStar() {
             clipPath: starPath,
             WebkitClipPath: starPath,
             willChange: 'transform',
+            // SVG Noise Filter Encoded as Data URI
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
-            backgroundSize: '150px 150px',
-            opacity: 0.7, 
-            mixBlendMode: 'overlay', 
+            backgroundSize: '150px 150px', // Tiling the noise
+            opacity: 0.7, // Adjust intensity of the grain
+            mixBlendMode: 'overlay', // Blends grain into the teal color
         }}
       />
 
-      {/* LAYER 4: BORDER OUTLINE */}
+      {/* LAYER 4: BORDER OUTLINE (The Edge) */}
       <div 
         ref={borderRef}
         className="absolute inset-0"
