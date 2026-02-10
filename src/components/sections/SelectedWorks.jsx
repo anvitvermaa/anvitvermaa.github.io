@@ -92,7 +92,7 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* GLASSMORPHISM BOX */}
+                {/* --- PURE GLASSMORPHISM BOX --- */}
                 <div 
                   className={`
                     text-[#a8b2d1] 
@@ -101,18 +101,20 @@ const SelectedWorks = () => {
                     ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
                   `}
                   style={{
-                    // Logic: If wide project, fit content. Else full width of column.
-                    width: '100%', 
-                    background: 'rgba(17, 34, 64, 0.75)', // Slightly darker for readability
-                    backdropFilter: 'blur(12px)',         
-                    WebkitBackdropFilter: 'blur(12px)',   
-                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)', 
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    // 1. Layout Logic (Untouched)
+                    width: '100%',
+                    transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none'),
                     
-                    // SHIFTING LOGIC:
-                    // Repo Analyst (i=0): Shift Left (-20px)
-                    // Rondonia (i=1): Shift Right (20px)
-                    transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
+                    // 2. TRUE GLASS EFFECT (Frutiger Aero Style)
+                    background: 'linear-gradient(135deg, rgba(17, 34, 64, 0.6) 0%, rgba(17, 34, 64, 0.3) 100%)', // Gradient sheen
+                    backdropFilter: 'blur(20px)',         // Heavy Refraction
+                    WebkitBackdropFilter: 'blur(20px)',   
+                    
+                    // 3. Borders & Shadows (The "Glass" Look)
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.3)', // Top light reflection
+                    borderLeft: '1px solid rgba(255, 255, 255, 0.3)', // Side light reflection
+                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)', // Deep shadow
                   }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
@@ -125,7 +127,6 @@ const SelectedWorks = () => {
                 style={{ 
                   width: '100%',
                   textShadow: '0 1px 2px rgba(0,0,0,0.5)',
-                  // Apply same shift to tech stack to keep alignment
                   transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
                 }}
                 >
@@ -141,7 +142,6 @@ const SelectedWorks = () => {
                 `}
                  style={{ 
                    width: '100%',
-                   // Apply same shift to links to keep alignment
                    transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
                  }}
                 >
@@ -171,8 +171,8 @@ const SelectedWorks = () => {
                     project-image
                     relative z-10 row-start-1 h-full flex items-center
                     ${isOdd 
-                      ? 'col-start-1 col-end-8' // Rondonia: Image Left (Cols 1-8) -> Overlap in 6-7-8
-                      : 'col-start-6 col-end-13' // Repo: Image Right (Cols 6-12) -> Overlap in 6-7-8
+                      ? 'col-start-1 col-end-8' // Rondonia: Image Left
+                      : 'col-start-6 col-end-13' // Repo: Image Right
                     }
                   `}
                 >
