@@ -92,18 +92,19 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* --- TRANSLUCENT BOX --- */}
+                {/* --- BLURRED BOX (NAVBAR STYLE) --- */}
                 <div 
                   className={`
-                    bg-[#112240]/90 backdrop-blur-sm text-[#a8b2d1] 
+                    /* Lighter opacity to let blur show through + backdrop-blur-md */
+                    bg-[#112240]/75 backdrop-blur-md text-[#a8b2d1] 
                     text-[16px] md:text-[17px]
                     leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20
                     ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
                   `}
                   style={{
                     width: '100%',
-                    // Increased Shift: -40px Left / +40px Right
-                    transform: i === 0 ? 'translateX(-40px)' : (i === 1 ? 'translateX(40px)' : 'none')
+                    // Increased Shift: -60px Left (Repo) / +60px Right (Rondonia)
+                    transform: i === 0 ? 'translateX(-60px)' : (i === 1 ? 'translateX(60px)' : 'none')
                   }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
@@ -115,8 +116,8 @@ const SelectedWorks = () => {
                 `}
                 style={{ 
                   width: '100%',
-                  // Matching Shift for Tech Stack
-                  transform: i === 0 ? 'translateX(-40px)' : (i === 1 ? 'translateX(40px)' : 'none')
+                  // Matching Shift
+                  transform: i === 0 ? 'translateX(-60px)' : (i === 1 ? 'translateX(60px)' : 'none')
                 }}
                 >
                   {project.tech.map((t, idx) => (
@@ -131,8 +132,8 @@ const SelectedWorks = () => {
                 `}
                  style={{ 
                    width: '100%',
-                   // Matching Shift for Links
-                   transform: i === 0 ? 'translateX(-40px)' : (i === 1 ? 'translateX(40px)' : 'none')
+                   // Matching Shift
+                   transform: i === 0 ? 'translateX(-60px)' : (i === 1 ? 'translateX(60px)' : 'none')
                  }}
                 >
                   {project.cta && (
@@ -180,8 +181,8 @@ const SelectedWorks = () => {
                            height={500} 
                            className="w-full h-auto object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-300"
                          />
-                         {/* Removed the blue tint overlay so the image is clearer under the translucent box */}
-                         <div className="absolute inset-0 bg-[#0a192f]/20 hover:bg-transparent transition-colors duration-300"></div>
+                         {/* Removed overlay to make blur more obvious */}
+                         <div className="absolute inset-0 bg-[#0a192f]/10 hover:bg-transparent transition-colors duration-300"></div>
                       </div>
                    </a>
                 </div>
