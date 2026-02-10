@@ -92,18 +92,18 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* --- THE CLASSIC NAVY BLOCK --- */}
+                {/* --- TRANSLUCENT BOX --- */}
                 <div 
                   className={`
-                    bg-[#112240] text-[#a8b2d1] 
+                    bg-[#112240]/90 backdrop-blur-sm text-[#a8b2d1] 
                     text-[16px] md:text-[17px]
                     leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20
                     ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
                   `}
-                  // This keeps the overlap logic we liked
                   style={{
                     width: '100%',
-                    transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
+                    // Increased Shift: -40px Left / +40px Right
+                    transform: i === 0 ? 'translateX(-40px)' : (i === 1 ? 'translateX(40px)' : 'none')
                   }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
@@ -115,7 +115,8 @@ const SelectedWorks = () => {
                 `}
                 style={{ 
                   width: '100%',
-                  transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
+                  // Matching Shift for Tech Stack
+                  transform: i === 0 ? 'translateX(-40px)' : (i === 1 ? 'translateX(40px)' : 'none')
                 }}
                 >
                   {project.tech.map((t, idx) => (
@@ -130,7 +131,8 @@ const SelectedWorks = () => {
                 `}
                  style={{ 
                    width: '100%',
-                   transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
+                   // Matching Shift for Links
+                   transform: i === 0 ? 'translateX(-40px)' : (i === 1 ? 'translateX(40px)' : 'none')
                  }}
                 >
                   {project.cta && (
@@ -178,7 +180,8 @@ const SelectedWorks = () => {
                            height={500} 
                            className="w-full h-auto object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-300"
                          />
-                         <div className="absolute inset-0 bg-[#0a192f]/50 hover:bg-transparent transition-colors duration-300"></div>
+                         {/* Removed the blue tint overlay so the image is clearer under the translucent box */}
+                         <div className="absolute inset-0 bg-[#0a192f]/20 hover:bg-transparent transition-colors duration-300"></div>
                       </div>
                    </a>
                 </div>
