@@ -51,18 +51,18 @@ const SelectedWorks = () => {
   ];
 
   return (
-    <section id="selected-works" className="max-w-[1200px] mx-auto py-[100px] px-[20px]">
+    <section id="selected-works" className="max-w-[1200px] mx-auto py-[60px] md:py-[100px] px-[20px]">
       
       {/* HEADER */}
-      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
+      <div className="flex items-center gap-[10px] mb-[40px] md:mb-[60px] w-full whitespace-nowrap">
         <span 
-          className="text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
+          className="text-[20px] md:text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
           style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
         >
           04.
         </span>
-        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#ccd6f6] m-0">Selected Works</h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#233554] ml-[20px]"></div>
+        <h2 className="font-bold text-[24px] md:text-[clamp(26px,5vw,32px)] text-[#ccd6f6] m-0">Selected Works</h2>
+        <div className="w-full max-w-[150px] md:max-w-[300px] h-[1px] bg-[#233554] ml-[20px]"></div>
       </div>
 
       {/* PROJECTS GRID */}
@@ -72,22 +72,26 @@ const SelectedWorks = () => {
           const isWideProject = i < 2;
 
           return (
-            <li key={i} className="relative grid grid-cols-12 items-center gap-[10px] mb-[100px] last:mb-0">
+            <li key={i} className="relative grid grid-cols-1 md:grid-cols-12 items-center gap-[30px] md:gap-[10px] mb-[80px] md:mb-[100px] last:mb-0">
               
               {/* CONTENT (Text Side) */}
               <div className={`
                 project-content
                 relative z-20 
-                row-start-1
+                /* MOBILE: Order 2 (Text Below), Span Full */
+                order-2 md:order-1 col-span-1 md:col-span-12
+                
                 flex flex-col justify-center h-full
+                
+                /* DESKTOP: Keep your original logic */
                 ${isOdd 
-                  ? 'col-start-6 col-end-13 md:text-right md:items-end' 
-                  : 'col-start-1 col-end-8 md:text-left md:items-start'
+                  ? 'md:col-start-6 md:col-end-13 md:text-right md:items-end' 
+                  : 'md:col-start-1 md:col-end-8 md:text-left md:items-start'
                 }
               `}>
                 
-                <h3 className="font-bold text-[clamp(24px,5vw,28px)] mb-[20px]">
-                  <a href={project.external || project.github} className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
+                <h3 className="font-bold text-[22px] md:text-[clamp(24px,5vw,28px)] mb-[20px] text-[#ccd6f6]">
+                  <a href={project.external || project.github} className="hover:text-[#64ffda] transition-colors no-underline">
                     {project.title}
                   </a>
                 </h3>
@@ -97,14 +101,17 @@ const SelectedWorks = () => {
                   className={`
                     bg-[#112240]/90 backdrop-blur-2xl
                     text-[#e6f1ff] 
-                    text-[16px] md:text-[17px]
-                    leading-relaxed p-[25px] 
+                    text-[15px] md:text-[17px]
+                    leading-relaxed p-[20px] md:p-[25px] 
                     !rounded-2xl shadow-xl hover:shadow-2xl transition-shadow relative z-20
                     ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
+
+                    /* DESKTOP SHIFT LOGIC (Only applies on md+ screens) */
+                    ${i === 0 ? 'md:-translate-x-[80px]' : ''}
+                    ${i === 1 ? 'md:translate-x-[80px]' : ''}
                   `}
                   style={{
                     width: '100%',
-                    transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none'),
                     textShadow: '0 1px 2px rgba(0,0,0,0.8)'
                   }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
@@ -112,14 +119,14 @@ const SelectedWorks = () => {
 
                 {/* Tech Stack */}
                 <ul className={`
-                  flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
-                  ${isOdd ? 'justify-end' : 'justify-start'}
-                `}
-                style={{ 
-                  width: '100%',
-                  transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
-                }}
-                >
+                  flex flex-wrap gap-x-[15px] gap-y-[5px] mt-[20px] mb-[10px] text-[#a8b2d1] font-mono text-[12px] md:text-[13px] list-none
+                  /* Mobile: Start aligned. Desktop: Your logic */
+                  justify-start ${isOdd ? 'md:justify-end' : 'md:justify-start'}
+
+                  /* DESKTOP SHIFT LOGIC */
+                  ${i === 0 ? 'md:-translate-x-[80px]' : ''}
+                  ${i === 1 ? 'md:translate-x-[80px]' : ''}
+                `}>
                   {project.tech.map((t, idx) => (
                     <li key={idx}>{t}</li>
                   ))}
@@ -128,13 +135,13 @@ const SelectedWorks = () => {
                 {/* Links */}
                 <div className={`
                   flex items-center gap-[20px] mt-[10px]
-                  ${isOdd ? 'justify-end' : 'justify-start'}
-                `}
-                 style={{ 
-                   width: '100%',
-                   transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
-                 }}
-                >
+                  /* Mobile: Start aligned. Desktop: Your logic */
+                  justify-start ${isOdd ? 'md:justify-end' : 'md:justify-start'}
+
+                  /* DESKTOP SHIFT LOGIC */
+                  ${i === 0 ? 'md:-translate-x-[80px]' : ''}
+                  ${i === 1 ? 'md:translate-x-[80px]' : ''}
+                `}>
                   {project.cta && (
                     <a href={project.cta} className="border border-[#64ffda] text-[#64ffda] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#64ffda]/10 transition-colors no-underline">
                       Learn More
@@ -159,10 +166,14 @@ const SelectedWorks = () => {
                 <div 
                   className={`
                     project-image
-                    relative z-10 row-start-1 h-full flex items-center
+                    relative z-10 
+                    /* MOBILE: Order 1 (Image Above Text), Full Width */
+                    order-1 md:order-1 col-span-1 md:col-span-12
+                    
+                    /* DESKTOP: Keep your original grid placement */
                     ${isOdd 
-                      ? 'col-start-1 col-end-8' 
-                      : 'col-start-6 col-end-13'
+                      ? 'md:col-start-1 md:col-end-8' 
+                      : 'md:col-start-6 md:col-end-13'
                     }
                   `}
                 >
@@ -183,14 +194,10 @@ const SelectedWorks = () => {
                            className="w-full h-auto object-cover !rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
                          />
                          
-                         {/* TEAL TINT OVERLAY (Fixed)
-                            - z-10: Forces it on top of the image
-                            - mix-blend-multiply: Dyes the image teal
-                            - opacity-50: Shows the tint clearly
-                         */}
+                         {/* TEAL TINT OVERLAY */}
                          <div className="absolute inset-0 z-10 bg-[#64ffda] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
                          
-                         {/* EXTRA DARK LAYER (Optional, keeps contrast high) */}
+                         {/* EXTRA DARK LAYER */}
                          <div className="absolute inset-0 bg-[#0a192f]/10 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
                       </div>
                    </a>
