@@ -23,8 +23,7 @@ const Navbar = () => {
 
   return (
     <nav
-      // CHANGED: Added Tailwind classes for layout and visibility
-      // 'hidden' hides it on mobile. 'md:flex' shows it on medium screens and up.
+      // LOGIC: 'hidden' on mobile. 'md:flex' (display:flex) on screens 768px and wider (Laptop/Desktop)
       className="hidden md:flex justify-end items-center"
       style={{
         position: "fixed",
@@ -35,12 +34,11 @@ const Navbar = () => {
         backgroundColor: "rgba(10, 25, 47, 0.30)", 
         backdropFilter: "blur(10px)",
         zIndex: "9999", 
-        // Note: display, justifyContent, and alignItems were removed from here 
-        // and handled by the className above to support responsive hiding.
         padding: "0 50px",
         boxSizing: "border-box",
         transition: "height 0.3s ease, background-color 0.3s ease",
         boxShadow: scrolled ? "0 10px 30px -10px rgba(2,12,27,0.7)" : "none",
+        // IMPORTANT: 'display' is intentionally removed from here so className controls it!
       }}
     >
       
