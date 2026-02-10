@@ -33,7 +33,7 @@ Read more: https://nextjs.org/docs/messages/next-image-unconfigured-localpattern
                 row-start-1
                 flex flex-col justify-center h-full
                 ${i?"col-start-6 col-end-13 md:text-right md:items-end":"col-start-1 col-end-8 md:text-left md:items-start"}
-              `,children:[(0,o.jsx)("h3",{className:"font-bold text-[clamp(24px,5vw,28px)] mb-[20px]",children:(0,o.jsx)("a",{href:t.external||t.github,className:"text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline",children:t.title})}),(0,o.jsx)("div",{className:`
+              `,children:[(0,o.jsx)("h3",{className:"font-bold text-[clamp(24px,5vw,28px)] mb-[20px]",style:{width:"100%",transform:0===e?"translateX(-80px)":1===e?"translateX(80px)":"none"},children:(0,o.jsx)("a",{href:t.external||t.github,className:"text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline",children:t.title})}),(0,o.jsx)("div",{className:`
                     bg-[#112240]/90 backdrop-blur-2xl
                     text-[#e6f1ff] 
                     text-[16px] md:text-[17px]
