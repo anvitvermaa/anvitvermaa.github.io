@@ -92,20 +92,20 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* --- HEAVY FROSTED GLASS BOX --- */}
+                {/* --- BLURRED BOX --- */}
                 <div 
                   className={`
-                    bg-[#112240]/60 backdrop-blur-xl
+                    bg-[#112240]/90 backdrop-blur-2xl
                     text-[#e6f1ff] 
                     text-[16px] md:text-[17px]
-                    /* CHANGED: 'rounded' -> 'rounded-2xl' for perfect curves */
-                    leading-relaxed p-[25px] rounded-2xl shadow-xl hover:shadow-2xl transition-shadow relative z-20
+                    leading-relaxed p-[25px] 
+                    !rounded-2xl shadow-xl hover:shadow-2xl transition-shadow relative z-20
                     ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
                   `}
                   style={{
                     width: '100%',
                     transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none'),
-                    textShadow: '0 1px 2px rgba(0,0,0,0.8)' 
+                    textShadow: '0 1px 2px rgba(0,0,0,0.8)'
                   }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
@@ -170,7 +170,8 @@ const SelectedWorks = () => {
                       href={project.external || project.github} 
                       target="_blank" 
                       rel="noreferrer" 
-                      className="block w-full h-auto relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group"
+                      // GROUP CLASS FOR HOVER
+                      className="block w-full h-auto relative !rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group"
                    >
                       <div className="relative w-full h-auto">
                          <Image 
@@ -178,10 +179,19 @@ const SelectedWorks = () => {
                            alt={project.title}
                            width={800} 
                            height={500} 
-                           className="w-full h-auto object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
+                           // GRAYSCALE UNTIL HOVER
+                           className="w-full h-auto object-cover !rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
                          />
-                         {/* Teal Overlay - Fades out on hover */}
-                         <div className="absolute inset-0 bg-[#64ffda] mix-blend-multiply opacity-75 group-hover:opacity-0 transition-all duration-500 rounded-2xl"></div>
+                         
+                         {/* TEAL TINT OVERLAY (Fixed)
+                            - z-10: Forces it on top of the image
+                            - mix-blend-multiply: Dyes the image teal
+                            - opacity-50: Shows the tint clearly
+                         */}
+                         <div className="absolute inset-0 z-10 bg-[#64ffda] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
+                         
+                         {/* EXTRA DARK LAYER (Optional, keeps contrast high) */}
+                         <div className="absolute inset-0 bg-[#0a192f]/10 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
                       </div>
                    </a>
                 </div>
