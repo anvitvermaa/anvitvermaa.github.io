@@ -38,7 +38,7 @@ Read more: https://nextjs.org/docs/messages/next-image-unconfigured-localpattern
                     text-[16px] md:text-[17px]
                     leading-relaxed p-[25px] rounded-lg relative z-20
                     ${!n&&"md:h-[400px] overflow-y-auto w-full"}
-                  `,style:{width:"100%",background:"rgba(17, 34, 64, 0.75)",backdropFilter:"blur(12px)",WebkitBackdropFilter:"blur(12px)",boxShadow:"0 8px 32px 0 rgba(0, 0, 0, 0.37)",border:"1px solid rgba(255, 255, 255, 0.1)",transform:0===e?"translateX(-20px)":1===e?"translateX(20px)":"none"},dangerouslySetInnerHTML:{__html:t.html}}),(0,o.jsx)("ul",{className:`
+                  `,style:{width:"100%",transform:0===e?"translateX(-20px)":1===e?"translateX(20px)":"none",background:"linear-gradient(135deg, rgba(17, 34, 64, 0.6) 0%, rgba(17, 34, 64, 0.3) 100%)",backdropFilter:"blur(20px)",WebkitBackdropFilter:"blur(20px)",border:"1px solid rgba(255, 255, 255, 0.1)",borderTop:"1px solid rgba(255, 255, 255, 0.3)",borderLeft:"1px solid rgba(255, 255, 255, 0.3)",boxShadow:"0 8px 32px 0 rgba(0, 0, 0, 0.37)"},dangerouslySetInnerHTML:{__html:t.html}}),(0,o.jsx)("ul",{className:`
                   flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
                   ${i?"justify-end":"justify-start"}
                 `,style:{width:"100%",textShadow:"0 1px 2px rgba(0,0,0,0.5)",transform:0===e?"translateX(-20px)":1===e?"translateX(20px)":"none"},children:t.tech.map((t,e)=>(0,o.jsx)("li",{children:t},e))}),(0,o.jsxs)("div",{className:`
