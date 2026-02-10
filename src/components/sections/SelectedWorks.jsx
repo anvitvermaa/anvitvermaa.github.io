@@ -2,6 +2,8 @@
 import React from 'react';
 import Image from 'next/image'; 
 import { GitHub, ExternalLink } from 'react-feather';
+// Make sure this path matches where you saved the file!
+import GlassSurface from '../components/GlassSurface'; 
 
 const SelectedWorks = () => {
   const featuredProjects = [
@@ -81,8 +83,8 @@ const SelectedWorks = () => {
                 row-start-1
                 flex flex-col justify-center h-full
                 ${isOdd 
-                  ? 'col-start-6 col-end-13 md:text-right md:items-end' // Rondonia: Text Right (Cols 6-12)
-                  : 'col-start-1 col-end-8 md:text-left md:items-start' // Repo: Text Left (Cols 1-8)
+                  ? 'col-start-6 col-end-13 md:text-right md:items-end' 
+                  : 'col-start-1 col-end-8 md:text-left md:items-start'
                 }
               `}>
                 
@@ -92,32 +94,37 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* --- PURE GLASSMORPHISM BOX --- */}
-                <div 
-                  className={`
-                    text-[#a8b2d1] 
-                    text-[16px] md:text-[17px]
-                    leading-relaxed p-[25px] rounded-lg relative z-20
-                    ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
-                  `}
+                {/* --- ADVANCED GLASS SURFACE --- */}
+                <GlassSurface
+                  // Aesthetic Props (Frutiger Aero / iOS Glass)
+                  opacity={0.6}
+                  blur={15}
+                  brightness={1.2}
+                  borderRadius={20}
+                  borderWidth={0.5}
+                  mixBlendMode="normal" // Ensures text inside isn't blended weirdly
+                  
+                  // Layout Props
+                  width="100%"
+                  height={!isWideProject ? 400 : "auto"} // Auto height for first two, Fixed 400px for scrollable ones
+                  
                   style={{
-                    // 1. Layout Logic (Untouched)
-                    width: '100%',
-                    transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none'),
-                    
-                    // 2. TRUE GLASS EFFECT (Frutiger Aero Style)
-                    background: 'linear-gradient(135deg, rgba(17, 34, 64, 0.6) 0%, rgba(17, 34, 64, 0.3) 100%)', // Gradient sheen
-                    backdropFilter: 'blur(20px)',         // Heavy Refraction
-                    WebkitBackdropFilter: 'blur(20px)',   
-                    
-                    // 3. Borders & Shadows (The "Glass" Look)
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderTop: '1px solid rgba(255, 255, 255, 0.3)', // Top light reflection
-                    borderLeft: '1px solid rgba(255, 255, 255, 0.3)', // Side light reflection
-                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)', // Deep shadow
+                    // SHIFTING LOGIC (Preserved Exactly)
+                    transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
                   }}
-                  dangerouslySetInnerHTML={{ __html: project.html }}
-                />
+                >
+                  {/* Inner Content */}
+                  <div 
+                    className={`
+                      text-[#a8b2d1] 
+                      text-[16px] md:text-[17px]
+                      leading-relaxed p-[10px]
+                      ${!isWideProject && 'h-full overflow-y-auto w-full'} 
+                    `}
+                    // We render the HTML here inside the glass
+                    dangerouslySetInnerHTML={{ __html: project.html }}
+                  />
+                </GlassSurface>
 
                 {/* Tech Stack */}
                 <ul className={`
@@ -171,8 +178,8 @@ const SelectedWorks = () => {
                     project-image
                     relative z-10 row-start-1 h-full flex items-center
                     ${isOdd 
-                      ? 'col-start-1 col-end-8' // Rondonia: Image Left
-                      : 'col-start-6 col-end-13' // Repo: Image Right
+                      ? 'col-start-1 col-end-8' 
+                      : 'col-start-6 col-end-13'
                     }
                   `}
                 >
