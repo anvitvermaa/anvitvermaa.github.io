@@ -92,19 +92,21 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* --- BLURRED BOX (NAVBAR STYLE) --- */}
+                {/* --- HEAVY FROSTED GLASS BOX --- */}
                 <div 
                   className={`
-                    /* Lighter opacity to let blur show through + backdrop-blur-md */
-                    bg-[#112240]/75 backdrop-blur-md text-[#a8b2d1] 
+                    /* HEAVY BLUR + LOWER OPACITY = COLORS ONLY */
+                    bg-[#112240]/60 backdrop-blur-xl
+                    text-[#e6f1ff] 
                     text-[16px] md:text-[17px]
                     leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20
                     ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
                   `}
                   style={{
                     width: '100%',
-                    // Increased Shift: -60px Left (Repo) / +60px Right (Rondonia)
-                    transform: i === 0 ? 'translateX(-60px)' : (i === 1 ? 'translateX(60px)' : 'none')
+                    // Increased Shift: -80px Left (Repo) / +80px Right (Rondonia)
+                    transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none'),
+                    textShadow: '0 1px 2px rgba(0,0,0,0.8)' // Added text shadow so text is readable on blurred bg
                   }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
@@ -117,7 +119,7 @@ const SelectedWorks = () => {
                 style={{ 
                   width: '100%',
                   // Matching Shift
-                  transform: i === 0 ? 'translateX(-60px)' : (i === 1 ? 'translateX(60px)' : 'none')
+                  transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
                 }}
                 >
                   {project.tech.map((t, idx) => (
@@ -133,7 +135,7 @@ const SelectedWorks = () => {
                  style={{ 
                    width: '100%',
                    // Matching Shift
-                   transform: i === 0 ? 'translateX(-60px)' : (i === 1 ? 'translateX(60px)' : 'none')
+                   transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
                  }}
                 >
                   {project.cta && (
@@ -181,7 +183,7 @@ const SelectedWorks = () => {
                            height={500} 
                            className="w-full h-auto object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-300"
                          />
-                         {/* Removed overlay to make blur more obvious */}
+                         {/* Removed overlay to ensure colors pop through the blur */}
                          <div className="absolute inset-0 bg-[#0a192f]/10 hover:bg-transparent transition-colors duration-300"></div>
                       </div>
                    </a>
