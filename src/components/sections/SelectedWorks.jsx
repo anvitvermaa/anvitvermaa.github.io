@@ -95,33 +95,34 @@ const SelectedWorks = () => {
 
                 {/* --- GLASS SURFACE CONFIGURATION --- */}
                 <GlassSurface
-                  // VISIBILITY FIXES:
-                  opacity={0.5}          // Increased to 50% so the white sheen is visible
-                  backgroundOpacity={0.4}// Added 40% background tint (Critical for visibility on dark bg)
-                  borderWidth={1.5}      // Thicker border to define the shape
+                  // --- VISIBILITY UPGRADES ---
+                  opacity={0.8}          // Strong white sheen/frost
+                  backgroundOpacity={0.9}// Very Dark Tint (90% opacity) -> Makes text pop!
+                  borderWidth={2}        // Thick border so you can see the box edges
                   
-                  // AESTHETICS (iPhone Glass):
-                  blur={20}              // Heavy frost
-                  brightness={1.1}       // Slight glow
+                  // Aesthetics
+                  blur={20}              
+                  brightness={1.2}       
                   borderRadius={16}
-                  distortionScale={0}    // NO RAINBOW (Keep this 0)
-                  mixBlendMode="normal"  // Standard blending for readability
+                  distortionScale={0}    
+                  mixBlendMode="normal"  
                   
-                  // LAYOUT (Preserved):
+                  // Layout
                   width="100%"
                   height={!isWideProject ? 400 : "auto"}
                   style={{
                     transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
                   }}
                 >
-                  {/* Inner Content */}
+                  {/* Inner Content - Changed Text Color to Bright White/Blue (#e6f1ff) */}
                   <div 
                     className={`
-                      text-[#a8b2d1] 
+                      text-[#e6f1ff] 
                       text-[16px] md:text-[17px]
-                      leading-relaxed p-[20px]
+                      leading-relaxed p-[20px] font-medium
                       ${!isWideProject && 'h-full overflow-y-auto w-full'} 
                     `}
+                    style={{ textShadow: '0 1px 3px rgba(0,0,0,0.8)' }} // Added shadow for extra readability
                     dangerouslySetInnerHTML={{ __html: project.html }}
                   />
                 </GlassSurface>
