@@ -69,7 +69,6 @@ const SelectedWorks = () => {
       <ul className="list-none p-0 m-0">
         {featuredProjects.map((project, i) => {
           const isOdd = i % 2 !== 0; 
-          // Applies "Big Box" logic only to the first two projects
           const isWideProject = i < 2;
 
           return (
@@ -81,8 +80,8 @@ const SelectedWorks = () => {
                 relative z-20 col-span-12 md:col-span-6 row-start-1
                 flex flex-col justify-center h-full
                 ${isOdd 
-                  ? 'md:col-start-7 md:text-right md:items-end' // Odd: Text on Right
-                  : 'md:col-start-1 md:text-left md:items-start' // Even: Text on Left
+                  ? 'md:col-start-7 md:text-right md:items-end' 
+                  : 'md:col-start-1 md:text-left md:items-start'
                 }
               `}>
                 
@@ -93,34 +92,42 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* DESCRIPTION BOX - FORCED STYLES */}
+                {/* --- GLASSMORPHISM DESCRIPTION BOX --- */}
                 <div 
                   className={`
-                    bg-[#112240] text-[#a8b2d1] 
+                    text-[#a8b2d1] 
                     text-[16px] md:text-[17px]
-                    leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20
+                    leading-relaxed p-[25px] rounded-lg relative z-20
                     ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
                   `}
-                  // This style block forces the width and alignment
-                  style={isWideProject ? {
-                    width: '130%',             // Make it 30% wider than its container
-                    minWidth: '600px',         // Force it to be at least 600px wide (The Rectangle)
-                    marginLeft: isOdd ? '-30%' : '0', // Pull left if on right side
-                    marginRight: isOdd ? '0' : '-30%', // Pull right if on left side
-                  } : {}}
+                  style={{
+                    // 1. Layout Logic (Wide & Floating)
+                    width: isWideProject ? '130%' : '100%',
+                    minWidth: isWideProject ? '600px' : 'auto',
+                    marginLeft: (isOdd && isWideProject) ? '-30%' : '0',
+                    marginRight: (!isOdd && isWideProject) ? '-30%' : '0',
+
+                    // 2. ULTRA-REALISTIC GLASS EFFECT
+                    background: 'rgba(17, 34, 64, 0.6)', // Semi-transparent dark blue
+                    backdropFilter: 'blur(12px)',         // Heavy blur for the glass look
+                    WebkitBackdropFilter: 'blur(12px)',   // Safari support
+                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)', // Deep shadow for depth
+                    border: '1px solid rgba(255, 255, 255, 0.1)', // Subtle white edge highlight
+                  }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
 
-                {/* TECH STACK - ALIGNED TO BOX */}
+                {/* TECH STACK */}
                 <ul className={`
                   flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
                   ${isOdd ? 'justify-end' : 'justify-start'}
                 `}
-                // This ensures the tech stack spans the full width of the text box
                 style={{ 
                   width: isWideProject ? '130%' : '100%',
                   marginRight: (isOdd && isWideProject) ? '0' : '0',
-                  marginLeft: (!isOdd && isWideProject) ? '0' : '0'
+                  marginLeft: (!isOdd && isWideProject) ? '0' : '0',
+                  // Ensure text shadow for readability against glass
+                  textShadow: '0 1px 2px rgba(0,0,0,0.5)'
                 }}
                 >
                   {project.tech.map((t, idx) => (
@@ -128,7 +135,7 @@ const SelectedWorks = () => {
                   ))}
                 </ul>
 
-                {/* LINKS - ALIGNED TO BOX */}
+                {/* LINKS */}
                 <div className={`
                   flex items-center gap-[20px] mt-[10px]
                   ${isOdd ? 'justify-end' : 'justify-start'}
@@ -160,15 +167,15 @@ const SelectedWorks = () => {
                   project-image
                   col-span-12 md:col-span-7 relative z-10 row-start-1
                   ${isOdd 
-                    ? 'md:col-start-1' // Odd: Image on Left
-                    : 'md:col-start-6' // Even: Image on Right
+                    ? 'md:col-start-1' 
+                    : 'md:col-start-6'
                   }
                 `}>
                    <a 
                       href={project.external || project.github} 
                       target="_blank" 
                       rel="noreferrer" 
-                      className="block w-full h-auto relative rounded overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                      className="block w-full h-auto relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                    >
                       <div className="relative w-full h-auto">
                          <Image 
@@ -176,7 +183,7 @@ const SelectedWorks = () => {
                            alt={project.title}
                            width={800} 
                            height={500} 
-                           className="w-full h-auto object-cover rounded grayscale hover:grayscale-0 transition-all duration-300"
+                           className="w-full h-auto object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-300"
                          />
                          <div className="absolute inset-0 bg-[#0a192f]/50 hover:bg-transparent transition-colors duration-300"></div>
                       </div>
