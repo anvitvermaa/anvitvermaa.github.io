@@ -2,7 +2,6 @@
 import React from 'react';
 import Image from 'next/image'; 
 import { GitHub, ExternalLink } from 'react-feather';
-// Correct import based on your file structure
 import GlassSurface from '../GlassSurface'; 
 
 const SelectedWorks = () => {
@@ -96,21 +95,19 @@ const SelectedWorks = () => {
 
                 {/* --- GLASS SURFACE CONFIGURATION --- */}
                 <GlassSurface
-                  // 1. ELIMINATE THE RAINBOW GLITCH:
-                  distortionScale={0}  // Set to 0 to stop the weird bending
-                  displace={0}         // Set to 0 to stop the waviness
-                  redOffset={0}        // No color splitting
-                  greenOffset={0}
-                  blueOffset={0}
+                  // VISIBILITY FIXES:
+                  opacity={0.5}          // Increased to 50% so the white sheen is visible
+                  backgroundOpacity={0.4}// Added 40% background tint (Critical for visibility on dark bg)
+                  borderWidth={1.5}      // Thicker border to define the shape
                   
-                  // 2. CREATE THE "IPHONE GLASS" LOOK:
-                  blur={15}            // High blur for the frosty look
-                  opacity={0.15}       // Low opacity so it's transparent, not white
-                  brightness={100}     // Subtle shine
-                  borderRadius={16}    // Smooth corners
-                  mixBlendMode="normal" // Ensures text inside is readable
+                  // AESTHETICS (iPhone Glass):
+                  blur={20}              // Heavy frost
+                  brightness={1.1}       // Slight glow
+                  borderRadius={16}
+                  distortionScale={0}    // NO RAINBOW (Keep this 0)
+                  mixBlendMode="normal"  // Standard blending for readability
                   
-                  // 3. LAYOUT LOGIC (Do not change):
+                  // LAYOUT (Preserved):
                   width="100%"
                   height={!isWideProject ? 400 : "auto"}
                   style={{
