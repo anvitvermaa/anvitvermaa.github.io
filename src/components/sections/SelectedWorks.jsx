@@ -51,7 +51,7 @@ const SelectedWorks = () => {
   ];
 
   return (
-    <section id="selected-works" className="max-w-[1200px] mx-auto py-[100px] px-[20px] overflow-hidden">
+    <section id="selected-works" className="max-w-[1200px] mx-auto py-[100px] px-[20px]">
       
       {/* HEADER */}
       <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
@@ -77,11 +77,12 @@ const SelectedWorks = () => {
               {/* CONTENT (Text Side) */}
               <div className={`
                 project-content
-                relative z-20 col-span-12 md:col-span-6 row-start-1
+                relative z-20 
+                row-start-1
                 flex flex-col justify-center h-full
                 ${isOdd 
-                  ? 'md:col-start-7 md:text-right md:items-end' 
-                  : 'md:col-start-1 md:text-left md:items-start'
+                  ? 'col-start-6 col-end-13 md:text-right md:items-end' // Rondonia: Text Right (Cols 6-12)
+                  : 'col-start-1 col-end-8 md:text-left md:items-start' // Repo: Text Left (Cols 1-8)
                 }
               `}>
                 
@@ -100,11 +101,9 @@ const SelectedWorks = () => {
                     ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
                   `}
                   style={{
-                    width: isWideProject ? '130%' : '100%',
-                    minWidth: isWideProject ? '600px' : 'auto',
-                    marginLeft: (isOdd && isWideProject) ? '-30%' : '0',
-                    marginRight: (!isOdd && isWideProject) ? '-30%' : '0',
-                    background: 'rgba(17, 34, 64, 0.6)', 
+                    // Logic: If wide project, fit content. Else full width of column.
+                    width: '100%', 
+                    background: 'rgba(17, 34, 64, 0.75)', // Slightly darker for readability
                     backdropFilter: 'blur(12px)',         
                     WebkitBackdropFilter: 'blur(12px)',   
                     boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)', 
@@ -113,14 +112,13 @@ const SelectedWorks = () => {
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
 
+                {/* Tech Stack */}
                 <ul className={`
                   flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
                   ${isOdd ? 'justify-end' : 'justify-start'}
                 `}
                 style={{ 
-                  width: isWideProject ? '130%' : '100%',
-                  marginRight: (isOdd && isWideProject) ? '0' : '0',
-                  marginLeft: (!isOdd && isWideProject) ? '0' : '0',
+                  width: '100%',
                   textShadow: '0 1px 2px rgba(0,0,0,0.5)'
                 }}
                 >
@@ -129,11 +127,12 @@ const SelectedWorks = () => {
                   ))}
                 </ul>
 
+                {/* Links */}
                 <div className={`
                   flex items-center gap-[20px] mt-[10px]
                   ${isOdd ? 'justify-end' : 'justify-start'}
                 `}
-                 style={{ width: isWideProject ? '130%' : '100%' }}
+                 style={{ width: '100%' }}
                 >
                   {project.cta && (
                     <a href={project.cta} className="border border-[#64ffda] text-[#64ffda] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#64ffda]/10 transition-colors no-underline">
@@ -159,17 +158,12 @@ const SelectedWorks = () => {
                 <div 
                   className={`
                     project-image
-                    col-span-12 md:col-span-7 relative z-10 row-start-1
+                    relative z-10 row-start-1 h-full flex items-center
                     ${isOdd 
-                      ? 'md:col-start-1' 
-                      : 'md:col-start-6'
+                      ? 'col-start-1 col-end-8' // Rondonia: Image Left (Cols 1-8) -> Overlap in 6-7-8
+                      : 'col-start-6 col-end-13' // Repo: Image Right (Cols 6-12) -> Overlap in 6-7-8
                     }
                   `}
-                  // SHIFT IMAGES AWAY TO REDUCE OVERLAP
-                  style={{
-                    transform: i === 0 ? 'translateX(20%)' : (i === 1 ? 'translateX(-20%)' : 'none'),
-                    transition: 'transform 0.3s ease-out'
-                  }}
                 >
                    <a 
                       href={project.external || project.github} 
