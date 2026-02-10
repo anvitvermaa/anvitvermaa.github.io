@@ -2,7 +2,6 @@
 import React from 'react';
 import Image from 'next/image'; 
 import { GitHub, ExternalLink } from 'react-feather';
-import GlassSurface from '../GlassSurface'; 
 
 const SelectedWorks = () => {
   const featuredProjects = [
@@ -93,39 +92,21 @@ const SelectedWorks = () => {
                   </a>
                 </h3>
 
-                {/* --- GLASS SURFACE CONFIGURATION --- */}
-                <GlassSurface
-                  // --- VISIBILITY UPGRADES ---
-                  opacity={0.8}          // Strong white sheen/frost
-                  backgroundOpacity={0.9}// Very Dark Tint (90% opacity) -> Makes text pop!
-                  borderWidth={2}        // Thick border so you can see the box edges
-                  
-                  // Aesthetics
-                  blur={20}              
-                  brightness={1.2}       
-                  borderRadius={16}
-                  distortionScale={0}    
-                  mixBlendMode="normal"  
-                  
-                  // Layout
-                  width="100%"
-                  height={!isWideProject ? 400 : "auto"}
+                {/* --- THE CLASSIC NAVY BLOCK --- */}
+                <div 
+                  className={`
+                    bg-[#112240] text-[#a8b2d1] 
+                    text-[16px] md:text-[17px]
+                    leading-relaxed p-[25px] rounded shadow-xl hover:shadow-2xl transition-shadow relative z-20
+                    ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
+                  `}
+                  // This keeps the overlap logic we liked
                   style={{
+                    width: '100%',
                     transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
                   }}
-                >
-                  {/* Inner Content - Changed Text Color to Bright White/Blue (#e6f1ff) */}
-                  <div 
-                    className={`
-                      text-[#e6f1ff] 
-                      text-[16px] md:text-[17px]
-                      leading-relaxed p-[20px] font-medium
-                      ${!isWideProject && 'h-full overflow-y-auto w-full'} 
-                    `}
-                    style={{ textShadow: '0 1px 3px rgba(0,0,0,0.8)' }} // Added shadow for extra readability
-                    dangerouslySetInnerHTML={{ __html: project.html }}
-                  />
-                </GlassSurface>
+                  dangerouslySetInnerHTML={{ __html: project.html }}
+                />
 
                 {/* Tech Stack */}
                 <ul className={`
@@ -134,7 +115,6 @@ const SelectedWorks = () => {
                 `}
                 style={{ 
                   width: '100%',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.5)',
                   transform: i === 0 ? 'translateX(-20px)' : (i === 1 ? 'translateX(20px)' : 'none')
                 }}
                 >
