@@ -53,7 +53,7 @@ const Publications = () => {
 
                 <div>
                   <h4 className="text-[#efefef] font-bold text-[14px] sm:text-[15px] md:text-lg leading-tight mb-1">{pub.journal}</h4>
-                  <p className="text-[#777777] font-mono text-[12px] sm:text-[12px] md:text-xs mt-2">{pub.meta}</p>
+                  <p className="text-[#aaaaaa] font-mono text-[12px] sm:text-[12px] md:text-xs mt-2">{pub.meta}</p>
                 </div>
               </div>
 
@@ -74,7 +74,7 @@ const Publications = () => {
                 </a>
                 
                 <div 
-                  className="text-[#777777] text-[15px] leading-relaxed max-w-[95%] [&>li]:mb-[10px] [&>li]:relative [&>li]:pl-[20px] [&>li]:before:content-['▹'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-[#ffffff]"
+                  className="text-[#aaaaaa] text-[15px] leading-relaxed max-w-[95%] [&>li]:mb-[10px] [&>li]:relative [&>li]:pl-[20px] [&>li]:before:content-['▹'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-[#ffffff]"
                   dangerouslySetInnerHTML={{ __html: `<ul>${pub.html}</ul>` }} 
                 />
               </div>
