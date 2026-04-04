@@ -39,10 +39,10 @@ const Publications = () => {
           <div key={i} className="relative group">
             
             {/* THE CARD — always side-by-side, left column shrinks on mobile */}
-            <div className="flex flex-row items-stretch bg-[#112240] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+            <div className="card-flex items-stretch bg-[#112240] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
               
               {/* LEFT COLUMN — shrinks on mobile, full 280px on desktop */}
-              <div className="w-[160px] sm:w-[200px] md:w-[280px] shrink-0 bg-[#172a45] p-[18px] sm:p-[20px] md:p-[25px] flex flex-col justify-between border-r border-[#233554]">
+              <div className="card-left-col bg-[#172a45] p-[20px] md:p-[25px] flex flex-col justify-between">
                 <div>
                   <div className="font-mono text-[#64ffda] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">Year</div>
                   <div className="text-[#ccd6f6] font-bold text-[16px] sm:text-[16px] md:text-lg mb-3 md:mb-4">{pub.year}</div>
