@@ -45,14 +45,14 @@ const Publications = () => {
               <div className="card-left-col bg-[#1c1c1c] p-[20px] md:p-[25px] flex flex-col justify-between">
                 <div>
                   <div className="font-mono text-[#ffffff] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">Year</div>
-                  <div className="text-[#efefef] font-bold text-[16px] sm:text-[16px] md:text-lg mb-3 md:mb-4">{pub.year}</div>
+                  <div className="text-[#efefef] font-bold text-[16px] sm:text-[16px] md:text-xl mb-3 md:mb-4">{pub.year}</div>
                   
                   <div className="font-mono text-[#ffffff] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">Volume</div>
-                  <div className="text-[#efefef] font-bold text-[16px] sm:text-[16px] md:text-lg mb-4 md:mb-8">{pub.volume}</div>
+                  <div className="text-[#efefef] font-bold text-[16px] sm:text-[16px] md:text-xl mb-4 md:mb-8">{pub.volume}</div>
                 </div>
 
                 <div>
-                  <h4 className="text-[#efefef] font-bold text-[14px] sm:text-[15px] md:text-lg leading-tight mb-1">{pub.journal}</h4>
+                  <h4 className="text-[#efefef] font-bold text-[14px] sm:text-[15px] md:text-xl leading-tight mb-1">{pub.journal}</h4>
                   <p className="text-[#aaaaaa] font-mono text-[12px] sm:text-[12px] md:text-xs mt-2">{pub.meta}</p>
                 </div>
               </div>
