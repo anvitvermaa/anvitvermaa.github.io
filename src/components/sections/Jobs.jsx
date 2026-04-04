@@ -69,10 +69,10 @@ const Jobs = () => {
             <div className="absolute left-[-9px] top-0 w-[16px] h-[16px] rounded-full bg-[#0a0a0a] border-2 border-[#ffffff] group-hover:bg-[#ffffff] transition-colors duration-300"></div>
 
             {/* THE CARD */}
-            <div className="card-flex items-stretch bg-[#141414] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+            <div className="card-flex items-stretch bg-[#181818] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
 
               {/* LEFT COLUMN */}
-              <div className="card-left-col bg-[#1c1c1c] p-[20px] md:p-[25px] flex flex-col justify-between">
+              <div className="card-left-col bg-[#212121] p-[20px] md:p-[25px] flex flex-col justify-between">
                 <div>
                   <div className="card-label font-mono text-[#ffffff] tracking-wider uppercase mb-[2px]">From</div>
                   <div className="card-date text-[#efefef] font-bold mb-2">{job.range.split(' - ')[0]}</div>
