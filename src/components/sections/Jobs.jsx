@@ -72,24 +72,24 @@ const Jobs = () => {
             <div className="flex flex-row items-stretch bg-[#112240] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
 
               {/* LEFT COLUMN — shrinks on mobile, full 280px on desktop */}
-              <div className="w-[160px] sm:w-[200px] md:w-[280px] shrink-0 bg-[#172a45] p-[18px] sm:p-[20px] md:p-[25px] flex flex-col justify-between border-r border-[#233554]">
+              <div className="w-[120px] sm:w-[190px] md:w-[280px] shrink-0 bg-[#172a45] p-[12px] sm:p-[18px] md:p-[25px] flex flex-col justify-between border-r border-[#233554]">
                 <div>
-                  <div className="font-mono text-[#64ffda] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">From</div>
-                  <div className="text-[#ccd6f6] font-bold text-[16px] sm:text-[16px] md:text-lg mb-3 md:mb-4">{job.range.split(' - ')[0]}</div>
+                  <div className="font-mono text-[#64ffda] text-[10px] sm:text-[11px] md:text-xs mb-[2px] tracking-wider uppercase">From</div>
+                  <div className="text-[#ccd6f6] font-bold text-[13px] sm:text-[15px] md:text-lg mb-2 md:mb-4">{job.range.split(' - ')[0]}</div>
 
-                  <div className="font-mono text-[#64ffda] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">To</div>
-                  <div className="text-[#ccd6f6] font-bold text-[16px] sm:text-[16px] md:text-lg mb-4 md:mb-8">{job.range.split(' - ')[1] || 'Present'}</div>
+                  <div className="font-mono text-[#64ffda] text-[10px] sm:text-[11px] md:text-xs mb-[2px] tracking-wider uppercase">To</div>
+                  <div className="text-[#ccd6f6] font-bold text-[13px] sm:text-[15px] md:text-lg mb-3 md:mb-8">{job.range.split(' - ')[1] || 'Present'}</div>
                 </div>
 
                 <div>
-                  <h4 className="text-[#ccd6f6] font-bold text-[14px] sm:text-[15px] md:text-xl leading-tight mb-1">{job.company}</h4>
-                  <p className="text-[#8892b0] font-mono text-[12px] sm:text-[12px] md:text-xs mt-1">{job.location}</p>
+                  <h4 className="text-[#ccd6f6] font-bold text-[11px] sm:text-[14px] md:text-xl leading-tight mb-1">{job.company}</h4>
+                  <p className="text-[#8892b0] font-mono text-[10px] sm:text-[11px] md:text-xs mt-1">{job.location}</p>
                 </div>
               </div>
 
               {/* RIGHT COLUMN */}
-              <div className="flex-1 p-[12px] sm:p-[18px] md:p-[25px] min-w-0">
-                <h3 className="text-[18px] sm:text-[19px] md:text-[22px] font-bold text-[#ccd6f6] mb-[14px] md:mb-[20px] group-hover:text-[#64ffda] transition-colors duration-300">
+              <div className="flex-1 p-[10px] sm:p-[18px] md:p-[25px] min-w-0 overflow-hidden">
+                <h3 className="text-[15px] sm:text-[18px] md:text-[22px] font-bold text-[#ccd6f6] mb-[10px] md:mb-[20px] group-hover:text-[#64ffda] transition-colors duration-300">
                   {job.title}
                 </h3>
 
