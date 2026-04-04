@@ -156,10 +156,10 @@ const MorphingFooter = () => {
   ];
 
   return (
-    <section id="contact" className="max-w-[1000px] mx-auto pt-[200px] pb-[40px] flex flex-col items-center justify-center relative z-10">
+    <section id="contact" className="max-w-[1000px] mx-auto pt-[80px] md:pt-[200px] pb-[80px] md:pb-[40px] flex flex-col items-center justify-center relative z-10">
       
       {/* 1. MORPHING TEXT ANIMATION */}
-      <div className="w-full h-[60px] md:h-[300px] mb-[20px]">
+      <div className="w-full h-[120px] md:h-[300px] mb-[20px]">
         <MorphingText 
           texts={footerTexts} 
           className="text-[42px] md:text-[144px] text-[#ccd6f6]" 
@@ -167,14 +167,13 @@ const MorphingFooter = () => {
       </div>
 
       {/* 2. CONTACT ME TEXT */}
-      {/* ADJUSTED GAP: mt-[100px] (Balanced) */}
-      <div className="mt-[100px] text-center">
+      <div className="mt-[20px] md:mt-[100px] text-center">
         <a 
             href="mailto:anvitvermaa@gmail.com" 
             className="no-underline group"
         >
             <h2 
-                className="text-[30px] md:text-[40px] font-bold text-[#ccd6f6] group-hover:text-[#64ffda] transition-colors"
+                className="text-[22px] md:text-[40px] font-bold text-[#ccd6f6] group-hover:text-[#64ffda] transition-colors"
                 style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
             >
                 CONTACT ME !
