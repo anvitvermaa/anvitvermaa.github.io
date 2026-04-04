@@ -33,3 +33,13 @@ body {
   opacity: 0; 
   animation: fadeup 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
 }
+
+/* Rotating star: desktop only */
+.rotating-star-wrapper {
+  display: none;
+}
+@media (min-width: 768px) {
+  .rotating-star-wrapper {
+    display: block;
+  }
+}
