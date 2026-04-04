@@ -6,24 +6,24 @@ import { GitHub, ExternalLink } from 'react-feather';
 const SelectedWorks = () => {
   const featuredProjects = [
     {
-      title: 'Repo Analyst AI',
+      title: 'GitHub Repo Analyst AI',
       external: 'https://anvitvermaa.github.io/Repo_Analyst_AI/',
       github: 'https://github.com/anvitvermaa/Repo_Analyst_AI',
-      tech: ['LangGraph', 'LLaMA-3', 'RAG', 'React', 'Python'],
-      html: 'Designed a LangGraph-based orchestration layer coordinating specialized LLaMA 3 agents for repository navigation and documentation generation. Integrated a three-stage security auditing pipeline combining SAST, dependency analysis, and RAG-based code inspection using ChromaDB. Customized an interactive Windows XP-inspired desktop interface in React including a custom window manager and deterministic simulation engine.',
+      tech: ['LangGraph', 'LLaMA 3', 'ChromaDB', 'React (Vite)', 'Framer Motion'],
+      html: 'Architected an autonomous LangGraph orchestration layer with LLaMA 3 agents and a ChromaDB RAG pipeline, enabling conversational codebase analysis, repository discovery, and automated README generation. Engineered an interactive React frontend with a flawless Windows XP-themed desktop experience, completely automating complex three-stage security audits (SAST & dependencies) directly within the OS simulation.',
       cover: '/repo-analyst.png',
     },
     {
       title: 'Rondônia Fishbone Harmonizer',
       external: 'https://anvitvermaa.github.io/rondonia-fishbone-harmonizer/',
       github: 'https://github.com/anvitvermaa/rondonia-fishbone-harmonizer',
-      tech: ['Python', 'PyTorch (SR-GAN)', 'ETL Pipeline', 'Satellite Imagery'],
-      html: 'Engineered an ETL pipeline to ingest and process <strong>5.5 TB</strong> of multi-temporal satellite imagery, normalizing cross-sensor inconsistencies. Compiled a unified dataset of 1,336 aligned image pairs enabling consistent long-term analysis of deforestation trends in the Amazon. Optimized legacy 30m-resolution maps into sharp 10m imagery using a custom SR-GAN, achieving a 0.54 SSIM score.',
+      tech: ['Python', 'PyTorch (GANs & Transformers)', 'GDAL', 'Sentinel-2', 'skimage'],
+      html: 'Pioneered a VRAM-optimized PyTorch pipeline and a proprietary "Smart Scaling" algorithm to upscale 30m Landsat to 10m Sentinel-2 imagery, strictly preserving 16-bit TOA multispectral integrity of the Rondônia fishbone deforestation pattern. Executed a definitive benchmarking study of 8 Super-Resolution architectures (SRGAN, SwinIR, HAT) using a rigorous perception-distortion matrix (PSNR, SSIM, SAM, LPIPS) to quantify sub-hectare logging road hallucination.',
       cover: '/fishbone.png',
     },
     {
       title: 'Multi-Agent Telecom Optimizer',
-      external: null, 
+      external: null,
       github: 'https://github.com/anvitvermaa/Multi-Agent-Telecom-Optimizer',
       tech: ['LangGraph', 'LLaMA 3', 'MLflow', 'Databricks', 'ChromaDB'],
       html: `
@@ -33,20 +33,20 @@ const SelectedWorks = () => {
           <li style="margin-bottom: 10px;"><strong>Observability &amp; Data:</strong> Integrated MLflow for autologging prompts and retrieval metrics, while tying MySQL customer features (churn risk, usage) to high-quality content generation.</li>
         </ul>
       `,
-      cover: null, 
+      cover: null,
     },
     {
-      title: 'Tastelytics',
-      external: null, 
+      title: 'Tastelytics – Serverless Music Review API',
+      external: null,
       github: null,
-      tech: ['AWS Lambda', 'DynamoDB', 'Cognito', 'CodePipeline'],
+      tech: ['AWS Lambda', 'DynamoDB', 'API Gateway', 'Cognito', 'CodePipeline'],
       html: `
         <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
-          <li style="margin-bottom: 10px;">Architected a scalable serverless API on AWS with 10+ endpoints, achieving <strong>less than 300ms</strong> response times by leveraging DynamoDB Global Secondary Indexes (GSI).</li>
-          <li style="margin-bottom: 0px;">Established a fully automated CI/CD pipeline via AWS CodePipeline and secured the system with Amazon Cognito, ensuring zero-downtime deployments and role-based access control.</li>
+          <li style="margin-bottom: 10px;">Architected a scalable serverless backend for a dynamic music review platform using AWS Lambda and API Gateway, leveraging DynamoDB Global Secondary Indexes (GSI) to deliver sub-300ms queries for community interactions.</li>
+          <li style="margin-bottom: 0px;">Secured role-based user authentication via Amazon Cognito and integrated the Spotify API for real-time track metadata, deployed through a zero-downtime CI/CD pipeline using AWS CodePipeline.</li>
         </ul>
       `,
-      cover: null, 
+      cover: null,
     },
   ];
 
