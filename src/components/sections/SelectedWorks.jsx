@@ -102,7 +102,7 @@ const SelectedWorks = () => {
                 </h3>
 
                 <div 
-                  className="bg-[#141414]/90 backdrop-blur-2xl text-[#f0f0f0] text-[15px] leading-relaxed p-[20px] rounded-2xl shadow-xl mb-4"
+                  className="bg-[#181818]/90 backdrop-blur-2xl text-[#f0f0f0] text-[15px] leading-relaxed p-[20px] rounded-2xl shadow-xl mb-4"
                   style={{ textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
@@ -160,7 +160,7 @@ const SelectedWorks = () => {
 
                   <div 
                     className={`
-                      bg-[#141414]/90 backdrop-blur-2xl
+                      bg-[#181818]/90 backdrop-blur-2xl
                       text-[#f0f0f0] 
                       text-[16px] md:text-[17px]
                       leading-relaxed p-[25px] 

@@ -14,7 +14,7 @@ const About = () => {
           01.
         </span>
         <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#ccd6f6] m-0">About Me</h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#233554] ml-[20px]"></div>
+        <div className="w-full max-w-[300px] h-[1px] bg-[#282828] ml-[20px]"></div>
       </div>
 
       {/* 2. INNER CONTENT (Text Only) */}
