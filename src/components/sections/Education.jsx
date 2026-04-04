@@ -43,10 +43,10 @@ const Education = () => {
             <div className="absolute left-[-9px] top-0 w-[16px] h-[16px] rounded-full bg-[#0a192f] border-2 border-[#64ffda] group-hover:bg-[#64ffda] transition-colors duration-300"></div>
 
             {/* THE CARD — always side-by-side, left column shrinks on mobile */}
-            <div className="flex flex-row items-stretch bg-[#112240] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+            <div className="card-flex items-stretch bg-[#112240] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
 
               {/* LEFT COLUMN — shrinks on mobile, full 280px on desktop */}
-              <div className="w-[120px] sm:w-[190px] md:w-[280px] shrink-0 bg-[#172a45] p-[12px] sm:p-[18px] md:p-[25px] flex flex-col justify-between border-r border-[#233554]">
+              <div className="card-left-col bg-[#172a45] p-[20px] md:p-[25px] flex flex-col justify-between">
                 <div>
                   <div className="font-mono text-[#64ffda] text-[10px] sm:text-[11px] md:text-xs mb-[2px] tracking-wider uppercase">From</div>
                   <div className="text-[#ccd6f6] font-bold text-[13px] sm:text-[15px] md:text-lg mb-2 md:mb-4">{edu.range.split(' - ')[0]}</div>

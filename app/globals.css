@@ -43,3 +43,25 @@ body {
     display: block;
   }
 }
+
+/* Card layout: stacked on mobile, side-by-side on desktop */
+.card-flex {
+  display: flex;
+  flex-direction: column;
+}
+.card-left-col {
+  width: 100%;
+  border-bottom: 1px solid #233554;
+  border-right: none;
+}
+@media (min-width: 768px) {
+  .card-flex {
+    flex-direction: row;
+  }
+  .card-left-col {
+    width: 280px;
+    flex-shrink: 0;
+    border-bottom: none;
+    border-right: 1px solid #233554;
+  }
+}
