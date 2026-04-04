@@ -61,6 +61,21 @@ body {
     width: 280px;
     flex-shrink: 0;
     border-bottom: none;
-    border-right: 1px solid #233554;
+    border-right: 1px solid #2a2a2a;
   }
+}
+
+/* Desktop font sizes for card sections */
+.card-title { font-size: 15px; }
+.card-body  { font-size: 14px; line-height: 1.7; }
+.card-company { font-size: 11px; }
+.card-date  { font-size: 13px; }
+.card-label { font-size: 10px; }
+
+@media (min-width: 768px) {
+  .card-title   { font-size: 30px; }
+  .card-body    { font-size: 19px; line-height: 1.8; }
+  .card-company { font-size: 24px; }
+  .card-date    { font-size: 22px; }
+  .card-label   { font-size: 13px; }
 }

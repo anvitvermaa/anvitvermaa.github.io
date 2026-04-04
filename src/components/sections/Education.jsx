@@ -48,15 +48,15 @@ const Education = () => {
               {/* LEFT COLUMN — shrinks on mobile, full 280px on desktop */}
               <div className="card-left-col bg-[#1c1c1c] p-[20px] md:p-[25px] flex flex-col justify-between">
                 <div>
-                  <div className="font-mono text-[#ffffff] text-[10px] sm:text-[11px] md:text-xs mb-[2px] tracking-wider uppercase">From</div>
-                  <div className="text-[#efefef] font-bold text-[13px] sm:text-[15px] md:text-2xl mb-2 md:mb-4">{edu.range.split(' - ')[0]}</div>
+                  <div className="card-label font-mono text-[#ffffff] tracking-wider uppercase mb-[2px]">From</div>
+                  <div className="card-date text-[#efefef] font-bold mb-2">{edu.range.split(' - ')[0]}</div>
 
-                  <div className="font-mono text-[#ffffff] text-[10px] sm:text-[11px] md:text-xs mb-[2px] tracking-wider uppercase">To</div>
-                  <div className="text-[#efefef] font-bold text-[13px] sm:text-[15px] md:text-2xl mb-3 md:mb-8">{edu.range.split(' - ')[1]}</div>
+                  <div className="card-label font-mono text-[#ffffff] tracking-wider uppercase mb-[2px]">To</div>
+                  <div className="card-date text-[#efefef] font-bold mb-3">{edu.range.split(' - ')[1]}</div>
                 </div>
 
                 <div>
-                  <h4 className="text-[#efefef] font-bold text-[11px] sm:text-[14px] md:text-3xl leading-tight mb-1">{edu.institution}</h4>
+                  <h4 className="card-company text-[#efefef] font-bold leading-tight mb-1">{edu.institution}</h4>
                   <p className="text-[#aaaaaa] font-mono text-[10px] sm:text-[11px] md:text-xs mt-1">{edu.location}</p>
                 </div>
               </div>
