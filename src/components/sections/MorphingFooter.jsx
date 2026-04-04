@@ -98,11 +98,11 @@ const Texts = ({ texts }) => {
   return (
     <>
       <span
-        className="absolute inset-0 flex justify-center items-center w-full text-center text-[#64ffda]"
+        className="absolute inset-0 flex justify-center items-center w-full text-center text-[#ffffff]"
         ref={text1Ref}
       />
       <span
-        className="absolute inset-0 flex justify-center items-center w-full text-center text-[#64ffda]"
+        className="absolute inset-0 flex justify-center items-center w-full text-center text-[#ffffff]"
         ref={text2Ref}
       />
     </>
@@ -162,7 +162,7 @@ const MorphingFooter = () => {
       <div className="w-full h-[160px] md:h-[300px] mb-[20px]" style={{ overflow: 'visible' }}>
         <MorphingText 
           texts={footerTexts} 
-          className="text-[56px] md:text-[144px] text-[#ccd6f6]" 
+          className="text-[56px] md:text-[144px] text-[#efefef]" 
         />
       </div>
 
@@ -173,7 +173,7 @@ const MorphingFooter = () => {
             className="no-underline group"
         >
             <h2 
-                className="text-[22px] md:text-[40px] font-bold text-[#ccd6f6] group-hover:text-[#64ffda] transition-colors"
+                className="text-[22px] md:text-[40px] font-bold text-[#efefef] group-hover:text-[#ffffff] transition-colors"
                 style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
             >
                 CONTACT ME !

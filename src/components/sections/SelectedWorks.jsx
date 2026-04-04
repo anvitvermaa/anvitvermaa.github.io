@@ -55,13 +55,13 @@ const SelectedWorks = () => {
       
       <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
         <span 
-          className="text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
+          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px]"
           style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
         >
           04.
         </span>
-        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#ccd6f6] m-0">Selected Works</h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#233554] ml-[20px]"></div>
+        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0">Selected Works</h2>
+        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px]"></div>
       </div>
 
       <ul className="list-none p-0 m-0">
@@ -89,25 +89,25 @@ const SelectedWorks = () => {
                         height={500} 
                         className="w-full h-auto object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
                       />
-                      <div className="absolute inset-0 z-10 bg-[#64ffda] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 rounded-2xl"></div>
-                      <div className="absolute inset-0 bg-[#0a192f]/10 group-hover:opacity-0 transition-all duration-500 rounded-2xl"></div>
+                      <div className="absolute inset-0 z-10 bg-[#ffffff] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 rounded-2xl"></div>
+                      <div className="absolute inset-0 bg-[#0a0a0a]/10 group-hover:opacity-0 transition-all duration-500 rounded-2xl"></div>
                     </div>
                   </a>
                 )}
 
                 <h3 className="font-bold text-[clamp(20px,5vw,26px)] mb-4">
-                  <a href={project.external || project.github} className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
+                  <a href={project.external || project.github} className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
                     {project.title}
                   </a>
                 </h3>
 
                 <div 
-                  className="bg-[#112240]/90 backdrop-blur-2xl text-[#e6f1ff] text-[15px] leading-relaxed p-[20px] rounded-2xl shadow-xl mb-4"
+                  className="bg-[#141414]/90 backdrop-blur-2xl text-[#f0f0f0] text-[15px] leading-relaxed p-[20px] rounded-2xl shadow-xl mb-4"
                   style={{ textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}
                   dangerouslySetInnerHTML={{ __html: project.html }}
                 />
 
-                <ul className="flex flex-wrap gap-x-[15px] gap-y-[8px] mb-3 text-[#a8b2d1] font-mono text-[12px] list-none p-0">
+                <ul className="flex flex-wrap gap-x-[15px] gap-y-[8px] mb-3 text-[#666666] font-mono text-[12px] list-none p-0">
                   {project.tech.map((t, idx) => (
                     <li key={idx}>{t}</li>
                   ))}
@@ -115,17 +115,17 @@ const SelectedWorks = () => {
 
                 <div className="flex items-center gap-[16px]">
                   {project.cta && (
-                    <a href={project.cta} className="border border-[#64ffda] text-[#64ffda] rounded px-[12px] py-[8px] text-[13px] font-mono hover:bg-[#64ffda]/10 transition-colors no-underline">
+                    <a href={project.cta} className="border border-[#ffffff] text-[#ffffff] rounded px-[12px] py-[8px] text-[13px] font-mono hover:bg-[#ffffff]/10 transition-colors no-underline">
                       Learn More
                     </a>
                   )}
                   {project.github && (
-                    <a href={project.github} aria-label="GitHub Link" target="_blank" rel="noreferrer" className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
+                    <a href={project.github} aria-label="GitHub Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
                       <GitHub width={20} height={20} />
                     </a>
                   )}
                   {project.external && !project.cta && (
-                    <a href={project.external} aria-label="External Link" target="_blank" rel="noreferrer" className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
+                    <a href={project.external} aria-label="External Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
                       <ExternalLink width={22} height={22} />
                     </a>
                   )}
@@ -153,15 +153,15 @@ const SelectedWorks = () => {
                       transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
                     }}
                   >
-                    <a href={project.external || project.github} className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
+                    <a href={project.external || project.github} className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
                       {project.title}
                     </a>
                   </h3>
 
                   <div 
                     className={`
-                      bg-[#112240]/90 backdrop-blur-2xl
-                      text-[#e6f1ff] 
+                      bg-[#141414]/90 backdrop-blur-2xl
+                      text-[#f0f0f0] 
                       text-[16px] md:text-[17px]
                       leading-relaxed p-[25px] 
                       !rounded-2xl shadow-xl hover:shadow-2xl transition-shadow relative z-20
@@ -176,7 +176,7 @@ const SelectedWorks = () => {
                   />
 
                   <ul className={`
-                    flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#a8b2d1] font-mono text-[13px] list-none
+                    flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#666666] font-mono text-[13px] list-none
                     ${isOdd ? 'justify-end' : 'justify-start'}
                   `}
                   style={{ 
@@ -199,17 +199,17 @@ const SelectedWorks = () => {
                    }}
                   >
                     {project.cta && (
-                      <a href={project.cta} className="border border-[#64ffda] text-[#64ffda] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#64ffda]/10 transition-colors no-underline">
+                      <a href={project.cta} className="border border-[#ffffff] text-[#ffffff] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#ffffff]/10 transition-colors no-underline">
                         Learn More
                       </a>
                     )}
                     {project.github && (
-                      <a href={project.github} aria-label="GitHub Link" target="_blank" rel="noreferrer" className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
+                      <a href={project.github} aria-label="GitHub Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
                         <GitHub width={20} height={20} />
                       </a>
                     )}
                     {project.external && !project.cta && (
-                      <a href={project.external} aria-label="External Link" target="_blank" rel="noreferrer" className="text-[#ccd6f6] hover:text-[#64ffda] transition-colors no-underline">
+                      <a href={project.external} aria-label="External Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
                         <ExternalLink width={22} height={22} />
                       </a>
                     )}
@@ -243,9 +243,9 @@ const SelectedWorks = () => {
                              className="w-full h-auto object-cover !rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
                            />
                            
-                           <div className="absolute inset-0 z-10 bg-[#64ffda] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
+                           <div className="absolute inset-0 z-10 bg-[#ffffff] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
                            
-                           <div className="absolute inset-0 bg-[#0a192f]/10 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
+                           <div className="absolute inset-0 bg-[#0a0a0a]/10 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
                         </div>
                      </a>
                   </div>

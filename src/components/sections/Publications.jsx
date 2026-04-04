@@ -24,13 +24,13 @@ const Publications = () => {
       {/* SECTION HEADER */}
       <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
         <span 
-          className="text-[clamp(26px,5vw,32px)] text-[#64ffda] font-semibold mr-[10px]"
+          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px]"
           style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
         >
           03.
         </span>
-        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#ccd6f6] m-0">Publications</h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#233554] ml-[20px]"></div>
+        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0">Publications</h2>
+        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px]"></div>
       </div>
 
       {/* CONTENT CONTAINER */}
@@ -39,21 +39,21 @@ const Publications = () => {
           <div key={i} className="relative group">
             
             {/* THE CARD — always side-by-side, left column shrinks on mobile */}
-            <div className="card-flex items-stretch bg-[#112240] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+            <div className="card-flex items-stretch bg-[#141414] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
               
               {/* LEFT COLUMN — shrinks on mobile, full 280px on desktop */}
-              <div className="card-left-col bg-[#172a45] p-[20px] md:p-[25px] flex flex-col justify-between">
+              <div className="card-left-col bg-[#1c1c1c] p-[20px] md:p-[25px] flex flex-col justify-between">
                 <div>
-                  <div className="font-mono text-[#64ffda] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">Year</div>
-                  <div className="text-[#ccd6f6] font-bold text-[16px] sm:text-[16px] md:text-lg mb-3 md:mb-4">{pub.year}</div>
+                  <div className="font-mono text-[#ffffff] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">Year</div>
+                  <div className="text-[#efefef] font-bold text-[16px] sm:text-[16px] md:text-lg mb-3 md:mb-4">{pub.year}</div>
                   
-                  <div className="font-mono text-[#64ffda] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">Volume</div>
-                  <div className="text-[#ccd6f6] font-bold text-[16px] sm:text-[16px] md:text-lg mb-4 md:mb-8">{pub.volume}</div>
+                  <div className="font-mono text-[#ffffff] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">Volume</div>
+                  <div className="text-[#efefef] font-bold text-[16px] sm:text-[16px] md:text-lg mb-4 md:mb-8">{pub.volume}</div>
                 </div>
 
                 <div>
-                  <h4 className="text-[#ccd6f6] font-bold text-[14px] sm:text-[15px] md:text-lg leading-tight mb-1">{pub.journal}</h4>
-                  <p className="text-[#8892b0] font-mono text-[12px] sm:text-[12px] md:text-xs mt-2">{pub.meta}</p>
+                  <h4 className="text-[#efefef] font-bold text-[14px] sm:text-[15px] md:text-lg leading-tight mb-1">{pub.journal}</h4>
+                  <p className="text-[#777777] font-mono text-[12px] sm:text-[12px] md:text-xs mt-2">{pub.meta}</p>
                 </div>
               </div>
 
@@ -63,9 +63,9 @@ const Publications = () => {
                   href={pub.url} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  // FIX 1: Moved color classes here (text-[#ccd6f6] hover:text-[#64ffda])
+                  // FIX 1: Moved color classes here (text-[#efefef] hover:text-[#ffffff])
                   // FIX 2: Added 'block' to ensure it captures the hover correctly
-                  className="block no-underline text-[#ccd6f6] hover:text-[#64ffda] transition-colors duration-300"
+                  className="block no-underline text-[#efefef] hover:text-[#ffffff] transition-colors duration-300"
                 >
                   {/* FIX 3: Removed text color from h3 so it inherits from parent <a> */}
                   <h3 className="text-[22px] font-bold mb-[20px]">
@@ -74,7 +74,7 @@ const Publications = () => {
                 </a>
                 
                 <div 
-                  className="text-[#8892b0] text-[15px] leading-relaxed max-w-[95%] [&>li]:mb-[10px] [&>li]:relative [&>li]:pl-[20px] [&>li]:before:content-['▹'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-[#64ffda]"
+                  className="text-[#777777] text-[15px] leading-relaxed max-w-[95%] [&>li]:mb-[10px] [&>li]:relative [&>li]:pl-[20px] [&>li]:before:content-['▹'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-[#ffffff]"
                   dangerouslySetInnerHTML={{ __html: `<ul>${pub.html}</ul>` }} 
                 />
               </div>
