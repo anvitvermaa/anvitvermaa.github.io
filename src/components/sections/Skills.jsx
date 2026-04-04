@@ -28,11 +28,11 @@ const Skills = () => {
 
   const getThemeClasses = (theme) => {
     switch(theme) {
-      case "teal":   return "text-[#ffffff] border-[#ffffff] bg-[#ffffff]/10";
-      case "blue":   return "text-[#bbbbbb] border-[#bbbbbb] bg-[#bbbbbb]/10";
-      case "yellow": return "text-[#999999] border-[#999999] bg-[#999999]/10";
-      case "green":  return "text-[#dddddd] border-[#dddddd] bg-[#dddddd]/10";
-      default:       return "text-[#ffffff] border-[#ffffff] bg-[#ffffff]/10";
+      case "teal":   return "text-[#e8c4a0] border-[#e8c4a0] bg-[#e8c4a0]/10";  // caramel
+      case "blue":   return "text-[#c49a7a] border-[#c49a7a] bg-[#c49a7a]/10";  // mocha
+      case "yellow": return "text-[#a87050] border-[#a87050] bg-[#a87050]/10";  // coffee
+      case "green":  return "text-[#d4aa80] border-[#d4aa80] bg-[#d4aa80]/10";  // latte
+      default:       return "text-[#e8c4a0] border-[#e8c4a0] bg-[#e8c4a0]/10";
     }
   };
 
@@ -62,9 +62,9 @@ const Skills = () => {
           >
             <h3 className="text-lg font-bold text-[#efefef] mb-8 font-mono flex items-center">
               <span className={`mr-2 ${
-                category.theme === 'teal' ? 'text-[#ffffff]' : 
-                category.theme === 'blue' ? 'text-[#bbbbbb]' :
-                category.theme === 'yellow' ? 'text-[#999999]' : 'text-[#dddddd]'
+                category.theme === 'teal' ? 'text-[#e8c4a0]' : 
+                category.theme === 'blue' ? 'text-[#c49a7a]' :
+                category.theme === 'yellow' ? 'text-[#a87050]' : 'text-[#d4aa80]'
               }`}>//</span> 
               {category.title}
             </h3>
