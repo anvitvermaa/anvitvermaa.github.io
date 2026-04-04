@@ -61,7 +61,7 @@ export default function RotatingStar() {
 
   return (
   
-    <div className="fixed -top-[8rem] -left-[8rem] w-[24rem] h-[24rem] z-[99999] pointer-events-none">
+    <div className="hidden md:block fixed -top-[8rem] -left-[8rem] w-[24rem] h-[24rem] z-[99999] pointer-events-none">
       
       <div 
         ref={solidRef}

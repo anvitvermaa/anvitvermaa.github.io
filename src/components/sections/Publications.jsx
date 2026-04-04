@@ -42,18 +42,18 @@ const Publications = () => {
             <div className="flex flex-row items-stretch bg-[#112240] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
               
               {/* LEFT COLUMN — shrinks on mobile, full 280px on desktop */}
-              <div className="w-[110px] sm:w-[180px] md:w-[280px] shrink-0 bg-[#172a45] p-[12px] sm:p-[18px] md:p-[25px] flex flex-col justify-between border-r border-[#233554]">
+              <div className="w-[160px] sm:w-[200px] md:w-[280px] shrink-0 bg-[#172a45] p-[18px] sm:p-[20px] md:p-[25px] flex flex-col justify-between border-r border-[#233554]">
                 <div>
-                  <div className="font-mono text-[#64ffda] text-xs mb-1 tracking-wider uppercase">Year</div>
-                  <div className="text-[#ccd6f6] font-bold text-lg mb-4">{pub.year}</div>
+                  <div className="font-mono text-[#64ffda] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">Year</div>
+                  <div className="text-[#ccd6f6] font-bold text-[16px] sm:text-[16px] md:text-lg mb-3 md:mb-4">{pub.year}</div>
                   
-                  <div className="font-mono text-[#64ffda] text-xs mb-1 tracking-wider uppercase">Volume</div>
-                  <div className="text-[#ccd6f6] font-bold text-lg mb-8">{pub.volume}</div>
+                  <div className="font-mono text-[#64ffda] text-[12px] sm:text-[12px] md:text-xs mb-1 tracking-wider uppercase">Volume</div>
+                  <div className="text-[#ccd6f6] font-bold text-[16px] sm:text-[16px] md:text-lg mb-4 md:mb-8">{pub.volume}</div>
                 </div>
 
                 <div>
-                  <h4 className="text-[#ccd6f6] font-bold text-lg leading-tight mb-1">{pub.journal}</h4>
-                  <p className="text-[#8892b0] font-mono text-xs mt-2">{pub.meta}</p>
+                  <h4 className="text-[#ccd6f6] font-bold text-[14px] sm:text-[15px] md:text-lg leading-tight mb-1">{pub.journal}</h4>
+                  <p className="text-[#8892b0] font-mono text-[12px] sm:text-[12px] md:text-xs mt-2">{pub.meta}</p>
                 </div>
               </div>
 
