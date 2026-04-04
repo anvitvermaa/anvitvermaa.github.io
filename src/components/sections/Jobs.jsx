@@ -16,27 +16,27 @@ const Jobs = () => {
       `
     },
     {
-      company: 'Jio Platforms Limited (JPL)',
-      location: 'Navi Mumbai, IN',
-      title: 'AI Intern',
-      range: 'May 2025 - June 2025',
-      url: 'https://www.jio.com',
-      html: `
-        <li>Constructed autonomous AI agents using LangChain and LLAMA 3, implementing a RAG pipeline over 500+ internal documents for precise information retrieval.</li>
-        <li>Implemented dynamic SQL generation enabling structured querying across complex relational databases within the agent workflow.</li>
-        <li>Launched a LangGraph-based multi-agent system that automated 90% of complaint routing and reduced operational latency by 20%.</li>
-      `
-    },
-    {
       company: 'Official University E-Learning Portal (Vityarthi)',
       location: 'Bhopal, IN',
       title: 'Teaching Assistant',
       range: 'March 2025 - August 2025',
       url: '#',
       html: `
-        <li>Spearheaded the end-to-end technical development of the university wide Linux course (CSE0002) for 3,000+ students in just first semester of the launch.</li>
+        <li>Spearheaded the end-to-end technical development of the university wide Linux course (CSE0002) for 4,100+ students in just first semester of the launch.</li>
         <li>Systematized 90 Bash and Shell automation scripts replicating real-world system administration workflows including log analysis and process monitoring.</li>
         <li>Delivered 100% of technical screen demonstrations capturing real-time execution of advanced Linux commands for asynchronous learning at scale.</li>
+      `
+    },
+    {
+      company: 'Jio Platforms Limited (JPL)',
+      location: 'Navi Mumbai, IN',
+      title: 'AI Intern',
+      range: 'May 2025 - June 2025',
+      url: 'https://www.jio.com',
+      html: `
+        <li>Constructed autonomous AI agents using LangChain and LLaMA 3, implementing a RAG pipeline over 500+ internal documents for precise information retrieval.</li>
+        <li>Implemented dynamic SQL generation enabling structured querying across complex relational databases within the agent workflow.</li>
+        <li>Launched a LangGraph-based multi-agent system that automated 90% of complaint routing and reduced operational latency by 20%.</li>
       `
     }
   ];
