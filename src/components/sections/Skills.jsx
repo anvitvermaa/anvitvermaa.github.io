@@ -28,11 +28,11 @@ const Skills = () => {
 
   const getThemeClasses = (theme) => {
     switch(theme) {
-      case "teal":   return "text-[#64ffda] border-[#64ffda] bg-[#64ffda]/10";
-      case "blue":   return "text-[#57cbff] border-[#57cbff] bg-[#57cbff]/10";
-      case "yellow": return "text-[#ffd700] border-[#ffd700] bg-[#ffd700]/10";
-      case "green":  return "text-[#4ade80] border-[#4ade80] bg-[#4ade80]/10";
-      default:       return "text-[#64ffda] border-[#64ffda] bg-[#64ffda]/10";
+      case "teal":   return "text-[#ffffff] border-[#ffffff] bg-[#ffffff]/10";
+      case "blue":   return "text-[#bbbbbb] border-[#bbbbbb] bg-[#bbbbbb]/10";
+      case "yellow": return "text-[#999999] border-[#999999] bg-[#999999]/10";
+      case "green":  return "text-[#dddddd] border-[#dddddd] bg-[#dddddd]/10";
+      default:       return "text-[#ffffff] border-[#ffffff] bg-[#ffffff]/10";
     }
   };
 
@@ -42,14 +42,14 @@ const Skills = () => {
       {/* SECTION HEADER */}
       <div className="flex items-center gap-[10px] mb-[50px] w-full whitespace-nowrap">
         <span 
-          className="text-[clamp(20px,5vw,26px)] text-[#64ffda] font-semibold mr-[10px]"
+          className="text-[clamp(20px,5vw,26px)] text-[#ffffff] font-semibold mr-[10px]"
           // Forced Font Match
           style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
         >
           06.
         </span>
-        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#ccd6f6] m-0">Skills & Technologies</h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#233554] ml-[20px]"></div>
+        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0">Skills & Technologies</h2>
+        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px]"></div>
       </div>
 
       {/* GRID CONTAINER */}
@@ -60,11 +60,11 @@ const Skills = () => {
             key={i} 
             className="h-full flex flex-col items-start py-4"
           >
-            <h3 className="text-lg font-bold text-[#ccd6f6] mb-8 font-mono flex items-center">
+            <h3 className="text-lg font-bold text-[#efefef] mb-8 font-mono flex items-center">
               <span className={`mr-2 ${
-                category.theme === 'teal' ? 'text-[#64ffda]' : 
-                category.theme === 'blue' ? 'text-[#57cbff]' :
-                category.theme === 'yellow' ? 'text-[#ffd700]' : 'text-[#4ade80]'
+                category.theme === 'teal' ? 'text-[#ffffff]' : 
+                category.theme === 'blue' ? 'text-[#bbbbbb]' :
+                category.theme === 'yellow' ? 'text-[#999999]' : 'text-[#dddddd]'
               }`}>//</span> 
               {category.title}
             </h3>

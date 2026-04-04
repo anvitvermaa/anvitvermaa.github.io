@@ -25,7 +25,7 @@ export default function ResumeButton() {
         width: '180px',
         // CHANGED: '30px' creates the rounded/pill aesthetic curves
         borderRadius: '30px', 
-        border: '1px solid #64ffda', 
+        border: '1px solid #ffffff', 
         background: 'transparent',
         overflow: 'hidden',
         textDecoration: 'none'
@@ -35,7 +35,7 @@ export default function ResumeButton() {
         <ScrollVelocityContainer>
           <ScrollVelocityRow
             baseVelocity={30} 
-            className={`${pixelFont.className} text-[#64ffda] text-[12px] leading-tight`}
+            className={`${pixelFont.className} text-[#ffffff] text-[12px] leading-tight`}
           >
             RESUME&nbsp;RESUME&nbsp;
           </ScrollVelocityRow>
