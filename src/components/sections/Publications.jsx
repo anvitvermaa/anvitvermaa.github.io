@@ -38,11 +38,11 @@ const Publications = () => {
         {publicationsData.map((pub, i) => (
           <div key={i} className="relative group">
             
-            {/* THE CARD */}
-            <div className="flex flex-row items-stretch bg-[#112240] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+            {/* THE CARD — stacks vertically on mobile, side-by-side on md+ */}
+            <div className="flex flex-col md:flex-row items-stretch bg-[#112240] rounded shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
               
-              {/* LEFT COLUMN */}
-              <div className="w-[280px] shrink-0 bg-[#172a45] p-[25px] flex flex-col justify-between border-r border-[#233554]">
+              {/* LEFT COLUMN — full width on mobile, fixed 280px on md+ */}
+              <div className="w-full md:w-[280px] md:shrink-0 bg-[#172a45] p-[25px] flex flex-col justify-between border-b md:border-b-0 md:border-r border-[#233554]">
                 <div>
                   <div className="font-mono text-[#64ffda] text-xs mb-1 tracking-wider uppercase">Year</div>
                   <div className="text-[#ccd6f6] font-bold text-lg mb-4">{pub.year}</div>
