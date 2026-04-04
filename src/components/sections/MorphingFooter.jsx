@@ -159,10 +159,10 @@ const MorphingFooter = () => {
     <section id="contact" className="max-w-[1000px] mx-auto pt-[200px] pb-[40px] flex flex-col items-center justify-center relative z-10">
       
       {/* 1. MORPHING TEXT ANIMATION */}
-      <div className="w-full h-[50px] md:h-[300px] mb-[20px]">
+      <div className="w-full h-[60px] md:h-[300px] mb-[20px]">
         <MorphingText 
           texts={footerTexts} 
-          className="text-[96px] md:text-[144px] text-[#ccd6f6]" 
+          className="text-[42px] md:text-[144px] text-[#ccd6f6]" 
         />
       </div>
 
