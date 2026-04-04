@@ -83,7 +83,7 @@ const Jobs = () => {
 
                 <div>
                   <h4 className="text-[#efefef] font-bold text-[11px] sm:text-[14px] md:text-xl leading-tight mb-1">{job.company}</h4>
-                  <p className="text-[#777777] font-mono text-[10px] sm:text-[11px] md:text-xs mt-1">{job.location}</p>
+                  <p className="text-[#aaaaaa] font-mono text-[10px] sm:text-[11px] md:text-xs mt-1">{job.location}</p>
                 </div>
               </div>
 
@@ -94,7 +94,7 @@ const Jobs = () => {
                 </h3>
 
                 <div
-                  className="text-[#777777] text-[14px] sm:text-[14px] md:text-[15px] leading-relaxed [&>li]:mb-[10px] [&>li]:relative [&>li]:pl-[18px] [&>li]:before:content-['▹'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-[#ffffff]"
+                  className="text-[#aaaaaa] text-[14px] sm:text-[14px] md:text-[15px] leading-relaxed [&>li]:mb-[10px] [&>li]:relative [&>li]:pl-[18px] [&>li]:before:content-['▹'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-[#ffffff]"
                   dangerouslySetInnerHTML={{ __html: `<ul>${job.html}</ul>` }}
                 />
               </div>
