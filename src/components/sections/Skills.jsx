@@ -7,22 +7,22 @@ const Skills = () => {
     {
       title: "Languages",
       theme: "teal",
-      skills: ["Python", "C++", "Java", "SQL", "MySQL", "JavaScript", "TypeScript", "Bash/Shell"]
+      skills: ["C++", "Python", "Java", "JavaScript", "SQL", "Bash/Shell"]
     },
     {
       title: "AI & Machine Learning",
       theme: "blue",
-      skills: ["LangChain", "LLaMA 3", "SR-GANs", "RAG Pipelines", "Transformers", "Multi-Agent Systems", "NLP", "Computer Vision"]
+      skills: ["SR-GANs", "LLaMA 3", "Multi-Agent Orchestration", "RAG Pipelines", "Transformers", "Computer Vision"]
     },
     {
       title: "Frameworks & Libraries",
       theme: "yellow",
-      skills: ["PyTorch", "TensorFlow", "React", "Next.js", "Node.js", "Pandas", "NumPy", "Scikit-learn", "OpenCV"]
+      skills: ["PyTorch", "TensorFlow", "LangChain", "React", "Node.js", "Pandas", "NumPy", "Scikit-learn"]
     },
     {
       title: "Cloud & Tools",
       theme: "green",
-      skills: ["AWS Lambda", "AWS S3", "DynamoDB", "Docker", "Kubernetes", "Git/GitHub", "Postman", "Linux", "CI/CD", "Jira"]
+      skills: ["AWS Lambda", "AWS S3", "DynamoDB", "API Gateway", "Cognito", "CodePipeline", "Docker", "Git", "CI/CD", "Postman"]
     }
   ];
 

@@ -6,7 +6,8 @@ const Publications = () => {
     {
       journal: 'Airo International Research Journal',
       meta: 'ISSN 2320-3714',
-      title: 'Review on Autonomous Vehicle Perception: Challenges & Technologies',
+      title: 'Perception Challenges in Autonomous Vehicles',
+      authors: 'Ishaan Shrivastava, Anvit Verma',
       year: '2025',
       volume: 'Vol 1 - Issue 3',
       url: 'https://www.airo.co.in/view-publication/2356',
@@ -68,10 +69,11 @@ const Publications = () => {
                   className="block no-underline text-[#efefef] hover:text-[#ffffff] transition-colors duration-300"
                 >
                   {/* FIX 3: Removed text color from h3 so it inherits from parent <a> */}
-                  <h3 className="text-[22px] font-bold mb-[20px]">
+                  <h3 className="text-[22px] font-bold mb-[8px]">
                     {pub.title}
                   </h3>
                 </a>
+                <p className="text-[#777777] font-mono text-[12px] mb-[16px] italic">{pub.authors}</p>
                 
                 <div 
                   className="text-[#aaaaaa] text-[15px] leading-relaxed max-w-[95%] [&>li]:mb-[10px] [&>li]:relative [&>li]:pl-[20px] [&>li]:before:content-['▹'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-[#ffffff]"
