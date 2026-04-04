@@ -75,26 +75,26 @@ const Jobs = () => {
               <div className="card-left-col bg-[#1c1c1c] p-[20px] md:p-[25px] flex flex-col justify-between">
                 <div>
                   <div className="font-mono text-[#ffffff] text-[10px] sm:text-[11px] md:text-xs mb-[2px] tracking-wider uppercase">From</div>
-                  <div className="text-[#efefef] font-bold text-[13px] sm:text-[15px] md:text-lg mb-2 md:mb-4">{job.range.split(' - ')[0]}</div>
+                  <div className="text-[#efefef] font-bold text-[13px] sm:text-[15px] md:text-xl mb-2 md:mb-4">{job.range.split(' - ')[0]}</div>
 
                   <div className="font-mono text-[#ffffff] text-[10px] sm:text-[11px] md:text-xs mb-[2px] tracking-wider uppercase">To</div>
-                  <div className="text-[#efefef] font-bold text-[13px] sm:text-[15px] md:text-lg mb-3 md:mb-8">{job.range.split(' - ')[1] || 'Present'}</div>
+                  <div className="text-[#efefef] font-bold text-[13px] sm:text-[15px] md:text-xl mb-3 md:mb-8">{job.range.split(' - ')[1] || 'Present'}</div>
                 </div>
 
                 <div>
-                  <h4 className="text-[#efefef] font-bold text-[11px] sm:text-[14px] md:text-xl leading-tight mb-1">{job.company}</h4>
+                  <h4 className="text-[#efefef] font-bold text-[11px] sm:text-[14px] md:text-2xl leading-tight mb-1">{job.company}</h4>
                   <p className="text-[#aaaaaa] font-mono text-[10px] sm:text-[11px] md:text-xs mt-1">{job.location}</p>
                 </div>
               </div>
 
               {/* RIGHT COLUMN */}
               <div className="flex-1 p-[10px] sm:p-[18px] md:p-[25px] min-w-0 overflow-hidden">
-                <h3 className="text-[15px] sm:text-[18px] md:text-[22px] font-bold text-[#efefef] mb-[10px] md:mb-[20px] group-hover:text-[#ffffff] transition-colors duration-300">
+                <h3 className="text-[15px] sm:text-[18px] md:text-[26px] font-bold text-[#efefef] mb-[10px] md:mb-[20px] group-hover:text-[#ffffff] transition-colors duration-300">
                   {job.title}
                 </h3>
 
                 <div
-                  className="text-[#aaaaaa] text-[14px] sm:text-[14px] md:text-[15px] leading-relaxed [&>li]:mb-[10px] [&>li]:relative [&>li]:pl-[18px] [&>li]:before:content-['▹'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-[#ffffff]"
+                  className="text-[#aaaaaa] text-[14px] sm:text-[14px] md:text-[18px] leading-relaxed [&>li]:mb-[10px] [&>li]:relative [&>li]:pl-[18px] [&>li]:before:content-['▹'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-[#ffffff]"
                   dangerouslySetInnerHTML={{ __html: `<ul>${job.html}</ul>` }}
                 />
               </div>
