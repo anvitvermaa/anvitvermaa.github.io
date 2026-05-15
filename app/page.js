@@ -15,7 +15,7 @@ export default function Home() {
       
       <RotatingStar />
 
-      <div className="px-6 md:px-24 lg:px-36 w-full overflow-x-hidden relative z-10">
+      <div className="px-6 md:pl-[17rem] md:pr-24 lg:pl-[17rem] lg:pr-36 w-full overflow-x-hidden relative z-10">
         <div className="max-w-[1100px] mx-auto w-full">
           <Hero />
           <Jobs />
