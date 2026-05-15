@@ -22,6 +22,7 @@ const getStarData = (points, innerRadius) => {
 };
 
 export default function RotatingStar() {
+  const wrapperRef = useRef(null);
   const solidRef = useRef(null);
   const gradientRef = useRef(null);
   const grainRef = useRef(null);
@@ -33,6 +34,8 @@ export default function RotatingStar() {
   useEffect(() => {
     let animationFrameId;
     let angle = 0;
+    const baseDPR = window.devicePixelRatio || 1;
+
     const renderLoop = () => {
       angle += 0.2;
       const rotateStyle = `rotate(${angle}deg)`;
@@ -40,6 +43,12 @@ export default function RotatingStar() {
       if (gradientRef.current) gradientRef.current.style.transform = rotateStyle;
       if (grainRef.current) grainRef.current.style.transform = rotateStyle;
       if (borderRef.current) borderRef.current.style.transform = rotateStyle;
+
+      // Inverse zoom: shrink when zoomed in, grow when zoomed out
+      const currentDPR = window.devicePixelRatio || 1;
+      const zoomScale = baseDPR / currentDPR;
+      if (wrapperRef.current) wrapperRef.current.style.transform = `scale(${zoomScale})`;
+
       animationFrameId = requestAnimationFrame(renderLoop);
     };
     renderLoop();
@@ -47,7 +56,9 @@ export default function RotatingStar() {
   }, []);
 
   return (
-    <div className="rotating-star-wrapper fixed -top-[8rem] -left-[8rem] w-[24rem] h-[24rem] z-[99999] pointer-events-none">
+    <div ref={wrapperRef} className="rotating-star-wrapper fixed -top-[8rem] -left-[8rem] w-[24rem] h-[24rem] z-[99999] pointer-events-none"
+      style={{ transformOrigin: '8rem 8rem' }}
+    >
       <div ref={solidRef} className="absolute inset-0 w-full h-full"
         style={{ clipPath: starPath, WebkitClipPath: starPath, backgroundColor: '#ffffff', opacity: 1, willChange: 'transform' }}
       />
