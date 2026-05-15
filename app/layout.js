@@ -2,6 +2,13 @@ import "./globals.css";
 import SocialSidebar from "../src/components/SocialSidebar"; 
 import Navbar from "../src/components/Navbar"; 
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export const metadata = {
   title: "Anvit Verma",
   description: "AI Engineer & Researcher",
