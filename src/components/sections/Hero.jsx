@@ -1,13 +1,27 @@
 "use client";
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import ResumeButton from '../ResumeButton';
 
 const Hero = () => {
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const update = () => {
+      if (gridRef.current) {
+        gridRef.current.style.gridTemplateColumns = mq.matches ? '1fr 280px' : '1fr';
+      }
+    };
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
   return (
-    <section id="about" className="flex flex-col justify-center min-h-screen max-w-[1000px] mx-auto px-6 md:px-0">
+    <section id="about" className="flex flex-col justify-center min-h-screen mx-auto px-6 md:px-0">
       
-      <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8 pt-20 md:pt-0">
-        <div className="flex-1 w-full">
+      <div ref={gridRef} className="pt-20 md:pt-0" style={{ display: 'grid', gridTemplateColumns: '1fr', alignItems: 'center', gap: '3rem' }}>
+        {/* Desktop: side-by-side. Controlled via media query in useEffect below */}
+        <div className="w-full min-w-0 overflow-hidden">
           <h1 className="text-[#ffffff] font-mono text-[16px] md:text-[18px] mb-0 ml-[2px]">
             Hi, my name is
           </h1>
@@ -37,7 +51,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-[250px] md:max-w-[300px] relative mt-10 md:mt-0 flex-shrink-0 mx-auto md:mx-0">
+        <div className="w-full max-w-[250px] md:max-w-[280px] relative mt-10 md:mt-0 flex-shrink-0 mx-auto md:ml-auto md:mr-0">
           <div className="relative group">
             {/* Outline box behind the image */}
             <div className="absolute inset-0 border-2 border-[#ffffff] rounded opacity-50 group-hover:opacity-100 transition-all duration-300 translate-x-4 translate-y-4 group-hover:translate-x-3 group-hover:translate-y-3 z-0"></div>
