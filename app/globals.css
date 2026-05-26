@@ -43,6 +43,19 @@ body {
   }
 }
 
+/* Hero section: side-by-side layout on desktop */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr 280px;
+    gap: 2.5rem;
+  }
+}
+
 /* Card layout: stacked on mobile, side-by-side on desktop */
 .card-flex {
   display: flex;
