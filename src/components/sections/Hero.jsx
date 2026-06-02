@@ -8,13 +8,13 @@ const Hero = () => {
       
       <div className="pt-20 md:pt-0 w-full">
         {/* Headings - full width, no grid */}
-        <h1 className="text-[#ffffff] font-mono text-[14px] md:text-[16px] mb-[10px] ml-[2px]">
+        <p className="text-[#ffffff] font-mono text-[14px] md:text-[16px] ml-[2px]" style={{ margin: 0, padding: 0, marginBottom: '5px' }}>
           Hi, my name is
-        </h1>
-        <h2 className="text-[#efefef] font-bold text-[clamp(40px,6vw,70px)] leading-[1.05] mb-0">
+        </p>
+        <h2 className="text-[#efefef] font-bold text-[clamp(40px,6vw,70px)]" style={{ margin: 0, padding: 0, lineHeight: 1.1 }}>
           Anvit Verma.
         </h2>
-        <h3 className="text-[#888888] font-bold text-[clamp(40px,6vw,70px)] leading-[1.05] mb-[25px]">
+        <h3 className="text-[#888888] font-bold text-[clamp(40px,6vw,70px)]" style={{ margin: 0, padding: 0, lineHeight: 1.1, marginBottom: '20px' }}>
           AI Engineer and Researcher.
         </h3>
 
