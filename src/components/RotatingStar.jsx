@@ -37,7 +37,7 @@ export default function RotatingStar() {
     const baseDPR = window.devicePixelRatio || 1;
 
     const renderLoop = () => {
-      angle += 0.2;
+      angle += 0.35;
       const rotateStyle = `rotate(${angle}deg)`;
       if (solidRef.current) solidRef.current.style.transform = rotateStyle;
       if (gradientRef.current) gradientRef.current.style.transform = rotateStyle;
@@ -56,8 +56,8 @@ export default function RotatingStar() {
   }, []);
 
   return (
-    <div ref={wrapperRef} className="rotating-star-wrapper fixed -top-[8rem] -left-[8rem] w-[24rem] h-[24rem] z-[99999] pointer-events-none"
-      style={{ transformOrigin: '8rem 8rem' }}
+    <div ref={wrapperRef} className="rotating-star-wrapper fixed -top-[6rem] -left-[6rem] w-[18rem] h-[18rem] z-[99999] pointer-events-none"
+      style={{ transformOrigin: '6rem 6rem' }}
     >
       <div ref={solidRef} className="absolute inset-0 w-full h-full"
         style={{ clipPath: starPath, WebkitClipPath: starPath, backgroundColor: '#ffffff', opacity: 1, willChange: 'transform' }}
