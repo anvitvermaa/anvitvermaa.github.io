@@ -13,15 +13,15 @@ const Hero = () => {
             Hi, my name is
           </h1>
 
-          <h2 className="text-[#efefef] font-bold text-[clamp(40px,8vw,80px)] leading-[0.9] -mt-[5px] mb-[10px]">
+          <h2 className="text-[#efefef] font-bold text-[clamp(32px,5vw,50px)] leading-[1] mb-[5px]">
             Anvit Verma.
           </h2>
 
-          <h3 className="text-[#888888] font-bold text-[clamp(40px,8vw,80px)] leading-[0.9] -mt-[5px] mb-[30px]">
+          <h3 className="text-[#888888] font-bold text-[clamp(32px,5vw,50px)] leading-[1] mb-[20px]">
             AI Engineer and Researcher.
           </h3>
 
-          <div className="text-[#aaaaaa] text-[17px] md:text-[19px] max-w-[540px] leading-relaxed mb-[50px] space-y-4">
+          <div className="text-[#aaaaaa] text-[15px] md:text-[16px] max-w-[540px] leading-relaxed mb-[30px] space-y-3">
             <p>
               I enjoy building intelligent systems that solve real-world problems. My journey into technology started with a deep curiosity for computer science, which led me to pursue a <strong className="text-[#efefef]">Bachelor of Technology</strong> at <span className="text-[#efefef]">Vellore Institute of Technology, Bhopal</span>.
             </p>
