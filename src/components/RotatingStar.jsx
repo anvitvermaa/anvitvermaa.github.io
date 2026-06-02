@@ -56,8 +56,8 @@ export default function RotatingStar() {
   }, []);
 
   return (
-    <div ref={wrapperRef} className="rotating-star-wrapper fixed -top-[6rem] -left-[6rem] w-[18rem] h-[18rem] z-[99999] pointer-events-none"
-      style={{ transformOrigin: '6rem 6rem' }}
+    <div ref={wrapperRef} className="rotating-star-wrapper fixed -top-[8rem] -left-[8rem] w-[18rem] h-[18rem] z-[99999] pointer-events-none"
+      style={{ transformOrigin: '8rem 8rem' }}
     >
       <div ref={solidRef} className="absolute inset-0 w-full h-full"
         style={{ clipPath: starPath, WebkitClipPath: starPath, backgroundColor: '#ffffff', opacity: 1, willChange: 'transform' }}
