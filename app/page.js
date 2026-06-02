@@ -17,7 +17,7 @@ export default function Home() {
       <RotatingStar />
 
       <div className="px-6 md:px-24 lg:px-36 w-full relative z-10">
-        <div className="max-w-[1100px] mx-auto w-full">
+        <div className="max-w-[800px] mx-auto w-full">
           <Hero />
           <Jobs />
           <Publications />

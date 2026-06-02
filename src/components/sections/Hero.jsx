@@ -4,7 +4,7 @@ import ResumeButton from '../ResumeButton';
 
 const Hero = () => {
   return (
-    <section id="about" className="flex flex-col justify-center min-h-screen max-w-[1000px] mx-auto px-6 md:px-0">
+    <section id="about" className="flex flex-col justify-center min-h-screen max-w-[800px] mx-auto px-6 md:px-0">
       
       <div className="hero-grid pt-20 md:pt-0 w-full">
         {/* Text content */}
