@@ -6,9 +6,9 @@ const Hero = () => {
   return (
     <section id="about" className="flex flex-col justify-center min-h-screen max-w-[1000px] mx-auto px-6 md:px-0">
       
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between md:gap-12 pt-20 md:pt-0 w-full">
+      <div className="hero-grid pt-20 md:pt-0 w-full">
         {/* Text content */}
-        <div className="md:max-w-[600px]">
+        <div style={{ minWidth: 0 }}>
           <h1 className="text-[#ffffff] font-mono text-[16px] md:text-[18px] mb-0 ml-[2px]">
             Hi, my name is
           </h1>
@@ -39,7 +39,7 @@ const Hero = () => {
         </div>
 
         {/* Photo */}
-        <div className="w-[250px] md:w-[280px] flex-shrink-0 mt-10 md:mt-16 mx-auto md:mx-0">
+        <div className="hero-photo">
           <div className="relative group">
             {/* Outline box behind the image */}
             <div className="absolute inset-0 border-2 border-[#ffffff] rounded opacity-50 group-hover:opacity-100 transition-all duration-300 translate-x-4 translate-y-4 group-hover:translate-x-3 group-hover:translate-y-3 z-0"></div>

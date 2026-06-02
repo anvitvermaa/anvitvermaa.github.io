@@ -75,3 +75,25 @@ body {
 .card-company { font-size: 11px; }
 .card-date    { font-size: 13px; }
 .card-label   { font-size: 10px; }
+
+/* Hero grid: stacked on mobile, side-by-side on desktop */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+.hero-photo {
+  width: 250px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+  }
+  .hero-photo {
+    width: 280px;
+    margin: 0;
+  }
+}
