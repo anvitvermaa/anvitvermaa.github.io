@@ -9,6 +9,10 @@
   --lightest-slate: #efefef;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background-color: #111111;
   color: #aaaaaa;
@@ -40,19 +44,6 @@ body {
 @media (min-width: 768px) {
   .rotating-star-wrapper {
     display: block;
-  }
-}
-
-/* Hero section: side-by-side layout on desktop */
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
-}
-@media (min-width: 768px) {
-  .hero-grid {
-    grid-template-columns: 1fr 280px;
-    gap: 2.5rem;
   }
 }
 
