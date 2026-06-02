@@ -41,13 +41,13 @@ const Hero = () => {
           {/* Photo */}
           <div className="hero-photo">
             <div className="relative group">
-              <div className="absolute inset-0 border-2 border-[#ffffff] rounded opacity-50 group-hover:opacity-100 transition-all duration-300 translate-x-4 translate-y-4 group-hover:translate-x-3 group-hover:translate-y-3 z-0"></div>
+              <div className="absolute border-2 border-[#ffffff] rounded opacity-50 group-hover:opacity-100 transition-all duration-300 translate-x-4 translate-y-4 group-hover:translate-x-3 group-hover:translate-y-3 z-0" style={{ top: 0, left: 0, right: 0, bottom: 0 }}></div>
               <img 
                 src="/photo.PNG" 
                 alt="Anvit Verma" 
                 className="relative z-10 w-full h-auto rounded grayscale hover:grayscale-0 transition-all duration-500 object-cover"
               />
-              <div className="absolute inset-0 bg-[#ffffff] opacity-10 mix-blend-multiply group-hover:opacity-0 transition-all duration-500 z-20 rounded pointer-events-none"></div>
+              <div className="absolute bg-[#ffffff] opacity-10 mix-blend-multiply group-hover:opacity-0 transition-all duration-500 z-20 rounded pointer-events-none" style={{ top: 0, left: 0, right: 0, bottom: 0 }}></div>
             </div>
           </div>
         </div>
