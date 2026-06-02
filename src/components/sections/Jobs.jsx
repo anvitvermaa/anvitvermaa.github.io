@@ -18,7 +18,7 @@ const Jobs = () => {
     {
       company: 'Official University E-Learning Portal (Vityarthi)',
       location: 'Bhopal, IN',
-      title: 'Teaching Assistant',
+      title: 'Technical Assistant',
       range: 'March 2025 - August 2025',
       url: '#',
       html: `

@@ -28,7 +28,7 @@ const About = () => {
             </p>
 
             <p className="mb-[15px]">
-              Fast-forward to today, and I’ve had the privilege of working as an <strong>AI Intern</strong> at <span className="text-[#64ffda]">Jio Platforms Limited</span>, where I constructed autonomous agents and RAG pipelines using LangChain and LLAMA 3. I also serve as a <strong>Research Assistant</strong> evaluating neural architectures for autonomous driving, and a <strong>Teaching Assistant</strong> spearheading technical development for university-wide Linux courses.
+              Fast-forward to today, and I’ve had the privilege of working as an <strong>AI Intern</strong> at <span className="text-[#64ffda]">Jio Platforms Limited</span>, where I constructed autonomous agents and RAG pipelines using LangChain and LLAMA 3. I also serve as a <strong>Research Assistant</strong> evaluating neural architectures for autonomous driving, and a <strong>Technical Assistant</strong> spearheading technical development for university-wide Linux courses.
             </p>
 
             <p className="mb-[15px]">

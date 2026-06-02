@@ -17,7 +17,7 @@ const Experience = () => {
     },
     {
       company: "Vityarthi",
-      role: "Teaching Assistant",
+      role: "Technical Assistant",
       date: "March 2025 - Aug 2025",
       points: [
         "Spearheaded the end-to-end technical development of the university wide Linux course (CSE0002) for 3,000+ students in just first semester of the launch.",
