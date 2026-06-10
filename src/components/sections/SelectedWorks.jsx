@@ -6,6 +6,20 @@ import { GitHub, ExternalLink } from 'react-feather';
 const SelectedWorks = () => {
   const featuredProjects = [
     {
+      title: 'Tastelytics',
+      external: 'https://d36b12rj7f0r2u.cloudfront.net/',
+      github: null,
+      tech: ['React', 'Vite', 'Python', 'AWS CloudFront', 'Spotify API', 'GitHub Actions'],
+      html: `
+        <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 10px;">Architected a serverless music analytics platform on <strong>AWS CloudFront</strong> with a Python backend, achieving global low-latency delivery and zero-downtime deployments via a <strong>GitHub Actions CI/CD pipeline</strong>.</li>
+          <li style="margin-bottom: 10px;">Integrated Spotify's <strong>PKCE OAuth 2.0</strong> flow for secure, backend-less authentication and built interactive analytics visualizing top artists, tracks, and algorithmic recommendations across multiple time ranges.</li>
+          <li style="margin-bottom: 0;">Engineered a custom <strong>Windows 95 / Frutiger Aero</strong> design system using Tailwind CSS, featuring a virtual CD Burner playlist builder, state-machine-driven Easter eggs, and retro pixel-art micro-interactions.</li>
+        </ul>
+      `,
+      cover: '/tastelytics.png',
+    },
+    {
       title: 'GitHub Repo Analyst AI',
       external: 'https://anvitvermaa.github.io/Repo_Analyst_AI/',
       github: 'https://github.com/anvitvermaa/Repo_Analyst_AI',
@@ -35,19 +49,6 @@ const SelectedWorks = () => {
       `,
       cover: null,
     },
-    {
-      title: 'Tastelytics – Serverless Music Review API',
-      external: null,
-      github: null,
-      tech: ['AWS Lambda', 'DynamoDB', 'API Gateway', 'Cognito', 'CodePipeline'],
-      html: `
-        <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
-          <li style="margin-bottom: 10px;">Architected a scalable serverless backend for a dynamic music review platform using AWS Lambda and API Gateway, leveraging DynamoDB Global Secondary Indexes (GSI) to deliver sub-300ms queries for community interactions.</li>
-          <li style="margin-bottom: 0px;">Secured role-based user authentication via Amazon Cognito and integrated the Spotify API for real-time track metadata, deployed through a zero-downtime CI/CD pipeline using AWS CodePipeline.</li>
-        </ul>
-      `,
-      cover: null,
-    },
   ];
 
   return (
@@ -67,7 +68,7 @@ const SelectedWorks = () => {
       <ul className="list-none p-0 m-0">
         {featuredProjects.map((project, i) => {
           const isOdd = i % 2 !== 0; 
-          const isWideProject = i < 2;
+          const isWideProject = i < 3;
 
           return (
             <li key={i} className="mb-[100px] last:mb-0">
