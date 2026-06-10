@@ -42,7 +42,7 @@ const Hero = () => {
           <div className="hero-photo">
             <div className="relative">
               <img 
-                src="/photo.PNG" 
+                src="/photo.png" 
                 alt="Anvit Verma" 
                 className="relative w-full h-auto rounded grayscale hover:grayscale-0 transition-all duration-500 object-cover"
               />
