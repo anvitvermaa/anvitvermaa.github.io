@@ -8,7 +8,7 @@ const Hero = () => {
       
       <div className="pt-20 md:pt-0 w-full">
         {/* Headings - full width, no grid */}
-        <p className="text-[#ffffff] font-mono text-[14px] md:text-[16px] ml-[2px]" style={{ margin: 0, padding: 0, marginBottom: '5px' }}>
+        <p className="text-[#ffffff] font-mono text-[18px] md:text-[24px] ml-[2px]" style={{ margin: 0, padding: 0, marginBottom: '5px' }}>
           Hi, my name is
         </p>
         <h2 className="text-[clamp(40px,6vw,70px)] drop-shadow-md" style={{ margin: 0, padding: 0, lineHeight: 1.1, fontFamily: "'Karmatic Arcade', sans-serif", letterSpacing: '1px', color: 'white', WebkitTextStroke: '2px black' }}>
@@ -21,7 +21,7 @@ const Hero = () => {
         {/* Bio + Photo side by side */}
         <div className="hero-grid">
           <div style={{ minWidth: 0 }}>
-            <div className="text-[#aaaaaa] text-[15px] md:text-[16px] max-w-[480px] leading-relaxed mb-[30px] space-y-3">
+            <div className="text-[#aaaaaa] text-[20px] md:text-[24px] max-w-[700px] leading-relaxed mb-[30px] space-y-3">
               <p>
                 I enjoy building intelligent systems that solve real-world problems. My journey into technology started with a deep curiosity for computer science, which led me to pursue a <strong className="text-[#efefef]">Bachelor of Technology</strong> at <span className="text-[#efefef]">Vellore Institute of Technology, Bhopal</span>.
               </p>
