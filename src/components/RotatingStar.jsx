@@ -41,7 +41,10 @@ export default function RotatingStar() {
       const rotateStyle = `rotate(${angle}deg)`;
       if (solidRef.current) solidRef.current.style.transform = rotateStyle;
       if (gradientRef.current) gradientRef.current.style.transform = rotateStyle;
-      if (grainRef.current) grainRef.current.style.transform = rotateStyle;
+      if (grainRef.current) {
+        grainRef.current.style.transform = rotateStyle;
+        grainRef.current.style.backgroundPosition = `${Math.random() * 100}% ${Math.random() * 100}%`;
+      }
       if (borderRef.current) borderRef.current.style.transform = rotateStyle;
 
       // Inverse zoom: shrink when zoomed in, grow when zoomed out
