@@ -36,6 +36,22 @@ const SelectedWorks = () => {
       cover: '/fishbone.png',
     },
     {
+      title: 'EV Subsidy Causal Evaluation',
+      external: null,
+      github: null,
+      tech: ['Python', 'Polars', 'SDiD', 'AJAX', 'Causal Inference'],
+      html: `
+        <p style="margin-bottom: 10px;"><strong>Project Context:</strong> A rigorous quasi-experimental causal evaluation of the Maharashtra EV Subsidy Policy 2025 across a balanced macro-state panel of top vehicle-registering Indian states (N=16, T=54 months).</p>
+        <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 10px;">Mathematically isolated a null short-run demand signal using quasi-experimental causal analysis, uncovering the "Demand Displacement Paradox" driven by volatile national FAME-II subsidy expirations.</li>
+          <li style="margin-bottom: 10px;">Engineered a high-performance, out-of-core ETL pipeline utilizing a Python AJAX scraper and Polars to lazily ingest, transform, and evaluate 54 months of macroscopic Vahan vehicle registration data.</li>
+          <li style="margin-bottom: 10px;">Pioneered a rigorous dual-specification causal architecture utilizing the Synthetic Difference-in-Differences (SDiD) estimator with L2 Ridge Regularization to construct unconfounded baseline counterfactuals.</li>
+          <li style="margin-bottom: 0;">Designed advanced spatial robustness checks ("Donut Hole" specifications) and placebo bootstrap permutation tests to mathematically validate SUTVA compliance against cross-border arbitrage spillovers.</li>
+        </ul>
+      `,
+      cover: null,
+    },
+    {
       title: 'Multi-Agent Telecom Optimizer',
       external: null,
       github: 'https://github.com/anvitvermaa/Multi-Agent-Telecom-Optimizer',
