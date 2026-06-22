@@ -11,8 +11,8 @@ const Hero = () => {
         <p className="text-[#ffffff] font-mono text-[14px] md:text-[16px] ml-[2px]" style={{ margin: 0, padding: 0, marginBottom: '5px' }}>
           Hi, my name is
         </p>
-        <h2 className="text-[#efefef] font-bold text-[clamp(40px,6vw,70px)]" style={{ margin: 0, padding: 0, lineHeight: 1.1 }}>
-          Anvit Verma.
+        <h2 className="text-[#efefef] text-[clamp(40px,6vw,70px)] drop-shadow-md" style={{ margin: 0, padding: 0, lineHeight: 1.1, fontFamily: "'Karmatic Arcade', sans-serif", letterSpacing: '1px' }}>
+          ANVIT VERMA
         </h2>
         <h3 className="text-[#888888] font-bold text-[clamp(40px,6vw,70px)]" style={{ margin: 0, padding: 0, lineHeight: 1.1, marginBottom: '20px' }}>
           AI Engineer and Researcher.
