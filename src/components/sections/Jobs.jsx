@@ -4,27 +4,38 @@ import React from 'react';
 const Jobs = () => {
   const jobsData = [
     {
-      company: 'Vellore Institute of Technology',
-      location: 'Bhopal, IN',
-      title: 'Research Assistant',
-      range: 'Sept 2025 - Present',
-      url: 'https://vitbhopal.ac.in',
+      company: 'Jio Platforms Limited (JPL)',
+      location: 'Navi Mumbai, IN',
+      title: 'Databricks Intern',
+      range: 'June 2026 - Present',
+      url: 'https://www.jio.com',
       html: `
-        <li>Analyzed findings from 80+ peer-reviewed papers to evaluate the evolution of neural architectures in autonomous driving from Kalman filter baselines to modern LSTM and GNN models.</li>
-        <li>Determined a 40% reduction in trajectory prediction error across modern safety-critical systems by validating reported neural network benchmarks.</li>
-        <li>Appraised 9 foundational ADAS surveys to identify research gaps and formulate a technical roadmap for Neuro-Symbolic and Bio-Inspired certifiable AI systems.</li>
+        <li>Just got started! Currently setting up my environment, diving into the Databricks ecosystem, and drinking from the firehose. More updates coming soon as I start building out scalable data pipelines.</li>
       `
     },
     {
       company: 'Official University E-Learning Portal (Vityarthi)',
       location: 'Bhopal, IN',
       title: 'Technical Assistant',
-      range: 'March 2025 - August 2025',
+      range: 'Sept 2025 - Jan 2026',
       url: '#',
       html: `
         <li>Spearheaded the end-to-end technical development of the university wide Linux course (CSE0002) for 4,100+ students in just first semester of the launch.</li>
         <li>Systematized 90 Bash and Shell automation scripts replicating real-world system administration workflows including log analysis and process monitoring.</li>
         <li>Delivered 100% of technical screen demonstrations capturing real-time execution of advanced Linux commands for asynchronous learning at scale.</li>
+      `
+    },
+    {
+      company: 'Vellore Institute of Technology',
+      location: 'Bhopal, IN',
+      title: 'Research Assistant',
+      range: 'Jan 2025 - Present',
+      url: 'https://vitbhopal.ac.in',
+      html: `
+        <li><strong>Research Focus 4: Causal Evaluation of EV Subsidies:</strong> Evaluated the Maharashtra EV Policy 2025 via a macro-panel (N=9, T=54). Engineered an out-of-core DuckDB/Polars ETL pipeline and implemented Synthetic Difference-in-Differences (SDiD) in Python to quantify the "Demand Displacement Paradox."</li>
+        <li><strong>Research Focus 3: Rondônia Fishbone Harmonizer:</strong> Upscaled historical 30m Landsat imagery to 10m Sentinel-2 resolution to monitor Amazon deforestation. Built a PySTAC ETL pipeline and benchmarked 7 PyTorch architectures (EDSR, SwinIR, ESRGAN) for super-resolution.</li>
+        <li><strong>Research Focus 2: ADAS & Neural Networks:</strong> Co-authored a technical review mapping the shift to Deep Learning in autonomous driving. Quantified a 40% drop in trajectory prediction error (Kalman Filters to LSTM/GNNs) and proposed Neuro-Symbolic AI integrations for ISO 26262 compliance.</li>
+        <li><strong>Research Focus 1: AV Perception & Integration:</strong> Co-authored a published review on autonomous vehicle perception. Benchmarked classical filters vs. deep learning for LiDAR/vision fusion, and analyzed SLAM HD mapping & GAN dehazing for adverse weather.</li>
       `
     },
     {
