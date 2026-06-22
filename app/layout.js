@@ -21,8 +21,8 @@ export default function RootLayout({ children }) {
       <body className="bg-[#111111] text-[#aaaaaa] relative selection:bg-[#ffffff] selection:text-[#111111]">
         
         {/* Background SideRays */}
-        <div className="fixed inset-0 w-screen h-screen z-[0] pointer-events-none overflow-hidden">
-          <SideRays className="absolute -top-[15vh] left-0 w-full h-[115vh]" origin="top-right" intensity={1.0} />
+        <div className="fixed inset-0 w-screen h-screen z-[0] pointer-events-none">
+          <SideRays className="absolute inset-0 w-full h-full" origin="top-right" />
         </div>
 
         {/* Navbar */}
