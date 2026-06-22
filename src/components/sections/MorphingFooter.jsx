@@ -176,7 +176,7 @@ const MorphingFooter = () => {
                 className="text-[22px] md:text-[40px] font-bold text-[#efefef] group-hover:text-[#ffffff] transition-colors"
                 style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
             >
-                CONTACT ME !
+                SAY HI !
             </h2>
         </a>
       </div>
