@@ -82,8 +82,24 @@ const SideRays = ({
       rendererRef.current = renderer;
 
       const gl = renderer.gl;
-      gl.canvas.style.width = '100%';
-      gl.canvas.style.height = '100%';
+      gl.clearColor(0, 0, 0, 0);
+
+      const resize = () => {
+        const container = containerRef.current;
+        if (!container) return;
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        renderer.setSize(width, height);
+        gl.canvas.style.position = 'absolute';
+        gl.canvas.style.top = '0';
+        gl.canvas.style.left = '0';
+        gl.canvas.style.width = '100%';
+        gl.canvas.style.height = '100%';
+        gl.canvas.style.display = 'block';
+        if (program) {
+          program.uniforms.iResolution.value = [width * renderer.dpr, height * renderer.dpr];
+        }
+      };
 
       while (containerRef.current.firstChild) {
         containerRef.current.removeChild(containerRef.current.firstChild);
