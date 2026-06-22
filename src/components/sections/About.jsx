@@ -21,7 +21,7 @@ const About = () => {
       <div className="w-full">
         
         {/* TEXT COLUMN */}
-        <div className="text-[#8892b0] font-sans text-[22px] md:text-[26px] leading-[1.3]">
+        <div className="text-[#8892b0] font-sans text-[20px] leading-[1.3]">
           <div>
             <p className="mb-[15px]">
               Hello! My name is Anvit and I enjoy building intelligent systems that solve real-world problems. My journey into technology started with a deep curiosity for computer science, which led me to pursue a <strong>Bachelor of Technology</strong> at <span className="text-[#64ffda]">Vellore Institute of Technology, Bhopal</span>.
