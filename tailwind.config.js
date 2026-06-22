@@ -21,7 +21,7 @@ module.exports = {
       fontFamily: {
         // RESTORED ORIGINAL FONTS
         mono: ['"SF Mono"', '"Fira Code"', '"Fira Mono"', '"Roboto Mono"', 'monospace'],
-        sans: ['"Merchant Copy"', '"Calibre"', '"Inter"', '-apple-system', 'sans-serif'],
+        sans: ['"Star Crush"', '"Calibre"', '"Inter"', '-apple-system', 'sans-serif'],
       },
     },
   },
