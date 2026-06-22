@@ -4,24 +4,24 @@ import ResumeButton from '../ResumeButton';
 
 const Hero = () => {
   return (
-    <section id="about" className="flex flex-col min-h-[100svh] max-w-[800px] mx-auto px-6 md:px-0 pt-28 pb-12 md:pb-20">
+    <section id="about" className="flex flex-col min-h-[100svh] max-w-[1000px] mx-auto px-6 md:px-0 pt-[clamp(6rem,12vh,10rem)] pb-[100px]">
       
       {/* Main Content Group (Header + Grid) */}
       <div className="w-full">
-        <p className="text-[#ffffff] font-mono text-[14px] md:text-[16px] ml-[2px]" style={{ margin: 0, padding: 0, marginBottom: '5px' }}>
+        <p className="text-[#ffffff] font-mono text-[clamp(14px,1.5vw,18px)] ml-[2px] mb-[1vh]" style={{ margin: 0, padding: 0 }}>
           Hi, my name is
         </p>
-        <h2 className="text-[#efefef] font-bold text-[clamp(40px,6vw,70px)]" style={{ margin: 0, padding: 0, lineHeight: 1.1 }}>
+        <h2 className="text-[#efefef] font-bold text-[clamp(50px,8vw,100px)] tracking-tight" style={{ margin: 0, padding: 0, lineHeight: 1.1 }}>
           Anvit Verma.
         </h2>
-        <h3 className="text-[#888888] font-bold text-[clamp(40px,6vw,70px)]" style={{ margin: 0, padding: 0, lineHeight: 1.1, marginBottom: '40px' }}>
+        <h3 className="text-[#888888] font-bold text-[clamp(40px,6vw,80px)] tracking-tight" style={{ margin: 0, padding: 0, lineHeight: 1.1, marginBottom: 'clamp(30px, 5vh, 60px)' }}>
           AI Engineer and Researcher.
         </h3>
 
         {/* Bio + Photo side by side */}
         <div className="hero-grid items-center">
           <div style={{ minWidth: 0 }}>
-            <div className="text-[#aaaaaa] text-[15px] md:text-[16px] max-w-[480px] leading-relaxed space-y-4">
+            <div className="text-[#aaaaaa] text-[clamp(15px,1.5vh+0.5vw,22px)] max-w-[600px] leading-relaxed space-y-[clamp(1rem,3vh,2rem)]">
               <p>
                 I enjoy building intelligent systems that solve real-world problems. My journey into technology started with a deep curiosity for computer science, which led me to pursue a <strong className="text-[#efefef]">Bachelor of Technology</strong> at <span className="text-[#efefef]">Vellore Institute of Technology, Bhopal</span>.
               </p>
@@ -48,7 +48,7 @@ const Hero = () => {
       </div>
 
       {/* Bottom: Resume Button */}
-      <div className="w-full mt-auto pt-16">
+      <div className="w-full mt-auto pt-[clamp(2rem,6vh,6rem)]">
         <ResumeButton />
       </div>
 
