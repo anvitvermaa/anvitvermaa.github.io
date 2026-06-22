@@ -1,6 +1,7 @@
 import "./globals.css";
 import SocialSidebar from "../src/components/SocialSidebar"; 
 import Navbar from "../src/components/Navbar"; 
+import SideRays from "../src/components/SideRays";
 
 export const viewport = {
   width: "device-width",
@@ -19,6 +20,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-[#111111] text-[#aaaaaa] relative selection:bg-[#ffffff] selection:text-[#111111]">
         
+        {/* Background SideRays */}
+        <div className="fixed inset-0 z-[0] pointer-events-none">
+          <SideRays />
+        </div>
+
         {/* Navbar */}
         <Navbar />
 
