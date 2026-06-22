@@ -37,7 +37,7 @@ export default function RotatingStar() {
     const baseDPR = window.devicePixelRatio || 1;
 
     const renderLoop = () => {
-      angle += 0.455;
+      angle += 0.637;
       const rotateStyle = `rotate(${angle}deg)`;
       if (solidRef.current) solidRef.current.style.transform = rotateStyle;
       if (gradientRef.current) gradientRef.current.style.transform = rotateStyle;
