@@ -21,11 +21,11 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen w-full relative bg-[#050505]">
+    <main className="min-h-screen w-full relative">
       <RotatingStar />
       
       {/* Fixed Diver (Center Left) */}
-      <div className="fixed left-[80px] lg:left-[100px] top-1/2 -translate-y-1/2 z-[100] pointer-events-none hidden md:block">
+      <div className="fixed left-[20px] md:left-[80px] lg:left-[100px] top-1/2 -translate-y-1/2 z-[100] pointer-events-none">
         <svg 
           width="30" 
           height="50" 
@@ -63,7 +63,7 @@ export default function Home() {
               </div>
 
               {/* Sticky Title */}
-              <div className="sticky top-[150px] left-0 pl-[20px] lg:pl-[30px] pt-[15px] pb-[15px] bg-[#050505]">
+              <div className="sticky top-[150px] left-0 pl-[20px] lg:pl-[30px] pt-[15px] pb-[15px] bg-[#050505]/50 backdrop-blur-sm">
                 <span className="text-[#efefef] font-mono text-[12px] lg:text-[13px] tracking-widest whitespace-nowrap">
                   ( {label} )
                 </span>

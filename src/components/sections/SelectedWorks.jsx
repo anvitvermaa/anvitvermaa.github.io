@@ -68,7 +68,7 @@ const SelectedWorks = () => {
   ];
 
   return (
-    <section id="selected-works" className="max-w-[1200px] mx-auto py-[100px] px-[20px]">
+    <section id="selected-works" className="max-w-[800px] mx-auto py-[100px] px-[20px]">
       
       <ul className="list-none p-0 m-0">
         {featuredProjects.map((project, i) => {
