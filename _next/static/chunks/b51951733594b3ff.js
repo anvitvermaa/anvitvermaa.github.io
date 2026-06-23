@@ -26,10 +26,10 @@ uniform float iOpacity;
 float rayStrength(vec2 raySource, vec2 rayRefDirection, vec2 coord, float seedA, float seedB, float speed) {
   vec2 sourceToCoord = coord - raySource;
   float cosAngle = dot(normalize(sourceToCoord), rayRefDirection);
-  return clamp(
-    (0.45 + 0.15 * sin(cosAngle * seedA + iTime * speed)) +
-    (0.3 + 0.2 * cos(-cosAngle * seedB + iTime * speed)),
-    0.0, 1.0) *
+  float rawStrength = (0.45 + 0.15 * sin(cosAngle * seedA + iTime * speed)) +
+                      (0.3 + 0.2 * cos(-cosAngle * seedB + iTime * speed));
+  // Apply a power curve to sharpen the rays, creating a more "underwater caustics" vibe
+  return pow(clamp(rawStrength, 0.0, 1.0), 2.5) *
     clamp((iResolution.x - length(sourceToCoord)) / iResolution.x, 0.5, 1.0);
 }
 
