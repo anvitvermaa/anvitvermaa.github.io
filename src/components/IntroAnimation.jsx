@@ -35,7 +35,7 @@ export default function IntroAnimation({ onComplete }) {
           transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
           exit={{ opacity: 0 }}
         >
-          <div className="flex flex-col items-center justify-center font-sans tracking-widest text-white">
+          <div className="flex flex-row items-center justify-center space-x-3 md:space-x-4 font-sans text-white w-screen h-screen">
             {/* "Anvit Verma" fades away down */}
             <motion.div
               initial={{ y: 0, opacity: 0 }}
@@ -44,12 +44,12 @@ export default function IntroAnimation({ onComplete }) {
                 opacity: stage === "fading" ? 0 : 1 
               }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="text-4xl md:text-6xl lg:text-7xl font-light uppercase mb-2"
+              className="text-3xl md:text-5xl lg:text-6xl font-normal tracking-wide"
             >
               Anvit Verma
             </motion.div>
             
-            {/* "PORTFOLIO" fades away up */}
+            {/* "Portfolio" fades away up */}
             <motion.div
               initial={{ y: 0, opacity: 0 }}
               animate={{ 
@@ -57,7 +57,7 @@ export default function IntroAnimation({ onComplete }) {
                 opacity: stage === "fading" ? 0 : 1 
               }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="text-xl md:text-2xl lg:text-3xl font-light tracking-[0.3em] uppercase text-gray-400"
+              className="text-3xl md:text-5xl lg:text-6xl font-thin tracking-wide"
             >
               Portfolio
             </motion.div>
