@@ -70,17 +70,6 @@ const SelectedWorks = () => {
   return (
     <section id="selected-works" className="max-w-[1200px] mx-auto py-[100px] px-[20px]">
       
-      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
-        <span 
-          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px]"
-          style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
-        >
-          04.
-        </span>
-        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0">Selected Works</h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px]"></div>
-      </div>
-
       <ul className="list-none p-0 m-0">
         {featuredProjects.map((project, i) => {
           const isOdd = i % 2 !== 0; 

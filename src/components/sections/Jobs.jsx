@@ -55,18 +55,6 @@ const Jobs = () => {
   return (
     <section id="jobs" className="max-w-[1000px] mx-auto py-[100px]">
 
-      {/* SECTION HEADER */}
-      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
-        <span
-          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px]"
-          style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
-        >
-          02.
-        </span>
-        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0">Experience</h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px]"></div>
-      </div>
-
       {/* TIMELINE CONTAINER */}
       <div className="relative border-l-2 border-[#2a2a2a] ml-[20px]">
 
