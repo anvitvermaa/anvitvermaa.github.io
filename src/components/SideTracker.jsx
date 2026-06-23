@@ -40,10 +40,10 @@ export default function SideTracker() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-[120px] lg:w-[150px] h-screen pointer-events-none z-[50] flex-col items-center border-r border-[#2a2a2a]/30 hidden md:flex mix-blend-difference">
+    <div className="fixed top-0 left-0 w-[80px] sm:w-[100px] md:w-[120px] lg:w-[150px] h-screen pointer-events-none z-[100] flex flex-col items-center border-r border-[#2a2a2a]/30 bg-[#050505]/50 backdrop-blur-sm">
       
       {/* Active Section Label */}
-      <div className="absolute left-[30px] lg:left-[40px] top-[100px] text-[#efefef] font-mono text-[12px] tracking-widest whitespace-nowrap">
+      <div className="absolute left-[20px] lg:left-[30px] top-[150px] text-[#efefef] font-mono text-[11px] lg:text-[12px] tracking-widest whitespace-nowrap origin-top-left -rotate-90">
         ( {activeSection} )
       </div>
 
