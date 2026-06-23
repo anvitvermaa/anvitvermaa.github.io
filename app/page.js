@@ -25,7 +25,7 @@ export default function Home() {
       <RotatingStar />
       
       {/* Fixed Diver (Center Left) */}
-      <div className="fixed left-[20px] md:left-[80px] lg:left-[100px] top-1/2 -translate-y-1/2 z-[100] pointer-events-none">
+      <div className="fixed left-[85px] md:left-[165px] lg:left-[205px] top-1/2 -translate-y-1/2 z-[100] pointer-events-none animate-float">
         <svg 
           width="30" 
           height="50" 
@@ -46,32 +46,32 @@ export default function Home() {
           <div key={id} className="flex w-full relative">
             
             {/* Left Sticky Sidebar for this section */}
-            <div className="hidden md:block w-[180px] lg:w-[220px] shrink-0 border-r border-[#2a2a2a]/30 relative z-20">
+            <div className="w-[100px] md:w-[180px] lg:w-[220px] shrink-0 border-r border-[#2a2a2a]/30 relative z-20">
               
               {/* Native Ruler Marks */}
               <div className="absolute right-0 top-0 bottom-0 w-full overflow-hidden pointer-events-none opacity-40">
                 <div className="absolute top-0 right-0 h-full flex flex-col justify-between py-[100px]">
                    {Array.from({ length: 8 }).map((_, i) => (
-                      <div key={i} className="flex items-center gap-2 my-[80px] ml-auto">
-                        <span className="text-[#666666] font-mono text-[9px] lg:text-[10px] tracking-widest">
+                      <div key={i} className="flex items-center gap-1 md:gap-2 my-[80px] ml-auto">
+                        <span className="text-[#666666] font-mono text-[8px] md:text-[9px] lg:text-[10px] tracking-widest hidden sm:inline-block">
                           0{index},{i*3}0,00
                         </span>
-                        <div className="w-[10px] h-[1px] bg-[#666]"></div>
+                        <div className="w-[6px] md:w-[10px] h-[1px] bg-[#666]"></div>
                       </div>
                    ))}
                 </div>
               </div>
 
               {/* Sticky Title */}
-              <div className="sticky top-[150px] left-0 pl-[20px] lg:pl-[30px] pt-[15px] pb-[15px] bg-[#050505]/50 backdrop-blur-sm">
-                <span className="text-[#efefef] font-mono text-[12px] lg:text-[13px] tracking-widest whitespace-nowrap">
+              <div className="sticky top-[150px] left-0 pl-[10px] md:pl-[20px] lg:pl-[30px] pt-[15px] pb-[15px] bg-[#050505]/50 backdrop-blur-sm overflow-hidden">
+                <span className="text-[#efefef] font-mono text-[9px] md:text-[12px] lg:text-[13px] tracking-widest whitespace-nowrap">
                   ( {label} )
                 </span>
               </div>
             </div>
 
             {/* Main Content Area */}
-            <div className="flex-1 min-w-0 px-6 md:pl-0 md:pr-24 lg:pr-36 w-full relative">
+            <div className="flex-1 min-w-0 px-4 sm:px-6 md:pl-0 md:pr-24 lg:pr-36 w-full relative">
                <div className="max-w-[800px] mx-auto w-full">
                   <Component />
                </div>
@@ -82,8 +82,8 @@ export default function Home() {
 
         {/* Footer doesn't need the sticky sidebar */}
         <div className="flex w-full relative">
-           <div className="hidden md:block w-[180px] lg:w-[220px] shrink-0 relative z-20"></div>
-           <div className="flex-1 min-w-0 px-6 md:pl-0 md:pr-24 lg:pr-36 w-full relative">
+           <div className="w-[100px] md:w-[180px] lg:w-[220px] shrink-0 relative z-20"></div>
+           <div className="flex-1 min-w-0 px-4 sm:px-6 md:pl-0 md:pr-24 lg:pr-36 w-full relative">
               <div className="max-w-[800px] mx-auto w-full">
                  <MorphingFooter />
               </div>

@@ -23,6 +23,15 @@ module.exports = {
         mono: ['"SF Mono"', '"Fira Code"', '"Fira Mono"', '"Roboto Mono"', 'monospace'],
         sans: ['"Inter"', '-apple-system', 'sans-serif'],
       },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(-50%)' },
+          '50%': { transform: 'translateY(calc(-50% - 10px))' },
+        }
+      },
+      animation: {
+        float: 'float 4s ease-in-out infinite',
+      }
     },
   },
   plugins: [],
