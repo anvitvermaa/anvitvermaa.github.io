@@ -39,7 +39,18 @@ const Skills = () => {
   return (
     <section id="skills" className="max-w-[1000px] mx-auto py-[100px] px-6">
       
-      {/* GRID CONTAINER */}
+      {/* SECTION HEADER */}
+      <div className="flex items-center gap-[10px] mb-[50px] w-full whitespace-nowrap">
+        <span 
+          className="text-[clamp(20px,5vw,26px)] text-[#ffffff] font-semibold mr-[10px]"
+          // Forced Font Match
+          style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
+        >
+          06.
+        </span>
+        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0">Skills & Technologies</h2>
+        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px]"></div>
+      </div>
 
       {/* GRID CONTAINER */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
