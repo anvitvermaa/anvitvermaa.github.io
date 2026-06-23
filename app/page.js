@@ -23,13 +23,13 @@ export default function Home() {
   }, [showIntro]);
 
   return (
-    <main className="min-h-screen w-full relative bg-[#050505]">
+    <main className="min-h-screen w-full relative">
       
       {showIntro && (
         <IntroAnimation onComplete={() => setShowIntro(false)} />
       )}
 
-      {/* Main content fades in as intro finishes zooming */}
+      {/* Main content fades in as intro finishes */}
       <div 
         className={`transition-opacity duration-1000 ease-in-out ${
           showIntro ? "opacity-0" : "opacity-100"
