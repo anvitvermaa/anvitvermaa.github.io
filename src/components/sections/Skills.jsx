@@ -37,7 +37,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="w-full max-w-[1200px] mx-auto py-[100px] px-6">
+    <section id="skills" className="w-full max-w-[1000px] mx-auto py-[100px] px-6 md:px-0">
       
       {/* SECTION HEADER */}
       <div className="flex items-center gap-[10px] mb-[50px] w-full whitespace-nowrap">

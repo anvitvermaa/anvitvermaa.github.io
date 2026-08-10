@@ -4,7 +4,7 @@ import ResumeButton from '../ResumeButton';
 
 const Hero = () => {
   return (
-    <section id="about" className="flex flex-col justify-center min-h-screen w-full max-w-[1200px] mx-auto px-6 md:px-0 pt-24">
+    <section id="about" className="flex flex-col justify-center min-h-screen w-full max-w-[1000px] mx-auto px-6 md:px-0 pt-24">
       
       <div className="pt-20 md:pt-0 w-full">
         {/* Headings - full width, no grid */}
@@ -21,7 +21,7 @@ const Hero = () => {
         {/* Bio + Photo side by side */}
         <div className="hero-grid">
           <div style={{ minWidth: 0 }}>
-            <div className="text-[#aaaaaa] text-[15px] md:text-[16px] w-full leading-relaxed mb-[30px] space-y-3">
+            <div className="text-[#aaaaaa] text-[17px] md:text-[18px] w-full leading-relaxed mb-[30px] space-y-3">
               <p>
                 I enjoy building intelligent systems that solve real-world problems. My journey into technology started with a deep curiosity for computer science, which led me to pursue a <strong className="text-[#efefef]">Bachelor of Technology</strong> at <span className="text-[#efefef]">Vellore Institute of Technology, Bhopal</span>.
               </p>

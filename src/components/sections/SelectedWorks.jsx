@@ -68,7 +68,7 @@ const SelectedWorks = () => {
   ];
 
   return (
-    <section id="selected-works" className="max-w-[1200px] mx-auto py-[100px] px-[20px]">
+    <section id="selected-works" className="w-full max-w-[1000px] mx-auto py-[100px] px-[20px] md:px-0">
       
       <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
         <span 

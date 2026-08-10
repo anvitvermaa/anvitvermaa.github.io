@@ -156,7 +156,7 @@ const MorphingFooter = () => {
   ];
 
   return (
-    <section id="contact" className="w-full max-w-[1200px] mx-auto pt-[80px] md:pt-[200px] pb-[80px] md:pb-[40px] flex flex-col items-center justify-center relative z-10">
+    <section id="contact" className="w-full max-w-[1000px] mx-auto pt-[80px] md:pt-[200px] pb-[80px] md:pb-[40px] flex flex-col items-center justify-center relative z-10">
       
       {/* 1. MORPHING TEXT ANIMATION */}
       <div className="w-full h-[160px] md:h-[330px] mb-[20px]" style={{ overflow: 'visible' }}>

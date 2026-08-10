@@ -20,7 +20,7 @@ const Publications = () => {
   ];
 
   return (
-    <section id="publications" className="w-full max-w-[1200px] mx-auto py-[100px]">
+    <section id="publications" className="w-full max-w-[1000px] mx-auto py-[100px]">
       
       {/* SECTION HEADER */}
       <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
