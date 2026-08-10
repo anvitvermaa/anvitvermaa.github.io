@@ -14,7 +14,7 @@ export default function Home() {
     <main className="min-h-screen w-full relative">
       <RotatingStar />
 
-      <div className="px-6 md:px-24 lg:px-36 w-full relative z-10">
+      <div className="px-6 md:px-12 lg:px-16 w-full relative z-10">
         <div className="mx-auto w-full flex flex-col justify-center">
           <Hero />
           <Jobs />

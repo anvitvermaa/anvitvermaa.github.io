@@ -4,7 +4,7 @@ import ResumeButton from '../ResumeButton';
 
 const Hero = () => {
   return (
-    <section id="about" className="flex flex-col justify-center min-h-screen max-w-[1000px] mx-auto px-6 md:px-0 pt-24">
+    <section id="about" className="flex flex-col justify-center min-h-screen w-full max-w-[1200px] mx-auto px-6 md:px-0 pt-24">
       
       <div className="pt-20 md:pt-0 w-full">
         {/* Headings - full width, no grid */}
