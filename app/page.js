@@ -12,7 +12,7 @@ import RotatingStar from "../src/components/RotatingStar";
 export default function Home() {
   return (
     <main className="min-h-screen w-full relative">
-      <RotatingStar />
+      {/* <RotatingStar /> */}
 
       <div className="px-6 md:px-12 lg:px-16 w-full relative z-10">
         <div className="mx-auto w-full flex flex-col justify-center">
