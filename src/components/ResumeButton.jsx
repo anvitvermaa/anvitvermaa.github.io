@@ -30,6 +30,7 @@ export default function ResumeButton() {
         overflow: 'hidden',
         textDecoration: 'none'
       }}
+      className="shimmer-btn"
     >
       <div className="pointer-events-none w-full h-full flex items-center justify-center">
         <ScrollVelocityContainer>

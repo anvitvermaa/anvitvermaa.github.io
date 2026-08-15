@@ -2,6 +2,7 @@ import "./globals.css";
 import SocialSidebar from "../src/components/SocialSidebar"; 
 import Navbar from "../src/components/Navbar"; 
 import SideRays from "../src/components/SideRays";
+import Cursor from "../src/components/Cursor";
 
 export const viewport = {
   width: "device-width",
@@ -27,6 +28,9 @@ export default function RootLayout({ children }) {
 
         {/* Navbar */}
         <Navbar />
+
+        {/* Custom cursor */}
+        <Cursor />
 
         {/* Sidebar - Always Rendered */}
         <SocialSidebar />

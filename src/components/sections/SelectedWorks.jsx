@@ -87,7 +87,7 @@ const SelectedWorks = () => {
           const isWideProject = i < 3;
 
           return (
-            <li key={i} className="mb-[100px] last:mb-0">
+            <li key={i} className="mb-[100px] last:mb-0 reveal" data-stagger-index={i}>
 
               {/* MOBILE LAYOUT: simple stacked card (shown on small screens) */}
               <div className="block md:hidden">

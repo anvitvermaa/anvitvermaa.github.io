@@ -36,14 +36,19 @@ const Education = () => {
         {educationData.map((edu, i) => (
           <div
             key={i}
-            className="relative pl-[40px] mb-[60px] last:mb-0 group"
+            className="relative pl-[40px] mb-[60px] last:mb-0 group reveal"
+            data-stagger-index={i}
           >
 
             {/* THE DOT */}
             <div className="absolute left-[-9px] top-0 w-[16px] h-[16px] rounded-full bg-[#0a0a0a] border-2 border-[#ffffff] group-hover:bg-[#ffffff] transition-colors duration-300"></div>
 
             {/* THE CARD — always side-by-side, left column shrinks on mobile */}
-            <div className="card-flex items-stretch bg-white/5 backdrop-blur-lg rounded-xl shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+            <div className="card-flex items-stretch bg-white/5 backdrop-blur-lg rounded-xl shadow-xl overflow-hidden transition-all duration-300"
+              style={{ borderLeft: '2px solid transparent', transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease' }}
+              onMouseEnter={e => { e.currentTarget.style.boxShadow='0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.15)'; e.currentTarget.style.transform='translateY(-4px)'; }}
+              onMouseLeave={e => { e.currentTarget.style.boxShadow=''; e.currentTarget.style.borderColor='transparent'; e.currentTarget.style.transform=''; }}
+            >
 
               {/* LEFT COLUMN — shrinks on mobile, full 280px on desktop */}
               <div className="card-left-col bg-transparent p-[20px] md:p-[25px] flex flex-col justify-between">
