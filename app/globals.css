@@ -79,19 +79,16 @@ h1, h2, h3, h4, h5, h6 {
   animation: fadeup 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
 }
 
-/* Scroll reveal — clipPath edition */
+/* Scroll reveal — opacity+transform only (clip-path was creating stacking contexts that clip the fixed cursor) */
 .reveal {
   opacity: 0;
-  clip-path: inset(0 0 20% 0);
-  transform: translateY(28px);
+  transform: translateY(40px);
   transition:
-    opacity   0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    clip-path 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity   0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.visible {
   opacity: 1;
-  clip-path: inset(0 0 0% 0);
   transform: translateY(0);
 }
 
@@ -133,7 +130,6 @@ h1, h2, h3, h4, h5, h6 {
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
-    clip-path: none;
     transform: none;
     transition: none;
   }
@@ -145,6 +141,24 @@ h1, h2, h3, h4, h5, h6 {
   }
   .shimmer-btn::after { display: none; }
   body::before { animation: none; }
+}
+
+/* ── Section watermark numbers (decorative background) ── */
+.section-num {
+  position: absolute;
+  top: -0.15em;
+  left: -0.05em;
+  font-size: clamp(80px, 14vw, 160px);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+  text-stroke: 1px rgba(255,255,255,0.04);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Rotating star: desktop only */

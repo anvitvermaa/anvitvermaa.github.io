@@ -23,15 +23,16 @@ const Publications = () => {
     <section id="publications" className="w-full max-w-[1000px] mx-auto py-[100px]">
       
       {/* SECTION HEADER */}
-      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
+      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap relative">
+        <span className="section-num">03</span>
         <span 
-          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px]"
+          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px] relative z-10"
           style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
         >
           03.
         </span>
-        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0">Publications</h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px]"></div>
+        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0 relative z-10">Publications</h2>
+        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px] relative z-10"></div>
       </div>
 
       {/* CONTENT CONTAINER */}

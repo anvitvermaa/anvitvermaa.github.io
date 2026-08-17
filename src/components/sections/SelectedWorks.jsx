@@ -70,15 +70,16 @@ const SelectedWorks = () => {
   return (
     <section id="selected-works" className="w-full max-w-[1000px] mx-auto py-[100px] px-[20px] md:px-0">
       
-      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
+      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap relative">
+        <span className="section-num">04</span>
         <span 
-          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px]"
+          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px] relative z-10"
           style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
         >
           04.
         </span>
-        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0">Selected Works</h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px]"></div>
+        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0 relative z-10">Selected Works</h2>
+        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px] relative z-10"></div>
       </div>
 
       <ul className="list-none p-0 m-0">
@@ -113,7 +114,7 @@ const SelectedWorks = () => {
                 )}
 
                 <h3 className="font-bold text-[clamp(20px,5vw,26px)] mb-4">
-                  <a href={project.external || project.github} className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
+                  <a href={project.external || project.github} data-cursor-label="VIEW" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
                     {project.title}
                   </a>
                 </h3>
@@ -170,7 +171,7 @@ const SelectedWorks = () => {
                       transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
                     }}
                   >
-                    <a href={project.external || project.github} className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
+                    <a href={project.external || project.github} className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline" data-cursor-label="VIEW">
                       {project.title}
                     </a>
                   </h3>
