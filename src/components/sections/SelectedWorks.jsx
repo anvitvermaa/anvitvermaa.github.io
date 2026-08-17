@@ -1,10 +1,7 @@
 "use client";
 import React from 'react';
-import Image from 'next/image';
+import Image from 'next/image'; 
 import { GitHub, ExternalLink } from 'react-feather';
-
-const monoFont = "'SF Mono','Fira Code','Fira Mono','Roboto Mono',monospace";
-const serifFont = "'Cormorant Garamond', Georgia, serif";
 
 const SelectedWorks = () => {
   const featuredProjects = [
@@ -27,7 +24,7 @@ const SelectedWorks = () => {
       external: 'https://anvitvermaa.github.io/Repo_Analyst_AI/',
       github: 'https://github.com/anvitvermaa/Repo_Analyst_AI',
       tech: ['LangGraph', 'LLaMA 3', 'ChromaDB', 'React (Vite)', 'Framer Motion'],
-      html: 'Architected an autonomous LangGraph orchestration layer with LLaMA 3 agents and a ChromaDB RAG pipeline, enabling conversational codebase analysis, repository discovery, and automated README generation. Engineered an interactive React frontend with a flawless Windows XP-themed desktop experience, completely automating complex three-stage security audits (SAST &amp; dependencies) directly within the OS simulation.',
+      html: 'Architected an autonomous LangGraph orchestration layer with LLaMA 3 agents and a ChromaDB RAG pipeline, enabling conversational codebase analysis, repository discovery, and automated README generation. Engineered an interactive React frontend with a flawless Windows XP-themed desktop experience, completely automating complex three-stage security audits (SAST & dependencies) directly within the OS simulation.',
       cover: '/repo-analyst.png',
     },
     {
@@ -72,104 +69,210 @@ const SelectedWorks = () => {
 
   return (
     <section id="selected-works" className="w-full max-w-[1000px] mx-auto py-[100px] px-[20px] md:px-0">
-
-      {/* Section header */}
-      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap relative">
-        <span className="section-num">04</span>
-        <span
-          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px] relative z-10"
-          style={{ fontFamily: monoFont }}
+      
+      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap">
+        <span 
+          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px]"
+          style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
         >
           04.
         </span>
-        <h2
-          className="m-0 relative z-10"
-          style={{ fontFamily: serifFont, fontStyle: 'italic', fontWeight: 400, fontSize: 'clamp(30px,5vw,42px)', color: '#efefef' }}
-        >
-          Selected Works
-        </h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px] relative z-10" />
+        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0">Selected Works</h2>
+        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px]"></div>
       </div>
 
-      {/* Project list */}
       <ul className="list-none p-0 m-0">
-        {featuredProjects.map((project, i) => (
-          <li
-            key={i}
-            className="reveal mb-[80px] md:mb-[120px]"
-            style={{ '--stagger': i }}
-          >
-            {/* Number + title row */}
-            <div className="flex items-baseline gap-4 mb-5">
-              <span style={{ fontFamily: monoFont, fontSize: '11px', color: '#3a3a3a', letterSpacing: '0.2em', flexShrink: 0 }}>
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <h3 style={{ fontFamily: serifFont, fontStyle: 'italic', fontWeight: 500, fontSize: 'clamp(28px, 4vw, 48px)', color: '#f0ede8', margin: 0, lineHeight: 1.1 }}>
-                {project.external || project.github ? (
-                  <a
-                    href={project.external || project.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor-label="VIEW"
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                    onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
-                    onMouseLeave={e => (e.currentTarget.style.color = '#f0ede8')}
+        {featuredProjects.map((project, i) => {
+          const isOdd = i % 2 !== 0; 
+          const isWideProject = i < 3;
+
+          return (
+            <li key={i} className="mb-[100px] last:mb-0 reveal" data-stagger-index={i}>
+
+              {/* MOBILE LAYOUT: simple stacked card (shown on small screens) */}
+              <div className="block md:hidden">
+                {project.cover && (
+                  <a 
+                    href={project.external || project.github} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="block w-full h-auto relative rounded-2xl overflow-hidden shadow-lg mb-6 group"
                   >
+                    <div className="relative w-full h-auto">
+                      <Image 
+                        src={project.cover} 
+                        alt={project.title}
+                        width={800} 
+                        height={500} 
+                        className="w-full h-auto object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
+                      />
+                      <div className="absolute inset-0 z-10 bg-[#ffffff] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 rounded-2xl"></div>
+                      <div className="absolute inset-0 bg-[#0a0a0a]/10 group-hover:opacity-0 transition-all duration-500 rounded-2xl"></div>
+                    </div>
+                  </a>
+                )}
+
+                <h3 className="font-bold text-[clamp(20px,5vw,26px)] mb-4">
+                  <a href={project.external || project.github} className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
                     {project.title}
                   </a>
-                ) : project.title}
-              </h3>
-            </div>
+                </h3>
 
-            {/* Cover image — only if the project has one, shown at natural aspect ratio */}
-            {project.cover && (
-              <div
-                className="relative w-full mb-5 rounded overflow-hidden"
-                style={{ aspectRatio: '16/9', maxHeight: '380px' }}
-              >
-                <Image
-                  src={project.cover}
-                  alt={project.title}
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'top center', filter: 'grayscale(15%) brightness(0.8)' }}
-                  sizes="(max-width: 768px) 100vw, 1000px"
+                <div 
+                  className="bg-white/5 backdrop-blur-lg text-[#f0f0f0] text-[15px] leading-relaxed p-[20px] rounded-2xl shadow-xl mb-4"
+                  style={{ textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}
+                  dangerouslySetInnerHTML={{ __html: project.html }}
                 />
+
+                <ul className="flex flex-wrap gap-x-[15px] gap-y-[8px] mb-3 text-[#666666] font-mono text-[12px] list-none p-0">
+                  {project.tech.map((t, idx) => (
+                    <li key={idx}>{t}</li>
+                  ))}
+                </ul>
+
+                <div className="flex items-center gap-[16px]">
+                  {project.cta && (
+                    <a href={project.cta} className="border border-[#ffffff] text-[#ffffff] rounded px-[12px] py-[8px] text-[13px] font-mono hover:bg-[#ffffff]/10 transition-colors no-underline">
+                      Learn More
+                    </a>
+                  )}
+                  {project.github && (
+                    <a href={project.github} aria-label="GitHub Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
+                      <GitHub width={20} height={20} />
+                    </a>
+                  )}
+                  {project.external && !project.cta && (
+                    <a href={project.external} aria-label="External Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
+                      <ExternalLink width={22} height={22} />
+                    </a>
+                  )}
+                </div>
               </div>
-            )}
 
-            {/* Description */}
-            <div
-              className="text-[#888888] text-[15px] md:text-[16px] leading-relaxed mb-5"
-              dangerouslySetInnerHTML={{ __html: project.html }}
-            />
+              {/* DESKTOP LAYOUT: 12-col grid with alternating sides (hidden on mobile) */}
+              <div className="hidden md:grid md:grid-cols-12 md:items-center md:gap-[10px]">
+                
+                <div className={`
+                  project-content
+                  relative z-20 
+                  row-start-1
+                  flex flex-col justify-center h-full
+                  ${isOdd 
+                    ? 'col-start-6 col-end-13 text-right items-end' 
+                    : 'col-start-1 col-end-8 text-left items-start'
+                  }
+                `}>
+                  
+                  <h3 
+                    className="font-bold text-[clamp(24px,5vw,28px)] mb-[20px]"
+                    style={{ 
+                      width: '100%',
+                      transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
+                    }}
+                  >
+                    <a href={project.external || project.github} className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
+                      {project.title}
+                    </a>
+                  </h3>
 
-            {/* Tech stack + links */}
-            <div className="flex flex-wrap justify-between items-center gap-4">
-              <ul className="flex flex-wrap gap-x-4 gap-y-1 list-none p-0 m-0">
-                {project.tech.map((t, j) => (
-                  <li key={j} style={{ fontFamily: monoFont, fontSize: '12px', color: '#555555' }}>{t}</li>
-                ))}
-              </ul>
-              <div className="flex gap-4">
-                {project.github && (
-                  <a href={project.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="text-[#555555] hover:text-[#ffffff] transition-colors">
-                    <GitHub size={18} />
-                  </a>
+                  <div 
+                    className={`
+                      bg-white/5 backdrop-blur-lg
+                      text-[#f0f0f0] 
+                      text-[16px] md:text-[17px]
+                      leading-relaxed p-[25px] 
+                      !rounded-2xl shadow-xl hover:shadow-2xl transition-shadow relative z-20
+                      ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
+                    `}
+                    style={{
+                      width: '100%',
+                      transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none'),
+                      textShadow: '0 1px 2px rgba(0,0,0,0.8)'
+                    }}
+                    dangerouslySetInnerHTML={{ __html: project.html }}
+                  />
+
+                  <ul className={`
+                    flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#666666] font-mono text-[13px] list-none
+                    ${isOdd ? 'justify-end' : 'justify-start'}
+                  `}
+                  style={{ 
+                    width: '100%',
+                    transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
+                  }}
+                  >
+                    {project.tech.map((t, idx) => (
+                      <li key={idx}>{t}</li>
+                    ))}
+                  </ul>
+
+                  <div className={`
+                    flex items-center gap-[20px] mt-[10px]
+                    ${isOdd ? 'justify-end' : 'justify-start'}
+                  `}
+                   style={{ 
+                     width: '100%',
+                     transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
+                   }}
+                  >
+                    {project.cta && (
+                      <a href={project.cta} className="border border-[#ffffff] text-[#ffffff] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#ffffff]/10 transition-colors no-underline">
+                        Learn More
+                      </a>
+                    )}
+                    {project.github && (
+                      <a href={project.github} aria-label="GitHub Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
+                        <GitHub width={20} height={20} />
+                      </a>
+                    )}
+                    {project.external && !project.cta && (
+                      <a href={project.external} aria-label="External Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
+                        <ExternalLink width={22} height={22} />
+                      </a>
+                    )}
+                  </div>
+
+                </div>
+
+                {project.cover && (
+                  <div 
+                    className={`
+                      project-image
+                      relative z-10 row-start-1 h-full flex items-center
+                      ${isOdd 
+                        ? 'col-start-1 col-end-8' 
+                        : 'col-start-6 col-end-13'
+                      }
+                    `}
+                  >
+                     <a 
+                        href={project.external || project.github} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="block w-full h-auto relative !rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group"
+                     >
+                        <div className="relative w-full h-auto">
+                           <Image 
+                             src={project.cover} 
+                             alt={project.title}
+                             width={800} 
+                             height={500} 
+                             className="w-full h-auto object-cover !rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
+                           />
+                           
+                           <div className="absolute inset-0 z-10 bg-[#ffffff] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
+                           
+                           <div className="absolute inset-0 bg-[#0a0a0a]/10 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
+                        </div>
+                     </a>
+                  </div>
                 )}
-                {project.external && (
-                  <a href={project.external} target="_blank" rel="noreferrer" aria-label="Open project" className="text-[#555555] hover:text-[#ffffff] transition-colors">
-                    <ExternalLink size={18} />
-                  </a>
-                )}
+
               </div>
-            </div>
 
-            {/* Divider */}
-            {i < featuredProjects.length - 1 && (
-              <div className="mt-[60px] md:mt-[80px] w-full h-[1px] bg-[#1e1e1e]" />
-            )}
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
