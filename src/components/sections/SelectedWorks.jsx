@@ -97,7 +97,7 @@ const SelectedWorks = () => {
           <li
             key={i}
             className="reveal mb-[80px] md:mb-[120px]"
-            style={{ '--stagger': i } as React.CSSProperties}
+            style={{ '--stagger': i }}
           >
             {/* Number + title row */}
             <div className="flex items-baseline gap-4 mb-5">
