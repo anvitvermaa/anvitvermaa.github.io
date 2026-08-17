@@ -23,19 +23,19 @@ export default function Cursor() {
         dot.style.opacity = '1';
         visible = true;
       }
-      dot.style.transform = `translate(${mouseX - 5}px, ${mouseY - 5}px)`;
+      dot.style.transform = `translate(${mouseX - 7}px, ${mouseY - 7}px)`;
     };
 
     const onEnterInteractive = () => {
-      dot.style.width = '20px';
-      dot.style.height = '20px';
-      dot.style.marginLeft = '-5px';
-      dot.style.marginTop = '-5px';
+      dot.style.width = '28px';
+      dot.style.height = '28px';
+      dot.style.marginLeft = '-7px';
+      dot.style.marginTop = '-7px';
     };
 
     const onLeaveInteractive = () => {
-      dot.style.width = '10px';
-      dot.style.height = '10px';
+      dot.style.width = '14px';
+      dot.style.height = '14px';
       dot.style.marginLeft = '0';
       dot.style.marginTop = '0';
     };
@@ -68,8 +68,8 @@ export default function Cursor() {
         position: 'fixed',
         top: 0,
         left: 0,
-        width: '10px',
-        height: '10px',
+        width: '14px',
+        height: '14px',
         borderRadius: '50%',
         backgroundColor: '#ffffff',
         mixBlendMode: 'difference',
