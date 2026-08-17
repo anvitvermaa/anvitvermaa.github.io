@@ -64,7 +64,7 @@ const Jobs = () => {
         >
           02.
         </span>
-        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0 relative z-10">Experience</h2>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 400, fontSize: 'clamp(30px,5vw,42px)', color: '#efefef', margin: 0 }} className="relative z-10">Experience</h2>
         <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px] relative z-10"></div>
       </div>
 

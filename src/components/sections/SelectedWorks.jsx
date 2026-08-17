@@ -1,282 +1,280 @@
 "use client";
-import React from 'react';
-import Image from 'next/image'; 
+import React, { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { GitHub, ExternalLink } from 'react-feather';
 
-const SelectedWorks = () => {
-  const featuredProjects = [
-    {
-      title: 'Tastelytics',
-      external: 'https://d36b12rj7f0r2u.cloudfront.net/',
-      github: null,
-      tech: ['React', 'Vite', 'Python', 'AWS CloudFront', 'Spotify API', 'GitHub Actions'],
-      html: `
-        <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
-          <li style="margin-bottom: 10px;">Architected a serverless music analytics platform on <strong>AWS CloudFront</strong> with a Python backend, achieving global low-latency delivery and zero-downtime deployments via a <strong>GitHub Actions CI/CD pipeline</strong>.</li>
-          <li style="margin-bottom: 10px;">Integrated Spotify's <strong>PKCE OAuth 2.0</strong> flow for secure, backend-less authentication and built interactive analytics visualizing top artists, tracks, and algorithmic recommendations across multiple time ranges.</li>
-          <li style="margin-bottom: 0;">Engineered a custom <strong>Windows 95 / Frutiger Aero</strong> design system using Tailwind CSS, featuring a virtual CD Burner playlist builder, state-machine-driven Easter eggs, and retro pixel-art micro-interactions.</li>
-        </ul>
-      `,
-      cover: '/tastelytics.png',
-    },
-    {
-      title: 'GitHub Repo Analyst AI',
-      external: 'https://anvitvermaa.github.io/Repo_Analyst_AI/',
-      github: 'https://github.com/anvitvermaa/Repo_Analyst_AI',
-      tech: ['LangGraph', 'LLaMA 3', 'ChromaDB', 'React (Vite)', 'Framer Motion'],
-      html: 'Architected an autonomous LangGraph orchestration layer with LLaMA 3 agents and a ChromaDB RAG pipeline, enabling conversational codebase analysis, repository discovery, and automated README generation. Engineered an interactive React frontend with a flawless Windows XP-themed desktop experience, completely automating complex three-stage security audits (SAST & dependencies) directly within the OS simulation.',
-      cover: '/repo-analyst.png',
-    },
-    {
-      title: 'Rondônia Fishbone Harmonizer',
-      external: 'https://anvitvermaa.github.io/rondonia-fishbone-harmonizer/',
-      github: 'https://github.com/anvitvermaa/rondonia-fishbone-harmonizer',
-      tech: ['Python', 'PyTorch (GANs & Transformers)', 'GDAL', 'Sentinel-2', 'skimage'],
-      html: 'Pioneered a VRAM-optimized PyTorch pipeline and a proprietary "Smart Scaling" algorithm to upscale 30m Landsat to 10m Sentinel-2 imagery, strictly preserving 16-bit TOA multispectral integrity of the Rondônia fishbone deforestation pattern. Executed a definitive benchmarking study of 8 Super-Resolution architectures (SRGAN, SwinIR, HAT) using a rigorous perception-distortion matrix (PSNR, SSIM, SAM, LPIPS) to quantify sub-hectare logging road hallucination.',
-      cover: '/fishbone.png',
-    },
-    {
-      title: 'EV Subsidy Causal Evaluation',
-      external: null,
-      github: null,
-      tech: ['Python', 'Polars', 'SDiD', 'AJAX', 'Causal Inference'],
-      html: `
-        <p style="margin-bottom: 10px;"><strong>Project Context:</strong> A rigorous quasi-experimental causal evaluation of the Maharashtra EV Subsidy Policy 2025 across a balanced macro-state panel of top vehicle-registering Indian states (N=16, T=54 months).</p>
-        <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
-          <li style="margin-bottom: 10px;"><strong>Uncovered the "Demand Displacement Paradox":</strong> Mathematically isolated a null short-run demand signal using quasi-experimental causal analysis, driven by volatile national FAME-II subsidy expirations.</li>
-          <li style="margin-bottom: 10px;"><strong>High-Performance Data Engineering:</strong> Engineered an out-of-core ETL pipeline utilizing a Python AJAX scraper and Polars to lazily ingest, transform, and evaluate nearly 100 million API-sourced vehicle registrations across 54 months of macroscopic Vahan data.</li>
-          <li style="margin-bottom: 10px;"><strong>Advanced Causal Architecture:</strong> Pioneered a rigorous dual-specification causal architecture utilizing the Synthetic Difference-in-Differences (SDiD) estimator with L2 Ridge Regularization to construct unconfounded baseline counterfactuals.</li>
-          <li style="margin-bottom: 0;"><strong>Mathematical Robustness:</strong> Designed advanced spatial robustness checks ("Donut Hole" specifications) and placebo bootstrap permutation tests to mathematically validate SUTVA compliance against cross-border arbitrage spillovers.</li>
-        </ul>
-      `,
-      cover: null,
-    },
-    {
-      title: 'Multi-Agent Telecom Optimizer',
-      external: null,
-      github: 'https://github.com/anvitvermaa/Multi-Agent-Telecom-Optimizer',
-      tech: ['LangGraph', 'LLaMA 3', 'MLflow', 'Databricks', 'ChromaDB'],
-      html: `
-        <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
-          <li style="margin-bottom: 10px;"><strong>Stateful Orchestration:</strong> Orchestrated complex marketing workflows using LangGraph with dynamic branching, reflection, and supervisor-review loops for auto-regeneration based on quality thresholds.</li>
-          <li style="margin-bottom: 10px;"><strong>Creative &amp; Supervisor LLMs:</strong> Deployed LLaMA 3 for generating marketing messages and reviewing tone/clarity, utilizing scoring systems to drive iterative content refinement.</li>
-          <li style="margin-bottom: 10px;"><strong>Observability &amp; Data:</strong> Integrated MLflow for autologging prompts and retrieval metrics, while tying MySQL customer features (churn risk, usage) to high-quality content generation.</li>
-        </ul>
-      `,
-      cover: null,
-    },
-  ];
+const monoFont = "'SF Mono','Fira Code','Fira Mono','Roboto Mono',monospace";
+const serifFont = "'Cormorant Garamond', Georgia, serif";
+
+const featuredProjects = [
+  {
+    title: 'Tastelytics',
+    external: 'https://d36b12rj7f0r2u.cloudfront.net/',
+    github: null,
+    tech: ['React', 'Vite', 'Python', 'AWS CloudFront', 'Spotify API', 'GitHub Actions'],
+    desc: 'Architected a serverless music analytics platform on AWS CloudFront with a Python backend, achieving global low-latency delivery and zero-downtime deployments via a GitHub Actions CI/CD pipeline. Integrated Spotify PKCE OAuth 2.0 and engineered a Windows 95 / Frutiger Aero design system with retro pixel-art micro-interactions.',
+    cover: '/tastelytics.png',
+  },
+  {
+    title: 'GitHub Repo\nAnalyst AI',
+    external: 'https://anvitvermaa.github.io/Repo_Analyst_AI/',
+    github: 'https://github.com/anvitvermaa/Repo_Analyst_AI',
+    tech: ['LangGraph', 'LLaMA 3', 'ChromaDB', 'React (Vite)', 'Framer Motion'],
+    desc: 'Architected an autonomous LangGraph orchestration layer with LLaMA 3 agents and a ChromaDB RAG pipeline, enabling conversational codebase analysis and automated README generation. Engineered a Windows XP-themed desktop experience that automates three-stage security audits (SAST & dependencies).',
+    cover: '/repo-analyst.png',
+  },
+  {
+    title: 'Rondônia Fishbone\nHarmonizer',
+    external: 'https://anvitvermaa.github.io/rondonia-fishbone-harmonizer/',
+    github: 'https://github.com/anvitvermaa/rondonia-fishbone-harmonizer',
+    tech: ['Python', 'PyTorch', 'GDAL', 'Sentinel-2', 'skimage'],
+    desc: 'Pioneered a VRAM-optimized PyTorch pipeline to upscale 30m Landsat to 10m Sentinel-2 imagery preserving 16-bit multispectral integrity. Executed a benchmarking study of 8 Super-Resolution architectures (SRGAN, SwinIR, HAT) using a perception-distortion matrix (PSNR, SSIM, LPIPS).',
+    cover: '/fishbone.png',
+  },
+  {
+    title: 'EV Subsidy\nCausal Evaluation',
+    external: null,
+    github: null,
+    tech: ['Python', 'Polars', 'SDiD', 'AJAX', 'Causal Inference'],
+    desc: 'Quasi-experimental causal evaluation of the Maharashtra EV Subsidy Policy 2025 across a balanced macro-state panel (N=16, T=54 months). Uncovered the "Demand Displacement Paradox" via Synthetic Difference-in-Differences with L2 Ridge Regularization. Engineered an out-of-core ETL pipeline ingesting ~100M vehicle registrations.',
+    cover: null,
+  },
+  {
+    title: 'Multi-Agent\nTelecom Optimizer',
+    external: null,
+    github: 'https://github.com/anvitvermaa/Multi-Agent-Telecom-Optimizer',
+    tech: ['LangGraph', 'LLaMA 3', 'MLflow', 'Databricks', 'ChromaDB'],
+    desc: 'Orchestrated complex marketing workflows using LangGraph with dynamic branching, reflection, and supervisor-review loops for auto-regeneration based on quality thresholds. Integrated MLflow for autologging prompts and retrieval metrics, tied to MySQL customer features for high-quality content generation.',
+    cover: null,
+  },
+];
+
+export default function SelectedWorks() {
+  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Keyboard/scroll navigation
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const idx = Math.round(el.scrollLeft / el.offsetWidth);
+      setActiveIndex(idx);
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const scrollTo = (i) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTo({ left: el.offsetWidth * i, behavior: 'smooth' });
+  };
 
   return (
-    <section id="selected-works" className="w-full max-w-[1000px] mx-auto py-[100px] px-[20px] md:px-0">
-      
-      <div className="flex items-center gap-[10px] mb-[60px] w-full whitespace-nowrap relative">
+    <section id="selected-works" style={{ width: '100%', paddingTop: '100px', paddingBottom: '100px' }}>
+
+      {/* ── Section header ──────────────────────────── */}
+      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 40px 60px', position: 'relative' }}>
         <span className="section-num">04</span>
-        <span 
-          className="text-[clamp(26px,5vw,32px)] text-[#ffffff] font-semibold mr-[10px] relative z-10"
-          style={{ fontFamily: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace" }}
-        >
-          04.
-        </span>
-        <h2 className="font-bold text-[clamp(26px,5vw,32px)] text-[#efefef] m-0 relative z-10">Selected Works</h2>
-        <div className="w-full max-w-[300px] h-[1px] bg-[#2a2a2a] ml-[20px] relative z-10"></div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative', zIndex: 1 }}>
+          <span style={{ fontFamily: monoFont, fontSize: 'clamp(26px,5vw,32px)', color: '#ffffff', fontWeight: 600, marginRight: '8px' }}>
+            04.
+          </span>
+          <h2 style={{ fontFamily: serifFont, fontStyle: 'italic', fontWeight: 400, fontSize: 'clamp(30px,5vw,42px)', color: '#efefef', margin: 0 }}>
+            Selected Works
+          </h2>
+          <div style={{ flex: 1, maxWidth: '300px', height: '1px', background: '#2a2a2a', marginLeft: '16px' }} />
+        </div>
       </div>
 
-      <ul className="list-none p-0 m-0">
-        {featuredProjects.map((project, i) => {
-          const isOdd = i % 2 !== 0; 
-          const isWideProject = i < 3;
+      {/* ── Desktop: horizontal scroll strip ─────────── */}
+      <div className="hidden md:block" style={{ position: 'relative' }}>
 
-          return (
-            <li key={i} className="mb-[100px] last:mb-0 reveal" data-stagger-index={i}>
+        {/* Counter */}
+        <div style={{
+          position: 'absolute',
+          top: '32px',
+          right: '40px',
+          zIndex: 10,
+          fontFamily: monoFont,
+          fontSize: '11px',
+          letterSpacing: '0.2em',
+          color: '#444444',
+        }}>
+          {String(activeIndex + 1).padStart(2, '0')} / {String(featuredProjects.length).padStart(2, '0')}
+        </div>
 
-              {/* MOBILE LAYOUT: simple stacked card (shown on small screens) */}
-              <div className="block md:hidden">
-                {project.cover && (
-                  <a 
-                    href={project.external || project.github} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="block w-full h-auto relative rounded-2xl overflow-hidden shadow-lg mb-6 group"
-                  >
-                    <div className="relative w-full h-auto">
-                      <Image 
-                        src={project.cover} 
-                        alt={project.title}
-                        width={800} 
-                        height={500} 
-                        className="w-full h-auto object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
-                      />
-                      <div className="absolute inset-0 z-10 bg-[#ffffff] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 rounded-2xl"></div>
-                      <div className="absolute inset-0 bg-[#0a0a0a]/10 group-hover:opacity-0 transition-all duration-500 rounded-2xl"></div>
-                    </div>
-                  </a>
-                )}
-
-                <h3 className="font-bold text-[clamp(20px,5vw,26px)] mb-4">
-                  <a href={project.external || project.github} data-cursor-label="VIEW" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
-                    {project.title}
-                  </a>
-                </h3>
-
-                <div 
-                  className="bg-white/5 backdrop-blur-lg text-[#f0f0f0] text-[15px] leading-relaxed p-[20px] rounded-2xl shadow-xl mb-4"
-                  style={{ textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}
-                  dangerouslySetInnerHTML={{ __html: project.html }}
-                />
-
-                <ul className="flex flex-wrap gap-x-[15px] gap-y-[8px] mb-3 text-[#666666] font-mono text-[12px] list-none p-0">
-                  {project.tech.map((t, idx) => (
-                    <li key={idx}>{t}</li>
-                  ))}
-                </ul>
-
-                <div className="flex items-center gap-[16px]">
-                  {project.cta && (
-                    <a href={project.cta} className="border border-[#ffffff] text-[#ffffff] rounded px-[12px] py-[8px] text-[13px] font-mono hover:bg-[#ffffff]/10 transition-colors no-underline">
-                      Learn More
-                    </a>
-                  )}
-                  {project.github && (
-                    <a href={project.github} aria-label="GitHub Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
-                      <GitHub width={20} height={20} />
-                    </a>
-                  )}
-                  {project.external && !project.cta && (
-                    <a href={project.external} aria-label="External Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
-                      <ExternalLink width={22} height={22} />
-                    </a>
-                  )}
+        {/* Scroll container */}
+        <div
+          ref={scrollRef}
+          className="scrollbar-none"
+          style={{
+            display: 'flex',
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            borderTop: '1px solid #1e1e1e',
+            borderBottom: '1px solid #1e1e1e',
+          }}
+        >
+          {featuredProjects.map((project, i) => (
+            <div
+              key={i}
+              style={{
+                flex: '0 0 85vw',
+                maxWidth: '1100px',
+                scrollSnapAlign: 'start',
+                display: 'grid',
+                gridTemplateColumns: project.cover ? '1fr 1fr' : '1fr',
+                minHeight: '72vh',
+                borderRight: '1px solid #1e1e1e',
+              }}
+            >
+              {/* Text side */}
+              <div style={{
+                padding: '56px 56px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                borderRight: project.cover ? '1px solid #1e1e1e' : 'none',
+              }}>
+                {/* Number */}
+                <div style={{ fontFamily: monoFont, fontSize: '11px', color: '#3a3a3a', letterSpacing: '0.25em' }}>
+                  {String(i + 1).padStart(2, '0')}
                 </div>
-              </div>
 
-              {/* DESKTOP LAYOUT: 12-col grid with alternating sides (hidden on mobile) */}
-              <div className="hidden md:grid md:grid-cols-12 md:items-center md:gap-[10px]">
-                
-                <div className={`
-                  project-content
-                  relative z-20 
-                  row-start-1
-                  flex flex-col justify-center h-full
-                  ${isOdd 
-                    ? 'col-start-6 col-end-13 text-right items-end' 
-                    : 'col-start-1 col-end-8 text-left items-start'
-                  }
-                `}>
-                  
-                  <h3 
-                    className="font-bold text-[clamp(24px,5vw,28px)] mb-[20px]"
-                    style={{ 
-                      width: '100%',
-                      transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
-                    }}
-                  >
-                    <a href={project.external || project.github} className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline" data-cursor-label="VIEW">
-                      {project.title}
-                    </a>
+                {/* Title + desc */}
+                <div>
+                  <h3 style={{
+                    fontFamily: serifFont,
+                    fontSize: 'clamp(36px, 4vw, 58px)',
+                    fontWeight: 500,
+                    fontStyle: 'italic',
+                    color: '#f0ede8',
+                    lineHeight: 1.05,
+                    marginBottom: '28px',
+                    whiteSpace: 'pre-line',
+                  }}>
+                    {project.external ? (
+                      <a href={project.external} target="_blank" rel="noreferrer" data-cursor-label="VIEW"
+                        style={{ color: 'inherit', textDecoration: 'none' }}>
+                        {project.title}
+                      </a>
+                    ) : project.github ? (
+                      <a href={project.github} target="_blank" rel="noreferrer" data-cursor-label="VIEW"
+                        style={{ color: 'inherit', textDecoration: 'none' }}>
+                        {project.title}
+                      </a>
+                    ) : project.title}
                   </h3>
 
-                  <div 
-                    className={`
-                      bg-white/5 backdrop-blur-lg
-                      text-[#f0f0f0] 
-                      text-[16px] md:text-[17px]
-                      leading-relaxed p-[25px] 
-                      !rounded-2xl shadow-xl hover:shadow-2xl transition-shadow relative z-20
-                      ${!isWideProject && 'md:h-[400px] overflow-y-auto w-full'}
-                    `}
-                    style={{
-                      width: '100%',
-                      transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none'),
-                      textShadow: '0 1px 2px rgba(0,0,0,0.8)'
-                    }}
-                    dangerouslySetInnerHTML={{ __html: project.html }}
-                  />
-
-                  <ul className={`
-                    flex flex-wrap gap-x-[20px] gap-y-[10px] mt-[25px] mb-[10px] text-[#666666] font-mono text-[13px] list-none
-                    ${isOdd ? 'justify-end' : 'justify-start'}
-                  `}
-                  style={{ 
-                    width: '100%',
-                    transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
-                  }}
-                  >
-                    {project.tech.map((t, idx) => (
-                      <li key={idx}>{t}</li>
-                    ))}
-                  </ul>
-
-                  <div className={`
-                    flex items-center gap-[20px] mt-[10px]
-                    ${isOdd ? 'justify-end' : 'justify-start'}
-                  `}
-                   style={{ 
-                     width: '100%',
-                     transform: i === 0 ? 'translateX(-80px)' : (i === 1 ? 'translateX(80px)' : 'none')
-                   }}
-                  >
-                    {project.cta && (
-                      <a href={project.cta} className="border border-[#ffffff] text-[#ffffff] rounded px-[15px] py-[10px] text-[13px] font-mono hover:bg-[#ffffff]/10 transition-colors no-underline">
-                        Learn More
-                      </a>
-                    )}
-                    {project.github && (
-                      <a href={project.github} aria-label="GitHub Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
-                        <GitHub width={20} height={20} />
-                      </a>
-                    )}
-                    {project.external && !project.cta && (
-                      <a href={project.external} aria-label="External Link" target="_blank" rel="noreferrer" className="text-[#efefef] hover:text-[#ffffff] transition-colors no-underline">
-                        <ExternalLink width={22} height={22} />
-                      </a>
-                    )}
-                  </div>
-
+                  <p style={{ color: '#707070', fontSize: '15px', lineHeight: 1.7, maxWidth: '480px', marginBottom: '32px' }}>
+                    {project.desc}
+                  </p>
                 </div>
 
-                {project.cover && (
-                  <div 
-                    className={`
-                      project-image
-                      relative z-10 row-start-1 h-full flex items-center
-                      ${isOdd 
-                        ? 'col-start-1 col-end-8' 
-                        : 'col-start-6 col-end-13'
-                      }
-                    `}
-                  >
-                     <a 
-                        href={project.external || project.github} 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        className="block w-full h-auto relative !rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group"
-                     >
-                        <div className="relative w-full h-auto">
-                           <Image 
-                             src={project.cover} 
-                             alt={project.title}
-                             width={800} 
-                             height={500} 
-                             className="w-full h-auto object-cover !rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
-                           />
-                           
-                           <div className="absolute inset-0 z-10 bg-[#ffffff] mix-blend-multiply opacity-50 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
-                           
-                           <div className="absolute inset-0 bg-[#0a0a0a]/10 group-hover:opacity-0 transition-all duration-500 !rounded-2xl"></div>
-                        </div>
-                     </a>
+                {/* Bottom row: tech + links */}
+                <div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 20px', marginBottom: '24px' }}>
+                    {project.tech.map((t, j) => (
+                      <span key={j} style={{ fontFamily: monoFont, fontSize: '11px', color: '#444444', letterSpacing: '0.05em' }}>
+                        {t}
+                      </span>
+                    ))}
                   </div>
-                )}
-
+                  <div style={{ display: 'flex', gap: '16px' }}>
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noreferrer" aria-label="GitHub"
+                        style={{ color: '#555555' }}
+                        onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+                        onMouseLeave={e => e.currentTarget.style.color = '#555555'}>
+                        <GitHub size={18} />
+                      </a>
+                    )}
+                    {project.external && (
+                      <a href={project.external} target="_blank" rel="noreferrer" aria-label="Open"
+                        style={{ color: '#555555' }}
+                        onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+                        onMouseLeave={e => e.currentTarget.style.color = '#555555'}>
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
 
-            </li>
-          );
-        })}
-      </ul>
+              {/* Cover image side */}
+              {project.cover && (
+                <div style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#0a0a0a' }}>
+                  <Image
+                    src={project.cover}
+                    alt={project.title}
+                    fill
+                    style={{ objectFit: 'cover', filter: 'grayscale(20%) brightness(0.75)', transition: 'filter 0.5s ease' }}
+                    onMouseEnter={e => e.currentTarget.style.filter = 'grayscale(0%) brightness(0.9)'}
+                    onMouseLeave={e => e.currentTarget.style.filter = 'grayscale(20%) brightness(0.75)'}
+                  />
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* End spacer */}
+          <div style={{ flex: '0 0 40px', scrollSnapAlign: 'none' }} />
+        </div>
+
+        {/* Dot nav */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', paddingTop: '28px' }}>
+          {featuredProjects.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              style={{
+                width: i === activeIndex ? '24px' : '6px',
+                height: '6px',
+                borderRadius: '3px',
+                backgroundColor: i === activeIndex ? '#ffffff' : '#333333',
+                border: 'none',
+                padding: 0,
+                transition: 'all 0.3s ease',
+              }}
+              aria-label={`Go to project ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* ── Mobile: stacked cards ────────────────────── */}
+      <div className="md:hidden" style={{ padding: '0 24px' }}>
+        {featuredProjects.map((project, i) => (
+          <div key={i} className="reveal" data-stagger-index={i}
+            style={{ marginBottom: '60px', paddingBottom: '60px', borderBottom: '1px solid #1e1e1e' }}>
+            {project.cover && (
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', marginBottom: '20px', borderRadius: '8px', overflow: 'hidden' }}>
+                <Image src={project.cover} alt={project.title} fill style={{ objectFit: 'cover', filter: 'grayscale(15%)' }} />
+              </div>
+            )}
+            <span style={{ fontFamily: monoFont, fontSize: '10px', color: '#3a3a3a', letterSpacing: '0.2em' }}>
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 style={{ fontFamily: serifFont, fontStyle: 'italic', fontSize: '32px', fontWeight: 500, color: '#f0ede8', lineHeight: 1.1, margin: '8px 0 16px', whiteSpace: 'pre-line' }}>
+              {project.title}
+            </h3>
+            <p style={{ color: '#707070', fontSize: '14px', lineHeight: 1.7, marginBottom: '20px' }}>{project.desc}</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 16px', marginBottom: '16px' }}>
+              {project.tech.map((t, j) => (
+                <span key={j} style={{ fontFamily: monoFont, fontSize: '10px', color: '#444444' }}>{t}</span>
+              ))}
+            </div>
+            <div style={{ display: 'flex', gap: '14px' }}>
+              {project.github && <a href={project.github} target="_blank" rel="noreferrer" style={{ color: '#555555' }}><GitHub size={17} /></a>}
+              {project.external && <a href={project.external} target="_blank" rel="noreferrer" style={{ color: '#555555' }}><ExternalLink size={17} /></a>}
+            </div>
+          </div>
+        ))}
+      </div>
+
     </section>
   );
-};
-
-export default SelectedWorks;
+}
