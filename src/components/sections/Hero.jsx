@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from 'react';
 import ResumeButton from '../ResumeButton';
 
-// Splits text into individually animated letter spans
 function AnimatedText({ text, baseDelay = 0, className = '' }) {
   return (
     <span className={className} aria-label={text}>
@@ -21,30 +20,69 @@ function AnimatedText({ text, baseDelay = 0, className = '' }) {
 }
 
 const Hero = () => {
-  const bioRef = useRef(null);
-  const btnRef = useRef(null);
-  const labelRef = useRef(null);
+  const bioRef     = useRef(null);
+  const btnRef     = useRef(null);
+  const labelRef   = useRef(null);
+  const textColRef = useRef(null);
+  const photoRef   = useRef(null);
 
+  // ── Stagger bio + button on mount ─────────────────────────────────
   useEffect(() => {
-    // Stagger-fade the bio paragraphs and button after headings animate
     const elements = [labelRef.current, bioRef.current, btnRef.current];
     elements.forEach((el, i) => {
       if (!el) return;
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      el.style.opacity   = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
       setTimeout(() => {
-        el.style.opacity = '1';
+        el.style.opacity   = '1';
         el.style.transform = 'translateY(0)';
-      }, 600 + i * 150);
+      }, 640 + i * 160);
     });
   }, []);
 
+  // ── Mouse parallax ────────────────────────────────────────────────
+  useEffect(() => {
+    // Only on desktop
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
+    let rafId;
+    const onMove = (e) => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const cx = window.innerWidth  / 2;
+        const cy = window.innerHeight / 2;
+        const dx = (e.clientX - cx) / cx; // -1 to +1
+        const dy = (e.clientY - cy) / cy;
+
+        if (textColRef.current) {
+          textColRef.current.style.transform =
+            `translate(${dx * 7}px, ${dy * 5}px)`;
+          textColRef.current.style.transition = 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)';
+        }
+        if (photoRef.current) {
+          photoRef.current.style.transform =
+            `translate(${dx * -12}px, ${dy * -8}px)`;
+          photoRef.current.style.transition = 'transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)';
+        }
+      });
+    };
+
+    window.addEventListener('mousemove', onMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
-    <section id="about" className="flex flex-col justify-center min-h-screen w-full max-w-[1000px] mx-auto px-6 md:px-0 pt-24">
-      
+    <section
+      id="about"
+      className="flex flex-col justify-center min-h-screen w-full max-w-[1000px] mx-auto px-6 md:px-0 pt-24"
+    >
       <div className="pt-20 md:pt-0 w-full">
-        {/* Headings — character animated */}
+
+        {/* ── Headings ───────────────────────────────────────── */}
         <p
           ref={labelRef}
           className="text-[#ffffff] font-mono text-[14px] md:text-[16px] ml-[2px]"
@@ -52,6 +90,7 @@ const Hero = () => {
         >
           Hi, my name is
         </p>
+
         <h2
           className="text-[#efefef] font-bold text-[clamp(40px,6vw,70px)]"
           style={{ margin: 0, padding: 0, lineHeight: 1.1 }}
@@ -62,21 +101,39 @@ const Hero = () => {
           className="text-[#888888] font-bold text-[clamp(40px,6vw,70px)]"
           style={{ margin: 0, padding: 0, lineHeight: 1.1, marginBottom: '20px' }}
         >
-          <AnimatedText text="AI Engineer and Researcher." baseDelay={400} />
+          <AnimatedText text="AI Engineer and Researcher." baseDelay={420} />
         </h3>
 
-        {/* Bio + Photo side by side */}
+        {/* ── Bio + Photo ────────────────────────────────────── */}
         <div className="hero-grid">
-          <div style={{ minWidth: 0 }}>
-            <div ref={bioRef} className="text-[#aaaaaa] text-[17px] md:text-[18px] w-full leading-relaxed mb-[30px] space-y-3">
+
+          {/* Text column — parallax layer A */}
+          <div ref={textColRef} style={{ minWidth: 0, willChange: 'transform' }}>
+            <div
+              ref={bioRef}
+              className="text-[#aaaaaa] text-[17px] md:text-[18px] w-full leading-relaxed mb-[30px] space-y-3"
+            >
               <p>
-                I enjoy building intelligent systems that solve real-world problems. My journey into technology started with a deep curiosity for computer science, which led me to pursue a <strong className="text-[#efefef]">Bachelor of Technology</strong> at <span className="text-[#efefef]">Vellore Institute of Technology, Bhopal</span>.
+                I enjoy building intelligent systems that solve real-world problems. My journey into
+                technology started with a deep curiosity for computer science, which led me to pursue
+                a <strong className="text-[#efefef]">Bachelor of Technology</strong> at{' '}
+                <span className="text-[#efefef]">Vellore Institute of Technology, Bhopal</span>.
               </p>
               <p>
-                Fast-forward to today, and I've had the privilege of working as an <strong className="text-[#efefef]">AI Intern</strong> at <span className="text-[#efefef]">Jio Platforms Limited</span>, where I constructed autonomous agents and RAG pipelines using LangChain and LLAMA 3. I also serve as a <strong className="text-[#efefef]">Research Assistant</strong> evaluating neural architectures for autonomous driving, and a <strong className="text-[#efefef]">Technical Assistant</strong> spearheading technical development for university-wide Linux courses.
+                Fast-forward to today, and I've had the privilege of working as an{' '}
+                <strong className="text-[#efefef]">AI Intern</strong> at{' '}
+                <span className="text-[#efefef]">Jio Platforms Limited</span>, where I constructed
+                autonomous agents and RAG pipelines using LangChain and LLAMA 3. I also serve as a{' '}
+                <strong className="text-[#efefef]">Research Assistant</strong> evaluating neural
+                architectures for autonomous driving, and a{' '}
+                <strong className="text-[#efefef]">Technical Assistant</strong> spearheading technical
+                development for university-wide Linux courses.
               </p>
               <p>
-                My main focus these days is engineering robust <strong className="text-[#efefef]">AI/ML pipelines</strong> and developing <span className="text-[#efefef]">multi-agent orchestration systems</span>. I thrive at the intersection of full-stack development and advanced machine learning.
+                My main focus these days is engineering robust{' '}
+                <strong className="text-[#efefef]">AI/ML pipelines</strong> and developing{' '}
+                <span className="text-[#efefef]">multi-agent orchestration systems</span>. I thrive at
+                the intersection of full-stack development and advanced machine learning.
               </p>
             </div>
 
@@ -85,31 +142,19 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Photo */}
+          {/* Photo — parallax layer B (opposite direction) */}
           <div className="hero-photo">
-            <div className="relative group">
-              <img 
-                src="/photo.png" 
-                alt="Anvit Verma" 
+            <div ref={photoRef} style={{ willChange: 'transform' }}>
+              <img
+                src="/photo.png"
+                alt="Anvit Verma"
                 className="relative w-full h-auto rounded grayscale hover:grayscale-0 transition-all duration-500 object-cover"
-                style={{
-                  outline: '2px solid transparent',
-                  transition: 'grayscale 0.5s ease, outline-color 0.4s ease, outline-offset 0.4s ease',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.outlineColor = 'rgba(255,255,255,0.25)';
-                  e.currentTarget.style.outlineOffset = '6px';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.outlineColor = 'transparent';
-                  e.currentTarget.style.outlineOffset = '0px';
-                }}
               />
             </div>
           </div>
+
         </div>
       </div>
-
     </section>
   );
 };
