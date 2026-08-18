@@ -7,8 +7,8 @@ const SelectedWorks = () => {
   const featuredProjects = [
     {
       title: 'Tastelytics',
-      external: 'https://d36b12rj7f0r2u.cloudfront.net/',
-      github: null,
+      external: null,
+      github: 'https://github.com/anvitvermaa/Tastelytics',
       tech: ['React', 'Vite', 'Python', 'AWS CloudFront', 'Spotify API', 'GitHub Actions'],
       html: `
         <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
