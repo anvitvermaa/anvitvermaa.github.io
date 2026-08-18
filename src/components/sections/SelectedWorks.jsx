@@ -29,7 +29,7 @@ const SelectedWorks = () => {
     },
     {
       title: 'Rondônia Fishbone Harmonizer',
-      external: 'https://anvitvermaa.github.io/rondonia-fishbone-harmonizer/',
+      external: null,
       github: 'https://github.com/anvitvermaa/rondonia-fishbone-harmonizer',
       tech: ['Python', 'PyTorch (GANs & Transformers)', 'GDAL', 'Sentinel-2', 'skimage'],
       html: 'Pioneered a VRAM-optimized PyTorch pipeline and a proprietary "Smart Scaling" algorithm to upscale 30m Landsat to 10m Sentinel-2 imagery, strictly preserving 16-bit TOA multispectral integrity of the Rondônia fishbone deforestation pattern. Executed a definitive benchmarking study of 8 Super-Resolution architectures (SRGAN, SwinIR, HAT) using a rigorous perception-distortion matrix (PSNR, SSIM, SAM, LPIPS) to quantify sub-hectare logging road hallucination.',
