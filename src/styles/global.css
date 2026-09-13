@@ -294,11 +294,15 @@ footer.colophon { position: relative; z-index: 1; background: var(--paper-2); co
 .stagger__col { display: flex; flex-direction: column; gap: clamp(2.6rem, 5.5vh, 5rem); }
 .stagger__col--down { margin-top: clamp(5rem, 17vh, 13rem); }
 .stagger .ibox { margin-top: calc(var(--o, 0) * clamp(0.5rem, 1.5vh, 1.4rem)); }
+
+/* flat grid specifically for Experience to guarantee 1-2-3-4 order without masonry breaks */
+.stagger-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.4rem, 2.6vw, 2.4rem); align-items: start; }
+.stagger-grid .ibox:nth-child(even) { margin-top: clamp(5rem, 17vh, 13rem); }
 @media (max-width: 760px) {
-  .stagger { display: flex; flex-direction: column; gap: clamp(1.2rem, 4vw, 1.8rem); }
+  .stagger, .stagger-grid { display: flex; flex-direction: column; gap: clamp(1.2rem, 4vw, 1.8rem); }
   .stagger__col { display: contents; }
   .stagger__col--down { margin-top: 0; }
-  .stagger .ibox { order: var(--o, 0); margin-top: 0; }
+  .stagger .ibox, .stagger-grid .ibox { order: var(--o, 0); margin-top: 0; }
 }
 
 /* grunge artwork background (fixed, behind everything) */

@@ -8,13 +8,8 @@ const right = items.filter((_, i) => i % 2 === 1);
 <section class="panel p-exp" id="experience">
   <div class="panel__in">
     <div class="p-head"><h2 class="serif">Experience</h2></div>
-    <div class="stagger">
-      <div class="stagger__col">
-        {left.map((o) => <ExpCard job={o.job} no={o.no} order={o.i} />)}
-      </div>
-      <div class="stagger__col stagger__col--down">
-        {right.map((o) => <ExpCard job={o.job} no={o.no} order={o.i} />)}
-      </div>
+    <div class="stagger-grid">
+      {items.map((o) => <ExpCard job={o.job} no={o.no} order={o.i} />)}
     </div>
   </div>
 </section>
