@@ -15,6 +15,9 @@ const bio = [profile.bio[0]].filter(Boolean);
           {bio.map((p, i) => (
             <p class={i === 0 ? 'hero__p hero__p--lead' : 'hero__p'}>{p}</p>
           ))}
+          <div style="margin-top: 2rem;">
+            <a class="btn" href="/resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
 

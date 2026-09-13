@@ -7,6 +7,7 @@ import { nav, profile, socials } from '../data/site';
       {nav.map((n) => (
         <a class="pill" href={n.href} data-navlink>{n.label}</a>
       ))}
+      <a class="pill" href="/resume.pdf" target="_blank" rel="noopener">resume ↗</a>
     </nav>
 
     <button class="nav__menu" data-menu-btn aria-label="Toggle menu">
@@ -25,6 +26,9 @@ import { nav, profile, socials } from '../data/site';
           <b class="mono">{n.idx}</b><span class="serif">{n.label}</span>
         </a>
       ))}
+      <a class="menu__link" href="/resume.pdf" target="_blank" rel="noopener">
+        <b class="mono">08</b><span class="serif">Resume ↗</span>
+      </a>
     </div>
     <div class="menu__aside">
       <span class="label">Elsewhere</span>
