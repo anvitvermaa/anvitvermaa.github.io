@@ -25,13 +25,19 @@ import AgentGraph from './art/AgentGraph.astro';
         <span class="label label--accent wdetail__kind">{w.kind}</span>
 
         {w.intro && (
-          <p class="wdetail__p"><span class="wd-lead">{typeof w.intro === 'string' ? '' : w.intro.lead}</span> {typeof w.intro === 'string' ? w.intro : w.intro.text}</p>
+          <p class="wdetail__p">
+            {typeof w.intro === 'string' ? (
+              <span set:html={w.intro} />
+            ) : (
+              <><span class="wd-lead" set:html={w.intro.lead} /> <span set:html={w.intro.text} /></>
+            )}
+          </p>
         )}
-        {w.paragraph && <p class="wdetail__p">{w.paragraph}</p>}
+        {w.paragraph && <p class="wdetail__p" set:html={w.paragraph}></p>}
         {w.bullets && w.bullets.map((b) => (
           typeof b === 'string'
-            ? <p class="wdetail__p">{b}</p>
-            : <p class="wdetail__p"><span class="wd-lead">{b.lead}</span> {b.text}</p>
+            ? <p class="wdetail__p" set:html={b}></p>
+            : <p class="wdetail__p"><span class="wd-lead" set:html={b.lead}></span> <span set:html={b.text}></span></p>
         ))}
 
         <ul class="wdetail__tech">{w.tech.map((t) => <li class="mono">{t}</li>)}</ul>

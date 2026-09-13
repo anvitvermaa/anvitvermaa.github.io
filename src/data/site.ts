@@ -165,9 +165,9 @@ export const works: Work[] = [
       { k: 'Pipeline', v: 'GitHub Actions CI/CD' },
     ],
     bullets: [
-      'Architected a serverless music analytics platform on AWS CloudFront with a Python backend, achieving global low-latency delivery and zero-downtime deployments via a GitHub Actions CI/CD pipeline.',
-      "Integrated Spotify's PKCE OAuth 2.0 flow for secure, backend-less authentication and built interactive analytics visualizing top artists, tracks, and algorithmic recommendations across multiple time ranges.",
-      'Engineered a custom Windows 95 / Frutiger Aero design system using Tailwind CSS, featuring a virtual CD Burner playlist builder, state-machine-driven Easter eggs, and retro pixel-art micro-interactions.',
+      'Architected a <strong>serverless music analytics platform</strong> on AWS CloudFront with a Python backend, achieving <strong>global low-latency delivery</strong> and zero-downtime deployments via a <strong>GitHub Actions CI/CD</strong> pipeline.',
+      "Integrated <strong>Spotify's PKCE OAuth 2.0 flow</strong> for secure, backend-less authentication and built interactive analytics visualizing top artists, tracks, and algorithmic recommendations across multiple time ranges.",
+      'Engineered a custom <strong>Windows 95 / Frutiger Aero</strong> design system using Tailwind CSS, featuring a virtual CD Burner playlist builder, state-machine-driven Easter eggs, and retro pixel-art micro-interactions.',
     ],
   },
   {
@@ -186,7 +186,7 @@ export const works: Work[] = [
       { k: 'Audit', v: '3-stage SAST & deps' },
     ],
     paragraph:
-      'Architected an autonomous LangGraph orchestration layer with LLaMA 3 agents and a ChromaDB RAG pipeline, enabling conversational codebase analysis, repository discovery, and automated README generation. Engineered an interactive React frontend with a flawless Windows XP-themed desktop experience, completely automating complex three-stage security audits (SAST & dependencies) directly within the OS simulation.',
+      'Architected an autonomous <strong>LangGraph orchestration layer</strong> with <strong>LLaMA 3 agents</strong> and a <strong>ChromaDB RAG pipeline</strong>, enabling conversational codebase analysis, repository discovery, and automated README generation. Engineered an interactive React frontend with a flawless Windows XP-themed desktop experience, completely automating complex <strong>three-stage security audits (SAST & dependencies)</strong> directly within the OS simulation.',
   },
   {
     no: '03',
@@ -204,7 +204,7 @@ export const works: Work[] = [
       { k: 'Metrics', v: 'PSNR · SSIM · SAM · LPIPS' },
     ],
     paragraph:
-      'Pioneered a VRAM-optimized PyTorch pipeline and a proprietary "Smart Scaling" algorithm to upscale 30m Landsat to 10m Sentinel-2 imagery, strictly preserving 16-bit TOA multispectral integrity of the Rondônia fishbone deforestation pattern. Executed a definitive benchmarking study of 8 Super-Resolution architectures (SRGAN, SwinIR, HAT) using a rigorous perception-distortion matrix (PSNR, SSIM, SAM, LPIPS) to quantify sub-hectare logging road hallucination.',
+      'Pioneered a <strong>VRAM-optimized PyTorch pipeline</strong> and a proprietary "Smart Scaling" algorithm to upscale <strong>30m Landsat to 10m Sentinel-2 imagery</strong>, strictly preserving 16-bit TOA multispectral integrity of the Rondônia fishbone deforestation pattern. Executed a definitive benchmarking study of <strong>8 Super-Resolution architectures</strong> (SRGAN, SwinIR, HAT) using a rigorous perception-distortion matrix (PSNR, SSIM, SAM, LPIPS) to quantify sub-hectare logging road hallucination.',
   },
   {
     no: '04',
@@ -224,10 +224,10 @@ export const works: Work[] = [
     ],
     intro: { lead: 'Project Context:', text: 'A rigorous quasi-experimental causal evaluation of the Maharashtra EV Subsidy Policy 2025 across a balanced macro-state panel of top vehicle-registering Indian states (N=16, T=54 months).' },
     bullets: [
-      { lead: 'Uncovered the "Demand Displacement Paradox":', text: 'Mathematically isolated a null short-run demand signal using quasi-experimental causal analysis, driven by volatile national FAME-II subsidy expirations.' },
-      { lead: 'High-Performance Data Engineering:', text: 'Engineered an out-of-core ETL pipeline utilizing a Python AJAX scraper and Polars to lazily ingest, transform, and evaluate nearly 100 million API-sourced vehicle registrations across 54 months of macroscopic Vahan data.' },
-      { lead: 'Advanced Causal Architecture:', text: 'Pioneered a rigorous dual-specification causal architecture utilizing the Synthetic Difference-in-Differences (SDiD) estimator with L2 Ridge Regularization to construct unconfounded baseline counterfactuals.' },
-      { lead: 'Mathematical Robustness:', text: 'Designed advanced spatial robustness checks ("Donut Hole" specifications) and placebo bootstrap permutation tests to mathematically validate SUTVA compliance against cross-border arbitrage spillovers.' },
+      { lead: 'Uncovered the "Demand Displacement Paradox":', text: 'Mathematically isolated a <strong>null short-run demand signal</strong> using quasi-experimental causal analysis, driven by volatile national FAME-II subsidy expirations.' },
+      { lead: 'High-Performance Data Engineering:', text: 'Engineered an out-of-core ETL pipeline utilizing a Python AJAX scraper and Polars to lazily ingest, transform, and evaluate <strong>nearly 100 million</strong> API-sourced vehicle registrations across <strong>54 months</strong> of macroscopic Vahan data.' },
+      { lead: 'Advanced Causal Architecture:', text: 'Pioneered a rigorous dual-specification causal architecture utilizing the <strong>Synthetic Difference-in-Differences (SDiD)</strong> estimator with L2 Ridge Regularization to construct unconfounded baseline counterfactuals.' },
+      { lead: 'Mathematical Robustness:', text: 'Designed advanced spatial robustness checks ("Donut Hole" specifications) and placebo bootstrap permutation tests to <strong>mathematically validate SUTVA compliance</strong> against cross-border arbitrage spillovers.' },
     ],
   },
   {
@@ -247,9 +247,9 @@ export const works: Work[] = [
       { k: 'Tracking', v: 'MLflow autologging' },
     ],
     bullets: [
-      { lead: 'Stateful Orchestration:', text: 'Orchestrated complex marketing workflows using LangGraph with dynamic branching, reflection, and supervisor-review loops for auto-regeneration based on quality thresholds.' },
-      { lead: 'Creative & Supervisor LLMs:', text: 'Deployed LLaMA 3 for generating marketing messages and reviewing tone/clarity, utilizing scoring systems to drive iterative content refinement.' },
-      { lead: 'Observability & Data:', text: 'Integrated MLflow for autologging prompts and retrieval metrics, while tying MySQL customer features (churn risk, usage) to high-quality content generation.' },
+      { lead: 'Stateful Orchestration:', text: 'Orchestrated complex marketing workflows using <strong>LangGraph</strong> with dynamic branching, reflection, and supervisor-review loops for auto-regeneration based on quality thresholds.' },
+      { lead: 'Creative & Supervisor LLMs:', text: 'Deployed <strong>LLaMA 3</strong> for generating marketing messages and reviewing tone/clarity, utilizing scoring systems to drive iterative content refinement.' },
+      { lead: 'Observability & Data:', text: 'Integrated <strong>MLflow for autologging</strong> prompts and retrieval metrics, while tying <strong>MySQL customer features</strong> (churn risk, usage) to high-quality content generation.' },
     ],
   },
 ];
