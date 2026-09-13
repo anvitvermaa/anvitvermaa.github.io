@@ -68,9 +68,9 @@ export const experience: Job[] = [
     range: 'June 2026 - Present',
     url: 'https://www.jio.com',
     points: [
-      'Architected an automated data reconciliation engine performing daily cross-system validation of 2,300+ tables across 14 business domains, migrating from SAP HANA/Oracle into Databricks Lakehouse – automatically flagging missing or out-of-sync tables for remediation.',
-      'Engineered a real-time AI/BI job monitoring dashboard tracking 1,100+ Databricks jobs and 760K+ monthly runs, using SQL date-spine analysis and Quartz cron parsing to surface an 8.2% hidden schedule deviation masked by a false 99.9% on-time metric.',
-      'Automated enterprise-scale data auditing – replacing manual cross-team audits and ad-hoc SQL querying with self-serve analytics that cut job-investigation time by an estimated ~80% and reconciliation effort by an estimated 40+ person-hours per week.',
+      'Architected an <strong>automated data reconciliation engine</strong> performing daily cross-system validation of <strong>2,300+ tables</strong> across 14 business domains, migrating from SAP HANA/Oracle into Databricks Lakehouse – automatically flagging missing or out-of-sync tables for remediation.',
+      'Engineered a real-time <strong>AI/BI job monitoring dashboard</strong> tracking <strong>1,100+ Databricks jobs</strong> and <strong>760K+ monthly runs</strong>, using SQL date-spine analysis and Quartz cron parsing to surface an <strong>8.2% hidden schedule deviation</strong> masked by a false 99.9% on-time metric.',
+      'Automated enterprise-scale data auditing – replacing manual cross-team audits and ad-hoc SQL querying with <strong>self-serve analytics</strong> that cut job-investigation time by an <strong>estimated ~80%</strong> and reconciliation effort by an estimated <strong>40+ person-hours per week</strong>.',
     ],
   },
   {
@@ -80,10 +80,10 @@ export const experience: Job[] = [
     range: 'Sept 2025 - Jan 2026',
     url: '#',
     points: [
-      'Single-handedly architected and developed the university-wide Linux System Administration course (CSE0002) from scratch, serving 4,200+ enrolled students in its inaugural semester.',
-      'Authored the complete end-to-end course curriculum, comprehensive lecture scripts, and syllabus, delivering over 90 Bash and Shell automation modules replicating real-world system administration workflows.',
-      'Produced and recorded 100% of the technical screen demonstrations, capturing real-time execution of advanced Linux commands across an 8.5-hour curriculum spanning 21 lectures and 5 sections.',
-      'Achieved the highest rating and viewership on the entire university e-learning portal, securing an exceptional 4.7/5.0 rating across 718 student reviews.',
+      'Single-handedly architected and developed the university-wide <strong>Linux System Administration course</strong> (CSE0002) from scratch, serving <strong>4,200+ enrolled students</strong> in its inaugural semester.',
+      'Authored the complete end-to-end course curriculum, comprehensive lecture scripts, and syllabus, delivering <strong>over 90 Bash and Shell automation modules</strong> replicating real-world system administration workflows.',
+      'Produced and recorded <strong>100% of the technical screen demonstrations</strong>, capturing real-time execution of advanced Linux commands across an <strong>8.5-hour curriculum</strong> spanning <strong>21 lectures and 5 sections</strong>.',
+      'Achieved the <strong>highest rating and viewership</strong> on the entire university e-learning portal, securing an exceptional <strong>4.7/5.0 rating across 718 student reviews</strong>.',
     ],
   },
   {
@@ -93,10 +93,10 @@ export const experience: Job[] = [
     range: 'Jan 2025 - Present',
     url: 'https://vitbhopal.ac.in',
     points: [
-      { lead: 'Research Focus 4: Causal Evaluation of EV Subsidies:', text: 'Evaluated the Maharashtra EV Policy 2025 via a macro-panel (N=9, T=54). Engineered an out-of-core DuckDB/Polars ETL pipeline and implemented Synthetic Difference-in-Differences (SDiD) in Python to quantify the "Demand Displacement Paradox."' },
-      { lead: 'Research Focus 3: Rondônia Fishbone Harmonizer:', text: 'Upscaled historical 30m Landsat imagery to 10m Sentinel-2 resolution to monitor Amazon deforestation. Built a PySTAC ETL pipeline and benchmarked 7 PyTorch architectures (EDSR, SwinIR, ESRGAN) for super-resolution.' },
-      { lead: 'Research Focus 2: ADAS & Neural Networks:', text: 'Co-authored a technical review mapping the shift to Deep Learning in autonomous driving. Quantified a 40% drop in trajectory prediction error (Kalman Filters to LSTM/GNNs) and proposed Neuro-Symbolic AI integrations for ISO 26262 compliance.' },
-      { lead: 'Research Focus 1: AV Perception & Integration:', text: 'Co-authored a published review on autonomous vehicle perception. Benchmarked classical filters vs. deep learning for LiDAR/vision fusion, and analyzed SLAM HD mapping & GAN dehazing for adverse weather.' },
+      { lead: 'Research Focus 4: Causal Evaluation of EV Subsidies:', text: 'Evaluated the Maharashtra EV Policy 2025 via a macro-panel (N=9, T=54). Engineered an <strong>out-of-core DuckDB/Polars ETL pipeline</strong> and implemented <strong>Synthetic Difference-in-Differences (SDiD)</strong> in Python to quantify the "Demand Displacement Paradox."' },
+      { lead: 'Research Focus 3: Rondônia Fishbone Harmonizer:', text: 'Upscaled historical 30m Landsat imagery to 10m Sentinel-2 resolution to monitor Amazon deforestation. Built a <strong>PySTAC ETL pipeline</strong> and benchmarked <strong>7 PyTorch architectures</strong> (EDSR, SwinIR, ESRGAN) for super-resolution.' },
+      { lead: 'Research Focus 2: ADAS & Neural Networks:', text: 'Co-authored a technical review mapping the shift to Deep Learning in autonomous driving. Quantified a <strong>40% drop in trajectory prediction error</strong> (Kalman Filters to LSTM/GNNs) and proposed <strong>Neuro-Symbolic AI</strong> integrations for ISO 26262 compliance.' },
+      { lead: 'Research Focus 1: AV Perception & Integration:', text: 'Co-authored a published review on autonomous vehicle perception. Benchmarked classical filters vs. <strong>deep learning for LiDAR/vision fusion</strong>, and analyzed SLAM HD mapping & GAN dehazing for adverse weather.' },
     ],
   },
   {
@@ -106,10 +106,10 @@ export const experience: Job[] = [
     range: 'May 2025 - June 2025',
     url: 'https://www.jio.com',
     points: [
-      'Architected a LangGraph-based multi-agent "Telecom Optimizer" orchestrating complex marketing and customer workflows, utilizing LLaMA 3 for dynamic content generation and automated supervisor-review reflection loops.',
-      'Constructed advanced RAG pipelines over 500+ internal documents, enabling the agentic system to instantly retrieve and synthesize highly accurate responses from dense enterprise knowledge bases.',
-      'Engineered a Text-to-SQL capability utilizing dynamic SQL generation, empowering internal teams to query operational databases in natural language and eliminating hours of manual reporting overhead.',
-      'Integrated MLflow for comprehensive observability and autologging, successfully automating 90% of complaint routing and reducing overall operational latency by 20%.',
+      'Architected a <strong>LangGraph-based multi-agent "Telecom Optimizer"</strong> orchestrating complex marketing and customer workflows, utilizing <strong>LLaMA 3</strong> for dynamic content generation and automated supervisor-review reflection loops.',
+      'Constructed advanced <strong>RAG pipelines over 500+ internal documents</strong>, enabling the agentic system to instantly retrieve and synthesize highly accurate responses from dense enterprise knowledge bases.',
+      'Engineered a <strong>Text-to-SQL capability</strong> utilizing dynamic SQL generation, empowering internal teams to query operational databases in natural language and eliminating <strong>hours of manual reporting overhead</strong>.',
+      'Integrated <strong>MLflow for comprehensive observability</strong> and autologging, successfully automating <strong>90% of complaint routing</strong> and reducing overall operational latency by <strong>20%</strong>.',
     ],
   },
 ];

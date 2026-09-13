@@ -9,8 +9,8 @@ const { job, no, order } = Astro.props;
   <ul class="exp__points">
     {job.points.map((pt) => (
       typeof pt === 'string'
-        ? <li>{pt}</li>
-        : <li><span class="exp__lead">{pt.lead}</span> {pt.text}</li>
+        ? <li set:html={pt}></li>
+        : <li><span class="exp__lead" set:html={pt.lead}></span> <span set:html={pt.text}></span></li>
     ))}
   </ul>
 </article>
