@@ -288,17 +288,15 @@ footer.colophon { position: relative; z-index: 1; background: var(--paper-2); co
 /* the index sections fill the frame width (obake-style) */
 .p-exp .panel__in, .p-work .panel__in { max-width: none; padding-inline: clamp(1.5rem, 4vw, 4.5rem); }
 
-/* obake-style staggered two-column index — left column higher, right dropped,
-   each successive box steps a bit further down (progressive cascade via --o) */
-.stagger { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.4rem, 2.6vw, 2.4rem); align-items: start; }
-.stagger__col { display: flex; flex-direction: column; gap: clamp(2.6rem, 5.5vh, 5rem); }
-.stagger__col--down { margin-top: clamp(5rem, 17vh, 13rem); }
-.stagger .ibox { margin-top: calc(var(--o, 0) * clamp(0.5rem, 1.5vh, 1.4rem)); }
+/* obake-style staggered index — guaranteed perfect zigzag regardless of card heights */
+.stagger-flat { display: flex; flex-direction: column; gap: clamp(2.6rem, 5.5vh, 5rem); margin-top: 1rem; }
+.stagger-flat .ibox { width: calc(50% - (clamp(1.4rem, 2.6vw, 2.4rem) / 2)); max-width: 650px; }
+.stagger-flat .ibox:nth-child(odd) { align-self: flex-start; }
+.stagger-flat .ibox:nth-child(even) { align-self: flex-end; margin-top: clamp(-5rem, -17vh, -3rem); }
+
 @media (max-width: 760px) {
-  .stagger { display: flex; flex-direction: column; gap: clamp(1.2rem, 4vw, 1.8rem); }
-  .stagger__col { display: contents; }
-  .stagger__col--down { margin-top: 0; }
-  .stagger .ibox { order: var(--o, 0); margin-top: 0; }
+  .stagger-flat { gap: clamp(1.2rem, 4vw, 1.8rem); }
+  .stagger-flat .ibox { width: 100%; align-self: stretch !important; margin-top: 0 !important; max-width: none; }
 }
 
 /* grunge artwork background (fixed, behind everything) */
