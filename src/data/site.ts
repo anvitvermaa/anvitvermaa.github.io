@@ -80,9 +80,9 @@ export const experience: Job[] = [
     range: 'Sept 2025 - Jan 2026',
     url: '#',
     points: [
-      'Spearheaded the end-to-end technical development of the university wide Linux course (CSE0002) for 4,100+ students in just first semester of the launch.',
-      'Systematized 90 Bash and Shell automation scripts replicating real-world system administration workflows including log analysis and process monitoring.',
-      'Delivered 100% of technical screen demonstrations capturing real-time execution of advanced Linux commands for asynchronous learning at scale.',
+      'Single-handedly architected and developed the university-wide Linux System Administration course (CSE0002) from scratch, serving 4,100+ students in its inaugural semester.',
+      'Authored the complete end-to-end course curriculum, comprehensive lecture scripts, and syllabus, delivering over 90 Bash and Shell automation modules replicating real-world system administration workflows.',
+      'Produced and recorded 100% of the technical screen demonstrations, capturing real-time execution of advanced Linux commands to facilitate hands-on asynchronous learning at scale.',
     ],
   },
   {
