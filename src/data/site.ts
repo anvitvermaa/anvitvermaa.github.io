@@ -26,7 +26,7 @@ export const profile = {
 
 // Figures surfaced from Anvit's verbatim experience/work text — index flavour.
 export const stats: Metric[] = [
-  { k: '4,100+', v: 'students served · university Linux course' },
+  { k: '4,240', v: 'students served · university Linux course' },
   { k: '~100M', v: 'vehicle records processed · Vahan data' },
   { k: '2×', v: 'AI internships @ Jio Platforms' },
   { k: '40%', v: 'trajectory prediction error reduced' },
@@ -80,9 +80,10 @@ export const experience: Job[] = [
     range: 'Sept 2025 - Jan 2026',
     url: '#',
     points: [
-      'Single-handedly architected and developed the university-wide Linux System Administration course (CSE0002) from scratch, serving 4,100+ students in its inaugural semester.',
+      'Single-handedly architected and developed the university-wide Linux System Administration course (CSE0002) from scratch, serving 4,240 enrolled students in its inaugural semester.',
       'Authored the complete end-to-end course curriculum, comprehensive lecture scripts, and syllabus, delivering over 90 Bash and Shell automation modules replicating real-world system administration workflows.',
-      'Produced and recorded 100% of the technical screen demonstrations, capturing real-time execution of advanced Linux commands to facilitate hands-on asynchronous learning at scale.',
+      'Produced and recorded 100% of the technical screen demonstrations, capturing real-time execution of advanced Linux commands across an 8.5-hour curriculum spanning 21 lectures and 5 sections.',
+      'Achieved the highest rating and viewership on the entire university e-learning portal, securing an exceptional 4.7/5.0 rating across 718 student reviews.',
     ],
   },
   {
