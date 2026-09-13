@@ -68,7 +68,9 @@ export const experience: Job[] = [
     range: 'June 2026 - Present',
     url: 'https://www.jio.com',
     points: [
-      'Just got started! Currently setting up my environment, diving into the Databricks ecosystem, and drinking from the firehose. More updates coming soon as I start building out scalable data pipelines.',
+      'Architected an automated data reconciliation engine performing daily cross-system validation of 2,300+ tables across 14 business domains, migrating from SAP HANA/Oracle into Databricks Lakehouse – automatically flagging missing or out-of-sync tables for remediation.',
+      'Engineered a real-time AI/BI job monitoring dashboard tracking 1,100+ Databricks jobs and 760K+ monthly runs, using SQL date-spine analysis and Quartz cron parsing to surface an 8.2% hidden schedule deviation masked by a false 99.9% on-time metric.',
+      'Automated enterprise-scale data auditing – replacing manual cross-team audits and ad-hoc SQL querying with self-serve analytics that cut job-investigation time by an estimated ~80% and reconciliation effort by an estimated 40+ person-hours per week.',
     ],
   },
   {
