@@ -93,7 +93,7 @@ export const experience: Job[] = [
     range: 'Jan 2025 - Present',
     url: 'https://vitbhopal.ac.in',
     points: [
-      { lead: 'Research Focus 4: Causal Evaluation of EV Subsidies:', text: 'Evaluated the Maharashtra EV Policy 2025 via a macro-panel (N=9, T=54). Engineered an <strong>out-of-core DuckDB/Polars ETL pipeline</strong> and implemented <strong>Synthetic Difference-in-Differences (SDiD)</strong> in Python to quantify the "Demand Displacement Paradox."' },
+      { lead: 'Research Focus 4: Causal Evaluation of EV Subsidies:', text: 'Evaluated the Maharashtra EV Policy 2025 via a macro-panel (N=16, T=54). Engineered an <strong>out-of-core DuckDB/Polars ETL pipeline</strong> and implemented <strong>Synthetic Difference-in-Differences (SDiD)</strong> to isolate a statistically null short-run demand signal.' },
       { lead: 'Research Focus 3: Rondônia Fishbone Harmonizer:', text: 'Upscaled historical 30m Landsat imagery to 10m Sentinel-2 resolution to monitor Amazon deforestation. Built a <strong>PySTAC ETL pipeline</strong> and benchmarked <strong>7 PyTorch architectures</strong> (EDSR, SwinIR, ESRGAN) for super-resolution.' },
       { lead: 'Research Focus 2: ADAS & Neural Networks:', text: 'Co-authored a technical review mapping the shift to Deep Learning in autonomous driving. Quantified a <strong>40% drop in trajectory prediction error</strong> (Kalman Filters to LSTM/GNNs) and proposed <strong>Neuro-Symbolic AI</strong> integrations for ISO 26262 compliance.' },
       { lead: 'Research Focus 1: AV Perception & Integration:', text: 'Co-authored a published review on autonomous vehicle perception. Benchmarked classical filters vs. <strong>deep learning for LiDAR/vision fusion</strong>, and analyzed SLAM HD mapping & GAN dehazing for adverse weather.' },
@@ -209,9 +209,9 @@ export const works: Work[] = [
   {
     no: '04',
     year: '2025',
-    title: 'EV Subsidy Causal Evaluation',
+    title: 'Causal Evaluation of Maharashtra EV Policy',
     kind: 'Causal Inference · Data Engineering',
-    blurb: 'A quasi-experimental causal study of Maharashtra’s 2025 EV policy across ~100M vehicle registrations.',
+    blurb: 'A quasi-experimental causal study of Maharashtra’s 2025 EV policy across nearly 34M vehicle registrations.',
     tech: ['Python', 'Polars', 'SDiD', 'AJAX', 'Causal Inference'],
     github: null,
     external: null,
@@ -219,13 +219,13 @@ export const works: Work[] = [
     art: 'sdid',
     meta: [
       { k: 'Panel', v: 'N=16 · T=54 months' },
-      { k: 'Scale', v: '~100M registrations' },
+      { k: 'Scale', v: '~34M registrations' },
       { k: 'Estimator', v: 'SDiD + L2 Ridge' },
     ],
     intro: { lead: 'Project Context:', text: 'A rigorous quasi-experimental causal evaluation of the Maharashtra EV Subsidy Policy 2025 across a balanced macro-state panel of top vehicle-registering Indian states (N=16, T=54 months).' },
     bullets: [
-      { lead: 'Uncovered the "Demand Displacement Paradox":', text: 'Mathematically isolated a <strong>null short-run demand signal</strong> using quasi-experimental causal analysis, driven by volatile national FAME-II subsidy expirations.' },
-      { lead: 'High-Performance Data Engineering:', text: 'Engineered an out-of-core ETL pipeline utilizing a Python AJAX scraper and Polars to lazily ingest, transform, and evaluate <strong>nearly 100 million</strong> API-sourced vehicle registrations across <strong>54 months</strong> of macroscopic Vahan data.' },
+      { lead: 'Isolated True Policy Impact:', text: 'Mathematically demonstrated a <strong>statistically null short-run demand signal</strong> (ATT = +0.0347 pp, p>0.05) for the Maharashtra EV subsidy by rigorously correcting the outcome variable to isolate Battery Electric Vehicles (BEVs), eliminating confounding from a simultaneous national surge in Strong Hybrids.' },
+      { lead: 'High-Performance Data Engineering:', text: 'Engineered an out-of-core ETL pipeline utilizing a Python AJAX scraper, <strong>DuckDB for in-memory SQL normalization</strong>, and Polars to lazily ingest, transform, and evaluate <strong>nearly 34 million</strong> API-sourced vehicle registrations across <strong>54 months</strong> of macroscopic Vahan data.' },
       { lead: 'Advanced Causal Architecture:', text: 'Pioneered a rigorous dual-specification causal architecture utilizing the <strong>Synthetic Difference-in-Differences (SDiD)</strong> estimator with L2 Ridge Regularization to construct unconfounded baseline counterfactuals.' },
       { lead: 'Mathematical Robustness:', text: 'Designed advanced spatial robustness checks ("Donut Hole" specifications) and placebo bootstrap permutation tests to <strong>mathematically validate SUTVA compliance</strong> against cross-border arbitrage spillovers.' },
     ],
