@@ -107,7 +107,7 @@ export const experience: Job[] = [
     url: 'https://www.jio.com',
     points: [
       'Architected a LangGraph-based multi-agent "Telecom Optimizer" orchestrating complex marketing and customer workflows, utilizing LLaMA 3 for dynamic content generation and automated supervisor-review reflection loops.',
-      'Constructed advanced RAG pipelines over 500+ internal documents and implemented dynamic SQL generation (MySQL) to extract live customer features (e.g., churn risk) directly within the agent workflow.',
+      'Constructed advanced RAG pipelines over 500+ internal documents and implemented dynamic SQL generation, empowering internal teams with rapid data retrieval workflows that eliminated hours of manual database querying.',
       'Integrated MLflow for comprehensive observability and autologging, successfully automating 90% of complaint routing and reducing overall operational latency by 20%.',
     ],
   },
