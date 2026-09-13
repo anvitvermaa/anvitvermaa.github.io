@@ -106,9 +106,9 @@ export const experience: Job[] = [
     range: 'May 2025 - June 2025',
     url: 'https://www.jio.com',
     points: [
-      'Constructed autonomous AI agents using LangChain and LLaMA 3, implementing a RAG pipeline over 500+ internal documents for precise information retrieval.',
-      'Implemented dynamic SQL generation enabling structured querying across complex relational databases within the agent workflow.',
-      'Launched a LangGraph-based multi-agent system that automated 90% of complaint routing and reduced operational latency by 20%.',
+      'Architected a LangGraph-based multi-agent "Telecom Optimizer" orchestrating complex marketing and customer workflows, utilizing LLaMA 3 for dynamic content generation and automated supervisor-review reflection loops.',
+      'Constructed advanced RAG pipelines over 500+ internal documents and implemented dynamic SQL generation (MySQL) to extract live customer features (e.g., churn risk) directly within the agent workflow.',
+      'Integrated MLflow for comprehensive observability and autologging, successfully automating 90% of complaint routing and reducing overall operational latency by 20%.',
     ],
   },
 ];
