@@ -1,0 +1,76 @@
+---
+import { nav, profile, socials } from '../data/site';
+---
+<header class="nav" data-nav>
+  <div class="nav__in">
+    <nav class="nav__idx u-hide-m" aria-label="Sections">
+      {nav.map((n) => (
+        <a class="pill" href={n.href} data-navlink>{n.label}</a>
+      ))}
+    </nav>
+
+    <button class="nav__menu" data-menu-btn aria-label="Toggle menu">
+      <span class="nav__menu-l" data-menu-open-l>Menu</span>
+      <span class="nav__menu-l" data-menu-close-l>Close</span>
+      <span class="nav__burger" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" data-menu aria-hidden="true">
+  <div class="menu__grid">
+    <div class="menu__list">
+      {nav.map((n) => (
+        <a class="menu__link" href={n.href} data-navlink>
+          <b class="mono">{n.idx}</b><span class="serif">{n.label}</span>
+        </a>
+      ))}
+    </div>
+    <div class="menu__aside">
+      <span class="label">Elsewhere</span>
+      <ul>
+        {socials.map((s) => (
+          <li><a class="link" href={s.url} target="_blank" rel="noopener">{s.name}</a></li>
+        ))}
+      </ul>
+      <p class="menu__mail mono">{profile.email}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .nav { position: fixed; inset: 0 0 auto 0; z-index: 95; padding: clamp(2.6rem, 4.5vh, 3.6rem) clamp(2rem, 5vw, 4.2rem); }
+  .nav__in { display: flex; align-items: center; justify-content: flex-end; gap: 1rem; }
+
+  .nav__idx { display: inline-flex; gap: 0.65rem; }
+  .pill { font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: lowercase;
+    color: var(--ink); border: 1.5px solid var(--ink); border-radius: 100px; padding: 0.7em 1.4em;
+    background: rgba(230, 228, 242, 0.6); backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px);
+    transition: background-color 0.35s var(--ease), color 0.35s var(--ease); }
+  .pill:hover, .pill.is-active { background: var(--accent); color: var(--accent-ink); }
+
+  .nav__menu { display: none; align-items: center; gap: 0.6rem; position: relative; }
+  .nav__menu-l { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; }
+  [data-menu-close-l] { display: none; }
+  .nav__burger { display: inline-flex; flex-direction: column; gap: 4px; width: 20px; }
+  .nav__burger i { height: 1.5px; width: 100%; background: var(--ink); transition: transform 0.4s var(--ease); transform-origin: center; }
+
+  /* full-screen menu */
+  .menu { position: fixed; inset: 0; z-index: 92; background: var(--paper); clip-path: inset(0 0 100% 0);
+    pointer-events: none; transition: clip-path 0.8s var(--ease); display: grid; align-items: center; }
+  .menu__grid { padding: 6rem clamp(1.5rem,8vw,6rem) 3rem; display: grid; gap: 3rem; }
+  .menu__list { display: flex; flex-direction: column; }
+  .menu__link { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--line); }
+  .menu__link b { font-size: 0.8rem; color: var(--accent); }
+  .menu__link span { font-size: clamp(2rem, 11vw, 4rem); line-height: 1.05; }
+  .menu__aside ul { list-style: none; display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 0.8rem 0; }
+  .menu__mail { color: var(--ink-60); font-size: 0.85rem; }
+
+  html.menu-open .menu { clip-path: inset(0 0 0% 0); pointer-events: auto; }
+  html.menu-open [data-menu-open-l] { display: none; }
+  html.menu-open [data-menu-close-l] { display: inline; }
+  html.menu-open .nav__burger i:first-child { transform: translateY(2.75px) rotate(45deg); }
+  html.menu-open .nav__burger i:last-child { transform: translateY(-2.75px) rotate(-45deg); }
+
+  @media (max-width: 1000px) { .nav__idx { display: none; } .nav__menu { display: inline-flex; } }
+</style>

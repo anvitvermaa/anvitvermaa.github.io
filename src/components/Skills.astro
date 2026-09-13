@@ -1,0 +1,41 @@
+---
+import { skills } from '../data/site';
+import Doodle from './Doodle.astro';
+---
+<section class="panel p-skills" id="skills">
+  <Doodle kind="burst" accent={true} style="top:16%; left:4%; width:46px; height:46px;" />
+  <Doodle kind="scribble" style="bottom:14%; right:7%; width:120px; height:70px;" />
+
+  <div class="panel__in">
+    <div class="p-head">
+      <h2 class="serif">Skills</h2>
+    </div>
+
+    <div class="skills">
+      {skills.map((group) => (
+        <div class="skillcol" data-reveal>
+          <div class="skillcol__h">
+            <span class="label">{group.title}</span>
+            <span class="mono skillcol__n">{String(group.items.length).padStart(2, '0')}</span>
+          </div>
+          <ul>
+            {group.items.map((it, i) => (
+              <li><span class="mono skillcol__i">{String(i + 1).padStart(2, '0')}</span>{it}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.8rem, 4vw, 4rem); }
+  .skillcol__h { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line-2); }
+  .skillcol__n { color: var(--accent); font-size: 0.74rem; }
+  .skillcol ul { list-style: none; }
+  .skillcol li { display: flex; align-items: baseline; gap: 0.6rem; padding: 0.48rem 0; border-bottom: 1px solid var(--line); font-size: 0.9rem; color: var(--ink-80); }
+  .skillcol__i { color: var(--ink-40); font-size: 0.66rem; }
+  @media (max-width: 900px) { .skills { grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
+  @media (max-width: 460px) { .skills { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,60 @@
+---
+import { contact, socials, profile } from '../data/site';
+import Doodle from './Doodle.astro';
+---
+<section class="panel p-contact" id="contact">
+  <Doodle kind="star" style="top:16%; right:14%; width:60px; height:60px; color:var(--paper-ink); opacity:0.7;" draw={false} />
+  <Doodle kind="loop" style="bottom:22%; left:8%; width:120px; height:90px; color:var(--paper-ink); opacity:0.6;" draw={false} />
+
+  <div class="panel__in contact__in">
+    <div class="contact__head">
+      <span class="label">Contact</span>
+      <span class="label">{profile.location}</span>
+    </div>
+
+    <div class="contact__mid">
+      <div class="contact__words" data-words aria-hidden="true">
+        {contact.words.map((w, i) => (<span class:list={['contact__word serif', i === 0 && 'is-on']}>{w}</span>))}
+      </div>
+      <a class="contact__mail serif" href={`mailto:${contact.email}`} data-cursor data-magnetic>{contact.email}</a>
+    </div>
+
+    <div class="contact__foot">
+      <a class="btn contact__cta" href={`mailto:${contact.email}`} data-cursor data-magnetic>{contact.cta}</a>
+      <ul class="contact__socials">
+        {socials.map((s) => (
+          <li><a class="link" href={s.url} target="_blank" rel="noopener" data-cursor>{s.name}</a> <span class="contact__handle mono">{s.handle}</span></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .p-contact { background: var(--accent); color: var(--paper-ink); min-height: 84vh; }
+  .p-contact ::selection { background: var(--paper-ink); color: var(--accent); }
+  .contact__in { display: flex; flex-direction: column; gap: clamp(2rem, 5vh, 3.5rem); }
+  .contact__head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid rgba(244,239,230,0.28); padding-bottom: 0.8rem; }
+  .contact__head .label { color: rgba(244,239,230,0.85); }
+
+  .contact__mid { margin: 0; }
+  .contact__words { position: relative; height: 1.05em; font-size: clamp(2.4rem, 8vw, 6.5rem); line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.3rem; }
+  .contact__word { position: absolute; inset: 0; opacity: 0; transform: translateY(0.3em) rotate(2deg); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); font-style: italic; font-weight: 300; }
+  .contact__word.is-on { opacity: 1; transform: none; }
+  .contact__mail { display: inline-block; font-size: clamp(1.6rem, 6vw, 5rem); letter-spacing: -0.03em; line-height: 1;
+    background-image: linear-gradient(currentColor, currentColor); background-size: 0% 2px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size 0.6s var(--ease); }
+  .contact__mail:hover { background-size: 100% 2px; }
+
+  .contact__foot { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: flex-end; }
+  .contact__cta { border-color: rgba(244,239,230,0.5); color: var(--paper-ink); }
+  .contact__cta::before { background: var(--paper-ink); }
+  .contact__cta:hover { color: var(--accent); border-color: var(--paper-ink); }
+  .contact__socials { list-style: none; display: grid; gap: 0.4rem; text-align: right; }
+  .contact__socials li { display: flex; gap: 0.8rem; justify-content: flex-end; align-items: baseline; }
+  .contact__handle { font-size: 0.64rem; letter-spacing: 0.1em; color: rgba(244,239,230,0.6); }
+
+  @media (max-width: 900px) {
+    .contact__mid { margin: 2.5rem 0; }
+    .contact__socials { text-align: left; } .contact__socials li { justify-content: flex-start; }
+  }
+</style>

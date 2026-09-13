@@ -1,0 +1,39 @@
+---
+import SDiD from './art/SDiD.astro';
+import AgentGraph from './art/AgentGraph.astro';
+const { w, no, i, order } = Astro.props;
+---
+<article class="ibox wk" data-reveal style={`--o:${order}`}>
+  <span class="ibox__no" aria-hidden="true">{no}</span>
+  <button class="wk__plate duo" data-open={i} aria-label={`Open ${w.title}`}>
+    {w.cover ? (
+      <div class="wk__img" data-img><img data-img-inner src={w.cover} alt={w.title} loading="lazy" width="1200" height="750" /></div>
+    ) : w.art === 'sdid' ? (
+      <div class="wk__art"><SDiD /></div>
+    ) : w.art === 'graph' ? (
+      <div class="wk__art"><AgentGraph /></div>
+    ) : null}
+  </button>
+  <h3 class="serif wk__title" data-open={i}>{w.title}</h3>
+  <span class="label label--accent wk__kind">{w.kind}</span>
+  <p class="wk__blurb">{w.blurb}</p>
+  <ul class="wk__tech">{w.tech.map((t) => <li class="mono">{t}</li>)}</ul>
+  <button class="wk__open mono" data-open={i}>Open case study ↗</button>
+</article>
+
+<style>
+  .wk__plate { display: block; width: 100%; text-align: left; overflow: hidden; border: 1px solid var(--line-2); background: var(--paper-2); margin-bottom: 1rem; }
+  .wk__img { aspect-ratio: 16/10; overflow: hidden; }
+  .wk__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); }
+  .wk__plate:hover .wk__img img { transform: scale(1.04); }
+  .wk__art { aspect-ratio: 16/10; background: var(--paper); overflow: hidden; }
+  .wk__title { font-size: clamp(1.7rem, 2.8vw, 2.7rem); line-height: 1.02; letter-spacing: -0.02em; cursor: pointer; transition: color 0.3s var(--ease); }
+  .wk__title:hover { color: var(--accent-2); }
+  .wk__kind { display: block; margin: 0.5rem 0 0.8rem; }
+  .wk__blurb { color: var(--ink-80); font-size: clamp(1.15rem, 1.4vw, 1.42rem); line-height: 1.55; margin-bottom: 1rem; }
+  .wk__tech { list-style: none; display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; margin-bottom: 1rem; }
+  .wk__tech li { font-size: 0.62rem; letter-spacing: 0.08em; color: var(--ink-60); text-transform: uppercase; position: relative; padding-right: 0.85rem; }
+  .wk__tech li:not(:last-child)::after { content: "/"; position: absolute; right: 0; color: var(--ink-25); }
+  .wk__open { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--line-2); border-radius: 100px; padding: 0.6em 1.2em; transition: background-color 0.35s var(--ease), color 0.35s var(--ease); }
+  .wk__open:hover { background: var(--accent); color: var(--accent-ink); }
+</style>

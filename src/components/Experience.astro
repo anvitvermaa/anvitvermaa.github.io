@@ -1,0 +1,20 @@
+---
+import { experience } from '../data/site';
+import ExpCard from './ExpCard.astro';
+const items = experience.map((job, i) => ({ job, no: String(i + 1).padStart(2, '0'), i }));
+const left = items.filter((_, i) => i % 2 === 0);
+const right = items.filter((_, i) => i % 2 === 1);
+---
+<section class="panel p-exp" id="experience">
+  <div class="panel__in">
+    <div class="p-head"><h2 class="serif">Experience</h2></div>
+    <div class="stagger">
+      <div class="stagger__col">
+        {left.map((o) => <ExpCard job={o.job} no={o.no} order={o.i} />)}
+      </div>
+      <div class="stagger__col stagger__col--down">
+        {right.map((o) => <ExpCard job={o.job} no={o.no} order={o.i} />)}
+      </div>
+    </div>
+  </div>
+</section>

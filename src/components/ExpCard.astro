@@ -1,0 +1,29 @@
+---
+const { job, no, order } = Astro.props;
+---
+<article class="ibox exp" data-reveal style={`--o:${order}`}>
+  <span class="ibox__no" aria-hidden="true">{no}</span>
+  <h3 class="serif exp__role">{job.title}</h3>
+  <span class="exp__co mono">{job.company}</span>
+  <p class="exp__when mono">{job.range} · {job.location}</p>
+  <ul class="exp__points">
+    {job.points.map((pt) => (
+      typeof pt === 'string'
+        ? <li>{pt}</li>
+        : <li><span class="exp__lead">{pt.lead}</span> {pt.text}</li>
+    ))}
+  </ul>
+</article>
+
+<style>
+  .exp { padding: clamp(2.2rem, 4vw, 4.4rem); }
+  .exp__role { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.7rem); line-height: 1.02; letter-spacing: -0.02em; color: var(--ink); }
+  .exp__co { display: block; font-size: clamp(1rem, 1.4vw, 1.28rem); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); margin: 0.65rem 0 0.55rem; }
+  .exp__when { font-size: clamp(0.82rem, 1vw, 0.95rem); letter-spacing: 0.08em; color: #14123a;
+    margin-bottom: 1.6rem; text-transform: uppercase; }
+  .exp__points { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+  .exp__points li { position: relative; padding-left: 1.3rem; color: var(--ink-80); font-size: clamp(1.1rem, 1.3vw, 1.32rem); line-height: 1.55; }
+  .exp__points li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); font-size: 0.85em; top: 0.15em; }
+  .exp__lead { color: var(--ink); font-weight: 500; }
+</style>

@@ -1,0 +1,47 @@
+---
+import { publications } from '../data/site';
+import Doodle from './Doodle.astro';
+---
+<section class="panel p-pub" id="publications">
+  <Doodle kind="loop" style="top:14%; right:10%; width:120px; height:90px; transform:rotate(-4deg);" />
+  <Doodle kind="cross" accent={true} style="bottom:18%; left:5%; width:40px; height:40px;" />
+
+  <div class="panel__in">
+    <div class="p-head">
+      <h2 class="serif">Publications</h2>
+    </div>
+
+    {publications.map((pub) => (
+      <article class="pub" data-reveal>
+        <div class="pub__meta">
+          <span class="mono pub__year">{pub.year}</span>
+          <span class="mono">{pub.volume}</span>
+          <span class="mono pub__issn">{pub.meta}</span>
+          <span class="mono pub__j">{pub.journal}</span>
+        </div>
+        <div class="pub__body">
+          <h3 class="serif pub__title" data-split>{pub.title}</h3>
+          <p class="pub__authors">{pub.authors}</p>
+          <ul class="pub__points">{pub.points.map((p) => <li>{p}</li>)}</ul>
+          <a class="btn" href={pub.url} target="_blank" rel="noopener" data-cursor data-magnetic>Read the paper <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .pub { display: grid; grid-template-columns: 0.32fr 0.68fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: start; max-width: 980px; }
+  .pub__meta { display: flex; flex-direction: column; gap: 0.45rem; }
+  .pub__year { font-size: clamp(1rem, 1.4vw, 1.28rem); color: var(--accent); letter-spacing: 0.08em;
+    text-transform: uppercase; }
+  .pub__meta span { font-size: clamp(0.82rem, 1vw, 0.95rem); color: #14123a; letter-spacing: 0.08em;
+    text-transform: uppercase; }
+  .pub__j { color: var(--accent) !important; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.4rem; }
+  .pub__title { font-size: clamp(1.5rem, 3vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.04; max-width: 20ch; }
+  .pub__authors { font-family: var(--serif); font-style: italic; color: var(--ink-60); margin: 0.7rem 0 1.2rem; }
+  .pub__points { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; max-width: 66ch; margin-bottom: 1.6rem; }
+  .pub__points li { position: relative; padding-left: 1.4rem; color: var(--ink-80); font-size: clamp(1.1rem, 1.3vw, 1.32rem); line-height: 1.55; }
+  .pub__points li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); font-size: 0.85em; top: 0.15em; }
+  @media (max-width: 900px) { .pub { grid-template-columns: 1fr; gap: 1rem; } .pub__meta { flex-direction: row; flex-wrap: wrap; gap: 1rem; } }
+</style>

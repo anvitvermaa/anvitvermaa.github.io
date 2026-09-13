@@ -1,0 +1,100 @@
+---
+import { works } from '../data/site';
+import SDiD from './art/SDiD.astro';
+import AgentGraph from './art/AgentGraph.astro';
+---
+{works.map((w, i) => (
+  <div class="wdetail" id={`wd-${i}`} data-detail hidden>
+    <div class="wdetail__scrim" data-close></div>
+    <div class="wdetail__panel" role="dialog" aria-modal="true" aria-label={w.title}>
+      <button class="wdetail__x" data-close aria-label="Close">X</button>
+
+      <div class="wdetail__media">
+        {w.cover ? (
+          <img src={w.cover} alt={w.title} loading="lazy" />
+        ) : w.art === 'sdid' ? (
+          <div class="wdetail__art"><SDiD /></div>
+        ) : w.art === 'graph' ? (
+          <div class="wdetail__art"><AgentGraph /></div>
+        ) : null}
+      </div>
+
+      <div class="wdetail__text">
+        <span class="mono wdetail__no">{w.no} — Selected Work</span>
+        <h3 class="serif wdetail__title">{w.title}</h3>
+        <span class="label label--accent wdetail__kind">{w.kind}</span>
+
+        {w.intro && (
+          <p class="wdetail__p"><span class="wd-lead">{typeof w.intro === 'string' ? '' : w.intro.lead}</span> {typeof w.intro === 'string' ? w.intro : w.intro.text}</p>
+        )}
+        {w.paragraph && <p class="wdetail__p">{w.paragraph}</p>}
+        {w.bullets && w.bullets.map((b) => (
+          typeof b === 'string'
+            ? <p class="wdetail__p">{b}</p>
+            : <p class="wdetail__p"><span class="wd-lead">{b.lead}</span> {b.text}</p>
+        ))}
+
+        <ul class="wdetail__tech">{w.tech.map((t) => <li class="mono">{t}</li>)}</ul>
+
+        {(w.external || w.github) && (
+          <div class="wdetail__foot">
+            {w.external && <a class="btn" href={w.external} target="_blank" rel="noopener" data-cursor data-magnetic>Live <span aria-hidden="true">↗</span></a>}
+            {w.github && <a class="btn" href={w.github} target="_blank" rel="noopener" data-cursor data-magnetic>Source <span aria-hidden="true">↗</span></a>}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+))}
+
+<style>
+  .wdetail { position: fixed; inset: 0; z-index: 160; display: grid; place-items: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.5s var(--ease); }
+  .wdetail[hidden] { display: none; }
+  .wdetail.is-open { opacity: 1; pointer-events: auto; }
+  .wdetail__scrim { position: absolute; inset: 0; background: rgba(16, 0, 82, 0.5); backdrop-filter: blur(6px); }
+
+  .wdetail__panel { position: relative; z-index: 1; width: min(96vw, 1500px); height: min(88vh, 900px);
+    background: var(--paper); border: 1px solid var(--line-2); border-radius: clamp(14px, 1.4vw, 22px); overflow: hidden;
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    transform: translateY(26px) scale(0.985); transition: transform 0.6s var(--ease); }
+  .wdetail.is-open .wdetail__panel { transform: none; }
+
+  /* square "X" tab on the left edge */
+  .wdetail__x { position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 4;
+    width: clamp(48px, 4vw, 64px); aspect-ratio: 1; display: grid; place-items: center;
+    font-family: var(--mono); font-size: 1.2rem; font-weight: 500; letter-spacing: 0;
+    color: var(--accent); background: var(--paper); border: 1px solid var(--ink);
+    transition: background-color 0.35s var(--ease), color 0.35s var(--ease); }
+  .wdetail__x:hover { background: var(--accent); color: var(--accent-ink); }
+
+  .wdetail__media { position: relative; overflow: hidden; background: var(--paper-2);
+    display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--line-2);
+    padding: clamp(1rem, 2.5vw, 2.5rem); }
+  .wdetail__media img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
+  .wdetail__media .wdetail__art { width: 100%; }
+
+  .wdetail__text { height: 100%; overflow-y: auto; padding: clamp(1.8rem, 3vw, 3.4rem); }
+  .wdetail__no { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-40); }
+  .wdetail__title { font-size: clamp(2rem, 3.8vw, 3.4rem); line-height: 0.98; letter-spacing: -0.03em; margin: 0.5rem 0 0.6rem; }
+  .wdetail__kind { display: block; margin-bottom: 1.6rem; }
+  .wdetail__p { color: var(--ink-80); font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.6rem; }
+  .wd-lead { color: var(--ink); font-weight: 500; }
+  .wdetail__bullets { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.5rem; }
+  .wdetail__bullets li { position: relative; padding-left: 1.5rem; color: var(--ink-80); font-size: 0.94rem; line-height: 1.5; }
+  .wdetail__bullets li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+  .wd-lead { color: var(--ink); font-weight: 500; }
+  .wdetail__tech { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin-bottom: 1.6rem;
+    padding-top: 1.2rem; border-top: 1px solid var(--line); }
+  .wdetail__tech li { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-60);
+    position: relative; padding-right: 1rem; }
+  .wdetail__tech li:not(:last-child)::after { content: "/"; position: absolute; right: 0; color: var(--ink-25); }
+  .wdetail__foot { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+  @media (max-width: 860px) {
+    .wdetail__panel { width: 94vw; height: auto; max-height: 90vh; grid-template-columns: 1fr; overflow-y: auto; }
+    .wdetail__media { border-right: 0; border-bottom: 1px solid var(--line-2); aspect-ratio: 16/11; }
+    .wdetail__text { height: auto; overflow: visible; }
+    .wdetail__x { width: 46px; top: 0; transform: none; }
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+import { profile } from '../data/site';
+// keep About tight — intro + focus only (skip the long middle paragraph)
+const bio = [profile.bio[0], profile.bio[2]].filter(Boolean);
+---
+<section class="panel p-about" id="about">
+  <div class="panel__in about__in">
+    <div class="p-head"><h2 class="serif">About</h2></div>
+
+    <div class="about">
+      <div class="about__body">
+        {bio.map((p, i) => (
+          <p class={i === 0 ? 'about__p about__p--lead' : 'about__p'} data-split>{p}</p>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about { display: block; }
+  .about__body { max-width: 80ch; }
+  .about__p { margin-bottom: 1rem; color: var(--ink-80); font-size: clamp(1.1rem, 1.3vw, 1.32rem); line-height: 1.55; }
+  .about__p:last-child { margin-bottom: 0; }
+  .about__p--lead { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 2.2vw, 2.3rem);
+    line-height: 1.32; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 1.1rem; }
+</style>

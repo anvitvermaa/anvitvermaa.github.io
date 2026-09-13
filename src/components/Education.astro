@@ -1,0 +1,40 @@
+---
+import { education } from '../data/site';
+import Doodle from './Doodle.astro';
+---
+<section class="panel p-edu" id="education">
+  <Doodle kind="star" accent={true} style="top:20%; right:12%; width:50px; height:50px;" />
+  <Doodle kind="wave" style="bottom:22%; left:6%; width:130px; height:40px;" />
+
+  <div class="panel__in">
+    <div class="p-head">
+      <h2 class="serif">Education</h2>
+    </div>
+
+    <div class="edu" data-reveal>
+      <div class="edu__meta">
+        <span class="mono edu__range">{education.range}</span>
+        <span class="mono edu__loc">{education.location}</span>
+      </div>
+      <div class="edu__body">
+        <h3 class="serif edu__inst">{education.institution}</h3>
+        <p class="edu__deg">{education.degree}</p>
+        <p class="edu__course"><span class="label">{education.courseworkLabel}</span> {education.coursework}</p>
+        <a class="link mono edu__link" href={education.url} target="_blank" rel="noopener" data-cursor>Visit ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .edu { display: grid; grid-template-columns: 0.3fr 0.7fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; max-width: 860px; }
+  .edu__meta { display: flex; flex-direction: column; gap: 0.4rem; }
+  .edu__range { font-size: 0.82rem; color: var(--ink); }
+  .edu__loc { font-size: 0.68rem; color: var(--ink-40); letter-spacing: 0.14em; text-transform: uppercase; }
+  .edu__inst { font-size: clamp(1.5rem, 3vw, 2.6rem); letter-spacing: -0.02em; line-height: 1; }
+  .edu__deg { margin: 0.6rem 0 1.3rem; color: var(--ink-80); font-size: var(--fs-lead); }
+  .edu__course { max-width: 56ch; color: var(--ink-60); font-size: clamp(1.05rem, 1.2vw, 1.2rem); line-height: 1.6; }
+  .edu__course .label { display: block; margin-bottom: 0.4rem; }
+  .edu__link { display: inline-block; margin-top: 1.3rem; color: var(--ink-60); font-size: 0.75rem; letter-spacing: 0.12em; }
+  @media (max-width: 900px) { .edu { grid-template-columns: 1fr; gap: 1rem; } .edu__meta { flex-direction: row; gap: 1rem; } }
+</style>

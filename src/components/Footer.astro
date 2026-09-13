@@ -1,0 +1,51 @@
+---
+import { nav, socials, profile } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="colophon">
+  <div class="wrap colophon__in">
+    <div class="colophon__top">
+      <a href="#top" class="serif colophon__mark" data-cursor>Anvit Verma</a>
+      <a href="#top" class="link mono colophon__totop" data-cursor>Back to start ↑</a>
+    </div>
+
+    <div class="colophon__grid">
+      <div class="colophon__col">
+        <span class="label">Sections</span>
+        <ul>{nav.map((n) => <li><a class="link" href={n.href} data-cursor>{n.idx} — {n.label}</a></li>)}</ul>
+      </div>
+      <div class="colophon__col">
+        <span class="label">Elsewhere</span>
+        <ul>{socials.map((s) => <li><a class="link" href={s.url} target="_blank" rel="noopener" data-cursor>{s.name} <em class="mono">↗</em></a></li>)}</ul>
+      </div>
+      <div class="colophon__col">
+        <span class="label">Colophon</span>
+        <p>Built with Astro, GSAP &amp; Lenis.</p>
+        <p class="colophon__mail mono">{profile.email}</p>
+      </div>
+    </div>
+
+    <div class="colophon__base">
+      <span class="mono">© {year} {profile.name}</span>
+      <span class="mono">Mumbai, India</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .colophon { padding: clamp(3.5rem,9vh,6rem) 0 clamp(1.2rem,3vh,2rem); }
+  .colophon__top { display: flex; justify-content: space-between; align-items: flex-end;
+    border-bottom: 1px solid var(--line); padding-bottom: clamp(2rem,5vh,3rem); }
+  .colophon__mark { font-size: clamp(2.4rem, 8vw, 5.5rem); letter-spacing: -0.03em; line-height: 0.9; }
+  .colophon__totop { color: var(--ink-60); font-size: 0.75rem; letter-spacing: 0.12em; }
+  .colophon__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: clamp(2rem,5vh,3rem) 0; }
+  .colophon__col .label { display: block; margin-bottom: 1.1rem; }
+  .colophon__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .colophon__col a { color: var(--ink); }
+  .colophon__col p { color: var(--ink-60); max-width: 40ch; margin-bottom: 0.8rem; font-size: 0.92rem; }
+  .colophon__mail { color: var(--ink); }
+  .colophon__base { display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    border-top: 1px solid var(--line); padding-top: 1.3rem; }
+  .colophon__base span { color: var(--ink-40); font-size: 0.66rem; letter-spacing: 0.08em; }
+  @media (max-width: 760px) { .colophon__grid { grid-template-columns: 1fr; gap: 2rem; } }
+</style>

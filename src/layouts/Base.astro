@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import { profile } from '../data/site';
+
+interface Props { title?: string; description?: string; }
+const {
+  title = 'Anvit Verma — AI Engineer & Researcher',
+  description = 'Anvit Verma — AI Engineer & Researcher. A working index of intelligent systems: multi-agent orchestration, RAG pipelines, computer vision and causal inference.',
+} = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="author" content={profile.name} />
+    <meta name="theme-color" content="#e6e4f2" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/photo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+
+  <body>
+    <!-- intro loader -->
+    <div class="intro" data-preloader>
+      <span class="intro__half intro__half--k"></span>
+      <span class="intro__half intro__half--r"></span>
+      <div class="intro__name serif">
+        <span class="intro__w"><span class="intro__stroke">Anvit</span><span class="intro__fill">Anvit</span></span>
+        <span class="intro__w"><span class="intro__stroke"><em>Verma</em></span><span class="intro__fill"><em>Verma</em></span></span>
+      </div>
+    </div>
+
+    <!-- electric-blue viewport frame -->
+    <div class="frame" aria-hidden="true"></div>
+    <div class="frame-shadow" aria-hidden="true"></div>
+
+    <Nav />
+
+    <span id="top"></span>
+    <main>
+      <slot />
+    </main>
+
+    <script>
+      import '../scripts/main.ts';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+---
+// Generative plate for the Multi-Agent Telecom Optimizer — a LangGraph
+// orchestration motif: supervisor + creative/reviewer LLMs with a
+// reflection loop, wired to memory and MLflow. Decorative line-art.
+---
+<div class="art art--graph" data-art>
+  <svg viewBox="63 42 515 322" role="img" aria-label="Multi-agent orchestration graph">
+    <defs>
+      <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L6,3 L0,6 z" class="ah" />
+      </marker>
+      <marker id="aha" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L6,3 L0,6 z" class="aha" />
+      </marker>
+    </defs>
+
+    <!-- edges -->
+    <line class="edge draw" x1="306" y1="86" x2="164" y2="194" marker-end="url(#ah)" />
+    <line class="edge draw" x1="334" y1="86" x2="476" y2="194" marker-end="url(#ah)" />
+    <line class="edge draw" x1="168" y1="205" x2="472" y2="205" marker-end="url(#ah)" />
+    <path class="edge edge--loop draw" d="M474,214 Q320,272 168,216" marker-end="url(#aha)" />
+    <line class="edge draw" x1="152" y1="218" x2="206" y2="316" marker-end="url(#ah)" />
+    <line class="edge draw" x1="488" y1="218" x2="436" y2="316" marker-end="url(#ah)" />
+
+    <!-- edge labels -->
+    <text class="elbl" x="320" y="199" text-anchor="middle">generate</text>
+    <text class="elbl elbl--a" x="320" y="266" text-anchor="middle">reflect ↺</text>
+
+    <!-- nodes -->
+    <g class="node node--hub"><circle cx="320" cy="72" r="6" /><circle class="ring" cx="320" cy="72" r="12" /><text x="320" y="52" text-anchor="middle">Supervisor</text></g>
+    <g class="node"><circle cx="150" cy="205" r="6" /><text x="150" y="188" text-anchor="middle">Creative LLM</text></g>
+    <g class="node"><circle cx="490" cy="205" r="6" /><text x="490" y="188" text-anchor="middle">Reviewer LLM</text></g>
+    <g class="node"><circle cx="215" cy="330" r="6" /><text x="215" y="356" text-anchor="middle">Memory · ChromaDB</text></g>
+    <g class="node"><circle cx="430" cy="330" r="6" /><text x="430" y="356" text-anchor="middle">MLflow</text></g>
+  </svg>
+</div>
+
+<style>
+  .art--graph { display: block; height: 100%; }
+  .art--graph svg { width: 100%; height: 100%; display: block; }
+  .art--graph .edge { fill: none; stroke: var(--ink-40); stroke-width: 1.4; }
+  .art--graph .edge--loop { stroke: var(--accent); stroke-width: 1.8; stroke-dasharray: 4 4; }
+  .art--graph .ah { fill: var(--ink-40); }
+  .art--graph .aha { fill: var(--accent); }
+  .art--graph .node circle { fill: var(--ink); }
+  .art--graph .node--hub circle { fill: var(--accent); }
+  .art--graph .node .ring { fill: none; stroke: var(--accent); stroke-width: 1; opacity: 0.5; }
+  .art--graph .node text { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; fill: var(--ink-60); text-transform: uppercase; }
+  .art--graph .elbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; fill: var(--ink-40); text-transform: uppercase; }
+  .art--graph .elbl--a { fill: var(--accent); }
+  .art--graph .draw { stroke-dasharray: 400; stroke-dashoffset: 400; }
+  .art--graph .edge--loop.draw { stroke-dasharray: 4 4; stroke-dashoffset: 0; }
+  html:not(.js) .art--graph .draw { stroke-dashoffset: 0; }
+</style>

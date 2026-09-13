@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import Publications from '../components/Publications.astro';
+import Work from '../components/Work.astro';
+import Education from '../components/Education.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+import WorkDetails from '../components/WorkDetails.astro';
+---
+
+<Base>
+  <div class="h-wrap" data-hwrap>
+    <div class="h-track" data-track>
+      <Hero />
+      <Experience />
+      <Publications />
+      <Work />
+      <Education />
+      <Skills />
+      <Contact />
+    </div>
+  </div>
+
+  <WorkDetails />
+</Base>

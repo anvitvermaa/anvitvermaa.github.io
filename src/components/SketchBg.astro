@@ -1,0 +1,71 @@
+---
+// Grunge monochrome artwork background — turbulent charcoal clouds +
+// displaced scratchy ink strokes + sweeping forms. Content floats above.
+const rnd = (a: number, b: number) => a + Math.random() * (b - a);
+
+// long directional scratches
+const scratches = Array.from({ length: 44 }).map(() => {
+  const x = rnd(-100, 1600), y = rnd(-40, 1040);
+  const len = rnd(180, 1000), ang = rnd(-38, -8) * (Math.PI / 180);
+  return {
+    x1: x, y1: y, x2: x + Math.cos(ang) * len, y2: y + Math.sin(ang) * len,
+    w: rnd(0.5, 1.7), o: rnd(0.04, 0.20),
+  };
+});
+// sweeping arcs
+const arcs = Array.from({ length: 9 }).map(() => {
+  const x1 = rnd(-200, 400), y1 = rnd(0, 1000);
+  const x2 = rnd(1200, 1800), y2 = rnd(0, 1000);
+  const cx = rnd(500, 1100), cy = rnd(-300, 1300);
+  return { d: `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`, o: rnd(0.05, 0.13), w: rnd(0.8, 1.8) };
+});
+// big loose forms
+const forms = [
+  'M180,720 C120,520 340,360 520,430 C720,510 640,760 470,820 C360,858 240,850 180,720 Z',
+  'M980,300 C1160,220 1360,360 1330,540 C1300,720 1060,760 960,620 C880,500 860,352 980,300 Z',
+  'M600,120 C820,40 1040,120 1020,300 C1000,470 720,520 620,380 C560,296 520,156 600,120 Z',
+];
+---
+<div class="sketchbg" aria-hidden="true">
+  <div class="sketchbg__art" data-bg-parallax>
+    <svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <filter id="sbClouds" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.006 0.011" numOctaves="5" seed="11" stitchTiles="stitch" result="n" />
+          <feColorMatrix in="n" type="saturate" values="0" />
+          <feComponentTransfer><feFuncA type="linear" slope="1.1" intercept="0" /></feComponentTransfer>
+        </filter>
+        <filter id="sbFine" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="5" result="n" />
+          <feColorMatrix in="n" type="saturate" values="0" />
+          <feComponentTransfer><feFuncA type="linear" slope="0.6" /></feComponentTransfer>
+        </filter>
+        <filter id="sbRough">
+          <feTurbulence type="turbulence" baseFrequency="0.014 0.5" numOctaves="2" seed="4" result="t" />
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="30" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <radialGradient id="sbGlow" cx="66%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#301c1e" stop-opacity="0.5" />
+          <stop offset="100%" stop-color="#0e0c0a" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+
+      <rect width="1600" height="1000" fill="#0e0c0a" />
+      <rect width="1600" height="1000" fill="url(#sbGlow)" />
+      <!-- charcoal clouds -->
+      <rect width="1600" height="1000" fill="#cfc7b8" filter="url(#sbClouds)" opacity="0.16" />
+      <!-- big loose forms -->
+      <g filter="url(#sbRough)" fill="none" stroke="#e6dfd2">
+        {forms.map((d) => <path d={d} stroke-width="1.6" opacity="0.10" />)}
+      </g>
+      <!-- directional scratches -->
+      <g filter="url(#sbRough)" stroke="#efe8db" stroke-linecap="round">
+        {scratches.map((s) => <line x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} stroke-width={s.w} opacity={s.o} />)}
+        {arcs.map((a) => <path d={a.d} fill="none" stroke-width={a.w} opacity={a.o} />)}
+      </g>
+      <!-- fine speckle -->
+      <rect width="1600" height="1000" fill="#ece5d8" filter="url(#sbFine)" opacity="0.05" />
+    </svg>
+  </div>
+  <div class="sketchbg__scan"></div>
+</div>

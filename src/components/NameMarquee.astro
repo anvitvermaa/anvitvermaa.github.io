@@ -1,0 +1,14 @@
+---
+interface Props { fill?: boolean; }
+const { fill = false } = Astro.props;
+const items = Array.from({ length: 6 });
+---
+<div class:list={['name-mq', fill && 'name-mq--fill']} data-skew>
+  <div class="marquee" data-marquee data-speed="90">
+    <div class="marquee__row">
+      {items.map(() => (
+        <span class="nm">Anvit&nbsp;<em>Verma</em><span class="nm-star">✦</span></span>
+      ))}
+    </div>
+  </div>
+</div>

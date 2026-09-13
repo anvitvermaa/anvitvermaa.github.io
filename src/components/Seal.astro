@@ -1,0 +1,13 @@
+---
+interface Props { text?: string; }
+const { text = 'SELECTED WORKS · RESEARCH · PORTFOLIO 2026 · ' } = Astro.props;
+---
+<div class="seal" aria-hidden="true">
+  <svg viewBox="0 0 200 200">
+    <defs>
+      <path id="sealPath" d="M 100,100 m -76,0 a 76,76 0 1,1 152,0 a 76,76 0 1,1 -152,0" />
+    </defs>
+    <text><textPath href="#sealPath" startOffset="0">{text + text}</textPath></text>
+  </svg>
+  <span class="seal__star">✦</span>
+</div>
