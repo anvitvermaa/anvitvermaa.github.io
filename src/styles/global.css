@@ -285,8 +285,8 @@ footer.colophon { position: relative; z-index: 1; background: var(--paper-2); co
   font-size: clamp(3rem, 6vw, 6.5rem); line-height: 0.7; letter-spacing: -0.03em;
   color: transparent; -webkit-text-stroke: 1.8px var(--accent); margin-bottom: clamp(0.8rem, 2.2vh, 1.5rem); }
 
-/* the index sections bring the grid closer to the center */
-.p-exp .panel__in, .p-work .panel__in { max-width: 900px; padding-inline: clamp(1.5rem, 4vw, 4.5rem); margin-inline: auto; }
+/* the index sections fill the frame width (obake-style) */
+.p-exp .panel__in, .p-work .panel__in { max-width: none; padding-inline: clamp(1.5rem, 4vw, 4.5rem); }
 
 /* obake-style staggered two-column index — left column higher, right dropped,
    each successive box steps a bit further down (progressive cascade via --o) */
