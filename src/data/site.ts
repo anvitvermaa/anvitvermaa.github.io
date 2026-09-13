@@ -76,7 +76,7 @@ export const experience: Job[] = [
   {
     company: 'Official University E-Learning Portal (Vityarthi)',
     location: 'Bhopal, IN',
-    title: 'Technical Assistant',
+    title: 'Technical Assistant Intern',
     range: 'Sept 2025 - Jan 2026',
     url: '#',
     points: [
