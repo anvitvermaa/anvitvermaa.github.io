@@ -7,7 +7,7 @@ import { nav, profile, socials } from '../data/site';
       {nav.map((n) => (
         <a class="pill" href={n.href} data-navlink>{n.label}</a>
       ))}
-      <a class="pill" href="/resume.pdf" target="_blank" rel="noopener">resume ↗</a>
+      <a class="pill" href="/resume.pdf" target="_blank" rel="noopener" data-cursor data-magnetic>resume ↗</a>
     </nav>
 
     <button class="nav__menu" data-menu-btn aria-label="Toggle menu">
